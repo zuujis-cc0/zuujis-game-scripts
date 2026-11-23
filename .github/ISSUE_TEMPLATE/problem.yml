@@ -1,0 +1,19 @@
+name: Report a problem
+description: A file that will not open or looks wrong, a broken link, or a licence question.
+title: '[Problem] '
+labels: ['problem']
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Which file or page?
+      description: A link or path, for example free-game-assets-icons/anchor.png.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: What you expected, what happened, and which program or engine you opened it in.
+    validations:
+      required: true

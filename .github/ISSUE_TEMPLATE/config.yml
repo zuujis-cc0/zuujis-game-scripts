@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Offer new assets
+    url: https://github.com/zuujiscom/free-game-assets/issues/new?template=new-assets.yml
+    about: New packs and additions are discussed on the hub, zuujiscom/free-game-assets.
+  - name: Questions and ideas
+    url: https://github.com/zuujiscom/free-game-assets/discussions
+    about: Ask on the hub's Discussions.
+  - name: Report a conduct problem privately
+    url: https://games.zuujis.com/report
+    about: The private form; you don't need an account.
