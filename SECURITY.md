@@ -4,7 +4,7 @@ This collection is files (pictures, models, sounds, fonts) and a few plain scrip
 
 - **A file that could harm someone who opens it**: an SVG with script, a model or picture that crashes a program, or
   anything that is not what its name says.
-- **A problem in the game scripts** ([zuujis-game-scripts](https://github.com/zuujiscom/zuujis-game-scripts)) that
+- **A problem in the game scripts** ([zuujis-game-scripts](https://github.com/zuujis-cc0/zuujis-game-scripts)) that
   could let a page run code it should not.
 
 Please report these privately through GitHub: on the repository's **Security** tab, choose **Report a vulnerability**.

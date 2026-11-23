@@ -1,5 +1,5 @@
 <!-- The Contributor Covenant 2.1, as opensource.guide recommends; it covers this repository and every
-     zuujiscom/free-game-assets-* pack repository and zuujiscom/zuujis-game-scripts. -->
+     zuujis-cc0/free-game-assets-* pack repository and zuujis-cc0/zuujis-game-scripts. -->
 
 # Contributor Covenant Code of Conduct
 

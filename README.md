@@ -2,7 +2,7 @@
 
 The small JavaScript libraries behind the Zuujis game starters. Each starter is one HTML file that plays with the keyboard, a gamepad, or touch, and fits phone screens upright and sideways. Plain browser scripts with no build step.
 
-**[Download zuujis-game-scripts.zip](https://github.com/zuujiscom/free-game-assets/releases/download/v1.1.0/zuujis-game-scripts.zip)**: the scripts, the asset library they draw from, and fifteen ready-to-play starters. Unzip, serve the folder from the root of any static web server, and open it:
+**[Download zuujis-game-scripts.zip](https://github.com/zuujis-cc0/free-game-assets/releases/download/v1.1.0/zuujis-game-scripts.zip)**: the scripts, the asset library they draw from, and fifteen ready-to-play starters. Unzip, serve the folder from the root of any static web server, and open it:
 
 ```sh
 cd zuujis-game-scripts && python3 -m http.server 8000   # then open http://localhost:8000
@@ -43,4 +43,4 @@ Platformer, runner, top-down racing (three lanes), 3D racing, fighting, first pe
 - `python3 scripts/smoke.py` plays every starter in headless Firefox, at a desktop size and as a phone, and fails on a script error, a file that does not load, or a blank page. Standard library only; needs Firefox (`FIREFOX=/path/to/firefox` if it is not found).
 - `scripts/build-game-scripts.sh <games-rs checkout>` rebuilds `js/`, `assets/`, `starters/` and `index.html` from the Zuujis games site's source, and writes `dist/zuujis-game-scripts.zip`.
 
-Part of the [Zuujis free game assets](https://github.com/zuujiscom/free-game-assets).
+Part of the [Zuujis free game assets](https://github.com/zuujis-cc0/free-game-assets).
