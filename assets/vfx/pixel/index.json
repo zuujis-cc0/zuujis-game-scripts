@@ -1,0 +1,389 @@
+{
+  "fps": 15,
+  "effects": [
+    {
+      "path": "explosions/small_pop",
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8
+    },
+    {
+      "path": "explosions/large_fireball",
+      "frame_size": [
+        96,
+        96
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "explosions/fiery_bloom",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "explosions/smoky_blast",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 13
+    },
+    {
+      "path": "explosions/mushroom_cloud",
+      "frame_size": [
+        96,
+        96
+      ],
+      "frame_count": 16
+    },
+    {
+      "path": "explosions/crystal_detonation",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 10
+    },
+    {
+      "path": "impacts/hit_sparks",
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8
+    },
+    {
+      "path": "impacts/ground_dust",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 11
+    },
+    {
+      "path": "impacts/crescent_slash",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 9
+    },
+    {
+      "path": "impacts/punch_flash",
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8
+    },
+    {
+      "path": "impacts/ricochet_blue",
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 9
+    },
+    {
+      "path": "impacts/heavy_stomp",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "lightning/forked_bolt_blue",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 10
+    },
+    {
+      "path": "lightning/forked_bolt_purple",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 10
+    },
+    {
+      "path": "lightning/chain_arc",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 11
+    },
+    {
+      "path": "lightning/static_cage",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "lightning/sky_strike",
+      "frame_size": [
+        96,
+        96
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "lightning/ground_arcs",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 10
+    },
+    {
+      "path": "magic/star_burst",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "magic/healing_crosses",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "magic/hex_shield",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "magic/teleport_gate",
+      "frame_size": [
+        96,
+        96
+      ],
+      "frame_count": 16
+    },
+    {
+      "path": "magic/fairy_sparkles",
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "magic/moon_seal",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "smoke/chimney_puff",
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "smoke/steam_puff",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "smoke/soot_trail",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "smoke/signal_trail",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "smoke/smoke_ring",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "smoke/dust_ring",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "splatters/water_splash",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "splatters/slime_splat_green",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 13
+    },
+    {
+      "path": "splatters/slime_drip_purple",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "splatters/paint_splat_coral",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "splatters/paint_splat_teal",
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 10
+    },
+    {
+      "path": "splatters/ink_drop",
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "sci_fi/laser_hit",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 9
+    },
+    {
+      "path": "sci_fi/plasma_burst",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    },
+    {
+      "path": "sci_fi/warp_jump",
+      "frame_size": [
+        96,
+        96
+      ],
+      "frame_count": 13
+    },
+    {
+      "path": "sci_fi/energy_ring",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 13
+    },
+    {
+      "path": "sci_fi/scanner_ping",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "sci_fi/reactor_overload",
+      "frame_size": [
+        96,
+        96
+      ],
+      "frame_count": 15
+    },
+    {
+      "path": "elements/fire_pillar",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 13
+    },
+    {
+      "path": "elements/water_wave",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 13
+    },
+    {
+      "path": "elements/ice_spikes",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "elements/earth_heave",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "elements/wind_twister",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 14
+    },
+    {
+      "path": "elements/ember_whirl",
+      "frame_size": [
+        64,
+        64
+      ],
+      "frame_count": 12
+    }
+  ]
+}

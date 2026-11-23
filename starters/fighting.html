@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #120b22; font-family: system-ui, sans-serif; overflow: hidden; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #msg { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; background: #000a; text-align: center; padding: 20px; }
+  #msg b { font-size: 44px; color: #8b5cf6; filter: brightness(1.6); } #msg span { font-size: 17px; max-width: 560px; line-height: 1.5; }
+  #msg[hidden] { display: none; }
+  .pad { position: fixed; bottom: 16px; width: 64px; height: 64px; border-radius: 50%; border: 0; background: #ffffff33; color: #fff; font: 700 15px system-ui; touch-action: none; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  #gsfx-btn { top: auto !important; bottom: calc(160px + env(safe-area-inset-bottom)) !important; right: calc(10px + env(safe-area-inset-right)) !important; }   /* the sound button, out of the touch buttons' way */
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="msg"><b>🎮 My Game</b><span>Best of three rounds against the computer. Arrows move, jump and crouch (hold back to block). A S D punch (light, medium, heavy), Z X C kick. Q fireball, W uppercut, E super when your bar is full.</span><span>Press Space or tap to fight</span></div>
+<button class="pad" data-k="ArrowLeft" style="left:12px">◀</button>
+<button class="pad" data-k="ArrowUp" style="left:82px;bottom:86px">▲</button>
+<button class="pad" data-k="ArrowDown" style="left:82px">▼</button>
+<button class="pad" data-k="ArrowRight" style="left:152px">▶</button>
+<button class="pad" data-k="KeyS" style="right:82px">Punch</button>
+<button class="pad" data-k="KeyX" style="right:12px">Kick</button>
+<button class="pad" data-k="KeyQ" style="right:12px;bottom:86px">Fire</button>
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script src="/js/game-fight.js"></script>
+<script>
+'use strict';
+// Fighting: one on one, best of three rounds, on the shared fighting engine (game-fight.js: moves, hits, blocking,
+// specials, the computer opponent, the health bars) with the stick fighters from the shared library.
+// Make it yours: change the FIGHTERS (kai, blaze, volt), the computer's LEVEL (easy normal hard), the STAGE colours,
+// the move damage (Fight.moves), or add a second player on the same keyboard.
+const FIGHTERS = [{ key: 'kai', name: 'KAI', color: '#8b5cf6' }, { key: 'blaze', name: 'BLAZE', color: '#ef4444' }];
+const LEVEL = 'normal', ROUND_TIME = 60;
+const STAGE = { top: '#2a1650', bottom: '#5b2a6e', floor: '#2b1838' };
+
+const c = document.getElementById('c'), g = c.getContext('2d'), msg = document.getElementById('msg');
+const world = Fight.world.create({ width: 900, height: 480 });
+// The stage is world.w wide; a phone held upright shows a narrower slice of it that follows the fighters, above the buttons.
+let W = 0, H = 0, D = 1, scale = 1, ox = 0, oy = 0, viewW = 900, camX = 0;
+function fit() {
+  D = devicePixelRatio || 1; W = innerWidth; H = innerHeight; c.width = W * D; c.height = H * D;
+  const upright = H > W, room = upright ? H - 200 : H - 40;      // upright: leave the bottom for the touch buttons
+  viewW = upright ? Math.min(world.w, 560) : world.w;
+  scale = Math.min(W / viewW, room / world.h); ox = (W - viewW * scale) / 2;
+  oy = upright ? Math.max(70, (room - world.h * scale) / 2 + 40) : Math.max(0, (H - world.h * scale) / 2 - 30);
+}
+addEventListener('resize', fit); fit();
+
+// Fighters with their sprite sheets from the library (they fight as coloured figures until the art arrives).
+const fighters = FIGHTERS.map((f, i) => Fight.fighter.create({ name: f.name, color: f.color, x: i ? 640 : 260, facing: i ? -1 : 1 }));
+FIGHTERS.forEach((f, i) => {
+  GameAssets.ready().then(() => fetch(GameAssets.url(`sprites/stick-fighters/${f.key}/anim.json`))).then(r => r.json()).then(man => {
+    const img = new Image();
+    img.onload = () => { fighters[i].sheet = img; fighters[i].anim = man.anims; };
+    img.src = GameAssets.url(`sprites/stick-fighters/${f.key}/sheet.png`);
+  }).catch(() => {});
+});
+const [p1, p2] = fighters;
+const ai = Fight.ai.create(LEVEL);
+let match = null, state = 'title';
+
+// Input: held directions, and attack presses kept until the next step reads them.
+const held = {}, pressed = new Set();
+const ATTACK = { KeyA: 'lp', KeyS: 'mp', KeyD: 'hp', KeyZ: 'lk', KeyX: 'mk', KeyC: 'hk' };
+const SPECIAL = { KeyQ: 'fireball', KeyW: 'dp', KeyE: 'super' };
+function down(code) { if (!held[code]) pressed.add(code); held[code] = true; }
+addEventListener('keydown', e => { if (/Arrow|Space/.test(e.code)) e.preventDefault(); if (e.code === 'Space') start(); if (!e.repeat) down(e.code); });
+addEventListener('keyup', e => { held[e.code] = false; });
+for (const b of document.querySelectorAll('.pad')) {
+  b.addEventListener('pointerdown', e => { e.preventDefault(); start(); down(b.dataset.k); });
+  for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) b.addEventListener(ev, () => { held[b.dataset.k] = false; });
+}
+msg.addEventListener('pointerdown', () => start());
+
+// The numpad direction (5 = still, 6 = right, 8 = up, 1 = down-left ...) from the arrows.
+function intent() {
+  const x = (held.ArrowRight ? 1 : 0) - (held.ArrowLeft ? 1 : 0), y = (held.ArrowUp ? 1 : 0) - (held.ArrowDown ? 1 : 0);
+  const it = { dir: 5 + x + y * 3, lp: false, mp: false, hp: false, lk: false, mk: false, hk: false, special: null };
+  for (const code of pressed) { if (ATTACK[code]) it[ATTACK[code]] = true; if (SPECIAL[code]) it.special = SPECIAL[code]; }
+  pressed.clear();
+  return it;
+}
+
+function start() {
+  if (state === 'play') return;
+  match = Fight.match.create({ roundsToWin: 2, roundTime: ROUND_TIME });
+  for (const f of fighters) { f.health = f.maxHealth; f.wins = 0; f.meter = 0; f.x = f.startX; f.y = 0; f.vx = f.vy = 0; f.facing = f.startFacing; f.state = 'idle'; f.move = null; f.hitstun = f.blockstun = 0; }
+  world.projectiles.length = 0; world.fx.length = 0;
+  state = 'play'; msg.hidden = true; GameSfx.play('confirm');
+}
+
+let lastHealth = [p1.health, p2.health];
+function step() {
+  Fight.facing.update(p1, p2);
+  Fight.fighter.step(p1, intent(), world);
+  Fight.fighter.step(p2, Fight.ai.think(ai, p2, p1, world), world);
+  Fight.resolve(p1, p2, world); Fight.resolve(p2, p1, world);
+  Fight.projectiles.update(world, p1, p2); Fight.fx.update(world);
+  const phase = Fight.match.update(match, p1, p2);
+  // a hit sound whenever someone loses health
+  fighters.forEach((f, i) => { if (f.health < lastHealth[i]) GameSfx.play(lastHealth[i] - f.health > 80 ? 'bigExplosion' : 'hit', { volume: 0.5 }); lastHealth[i] = f.health; });
+  if (phase === 'matchEnd' && state === 'play') {
+    state = 'over';
+    const won = match.matchWinner === p1;
+    GameSfx.play(won ? 'win' : 'lose');
+    msg.replaceChildren(Object.assign(document.createElement('b'), { textContent: won ? 'You win!' : p2.name + ' wins' }),
+      Object.assign(document.createElement('span'), { textContent: 'Rounds ' + p1.wins + ' - ' + p2.wins + '. Press Space or tap to fight again' }));
+    msg.hidden = false;
+  }
+}
+
+function draw() {
+  g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#120b22'; g.fillRect(0, 0, c.width, c.height);
+  const mid = (p1.x + p2.x) / 2; camX += (Math.max(0, Math.min(world.w - viewW, mid - viewW / 2)) - camX) * 0.15;
+  g.save(); g.setTransform(D * scale, 0, 0, D * scale, D * ox, D * oy);
+  g.beginPath(); g.rect(0, -oy / scale, viewW, (H + oy) / scale); g.clip(); g.translate(-camX, 0);
+  if (world.shake > 0) g.translate((Math.random() - 0.5) * world.shake, (Math.random() - 0.5) * world.shake);
+  Fight.draw.stage(g, world, STAGE);
+  for (const f of [p2, p1]) Fight.draw.fighter(g, f, world);
+  Fight.draw.projectiles(g, world); Fight.draw.fx(g, world);
+  g.restore();
+  // the health bars and clock span the whole screen width, whatever slice of the stage shows
+  const hs = Math.min(W / world.w, 1.2);
+  g.save(); g.setTransform(D * hs, 0, 0, D * hs, D * (W - world.w * hs) / 2, D * (H > W ? Math.max(8, oy - 70) : oy));
+  if (match) Fight.draw.hud(g, world, p1, p2, match);
+  if (match && match.phase === 'roundEnd') {
+    g.fillStyle = '#fff'; g.font = '900 54px system-ui'; g.textAlign = 'center';
+    g.fillText(match.winner ? match.winner.name + ' takes the round' : 'Draw', world.w / 2, world.h / 2);
+  }
+  g.restore();
+}
+
+// The engine steps at a fixed 60 per second, whatever the screen's refresh rate.
+let last = performance.now(), acc = 0;
+function frame(now) {
+  acc += Math.min(0.1, (now - last) / 1000); last = now;
+  while (acc >= 1 / Fight.FPS) { acc -= 1 / Fight.FPS; if (state === 'play') step(); }
+  draw();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ x: 'KeyA', y: 'KeyS', rb: 'KeyD', a: ['KeyZ', 'Space'], b: 'KeyX', rt: 'KeyC', lb: 'KeyQ', lt: 'KeyW', ls: 'KeyE', select: 'KeyE', start: 'Space', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight', stick: 'arrows' });
+</script>
+</body>
+</html>

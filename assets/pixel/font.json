@@ -1,0 +1,11 @@
+{
+ "image": "font.png",
+ "cell": [
+  6,
+  8
+ ],
+ "cols": 16,
+ "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,!?:;-+=/\\()[]'\"%*<>_#&$@^|~\u2022\u00d7",
+ "baseline": 7,
+ "note": "Glyphs are white; the loader tints them. Lower case draws as upper case."
+}

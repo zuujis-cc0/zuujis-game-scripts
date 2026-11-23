@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #3f7d33; font-family: system-ui, sans-serif; overflow: hidden; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; right: 16px; display: flex; justify-content: space-between; font-weight: 800; font-size: 20px; color: #fff; text-shadow: 0 2px 0 #0006; }
+  #big { position: fixed; top: 38%; left: 0; right: 0; text-align: center; font-size: 90px; font-weight: 900; color: #fff; text-shadow: 0 5px 0 #0006; pointer-events: none; }
+  #msg { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; background: #0007; text-align: center; padding: 20px; }
+  #msg b { font-size: 40px; color: #8b5cf6; filter: brightness(1.6); } #msg span { font-size: 18px; }
+  #msg[hidden] { display: none; }
+  .pad { position: fixed; bottom: 18px; width: 76px; height: 76px; border-radius: 50%; border: 0; background: #ffffff44; color: #fff; font-size: 28px; touch-action: none; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  #gsfx-btn { top: calc(44px + env(safe-area-inset-top)) !important; bottom: auto !important; right: calc(10px + env(safe-area-inset-right)) !important; }   /* the sound button, out of the touch buttons' way */
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><span>🎮 Lap <span id="lap">1</span>/<span id="laps"></span></span><span id="pos"></span><span id="time">0.0</span></div>
+<div id="big"></div>
+<div id="msg"><b>My Game</b><span>Three laps against three rivals. Your car follows the road: Up is gas, Down is brake, Left and Right change lane to get past. Brake for the bends or you slide into the barrier.</span><span>Press Space or tap to start</span></div>
+<button class="pad" id="left" style="left:16px">◀</button>
+<button class="pad" id="right" style="left:100px">▶</button>
+<button class="pad" id="brake" style="right:100px">⏹</button>
+<button class="pad" id="gas" style="right:16px">▲</button>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script src="/js/game-racing.js"></script>
+<script>
+'use strict';
+// Top-down lane racing, drawn with the shared racing kit (game-racing.js: the road and the cars). Every car follows the road
+// by itself; the driver works the gas and brake and picks a lane (Left and Right) to get past. Too fast into a bend and you slide.
+// Make it yours: draw a new track in TRACK (points around the loop, in order), change LAPS, LANES, RIVALS, the cars' TOP speed
+// and ACCEL, how hard bends are (CORNER), the THEME (asphalt dirt sand ice night snow), add boost pads, oil slicks or a championship.
+const TRACK = [
+  [400, 300], [900, 220], [1400, 260], [1750, 420], [1800, 750], [1550, 950], [1200, 900], [1000, 1100],
+  [1150, 1350], [1500, 1450], [1450, 1750], [900, 1800], [450, 1650], [250, 1250], [450, 950], [300, 650],
+].map(([x, y]) => ({ x, y }));
+const ROAD = 75, LANES = 3, LAPS = 3, TOP = 330, ACCEL = 130, CORNER = 1.0, THEME = 'asphalt', ZOOM = 0.9;   // ROAD is half the road's width
+const RIVALS = [{ color: '#2563eb', top: 315 }, { color: '#16a34a', top: 305 }, { color: '#f59e0b', top: 295 }];
+
+const c = document.getElementById('c'), g = c.getContext('2d');
+const $ = id => document.getElementById(id), msg = $('msg'), big = $('big');
+let W = 0, H = 0;
+function fit() { const d = devicePixelRatio || 1; W = innerWidth; H = innerHeight; c.width = W * d; c.height = H * d; g.setTransform(d, 0, 0, d, 0, 0); }
+addEventListener('resize', fit); fit();
+$('laps').textContent = LAPS;
+
+// A smooth loop through TRACK (Catmull-Rom), and the road's centre line as many small steps.
+const path = [];
+for (let i = 0; i < TRACK.length; i++) {
+  const p0 = TRACK[(i - 1 + TRACK.length) % TRACK.length], p1 = TRACK[i], p2 = TRACK[(i + 1) % TRACK.length], p3 = TRACK[(i + 2) % TRACK.length];
+  for (let t = 0; t < 1; t += 0.1) {
+    const t2 = t * t, t3 = t2 * t, f = (a, b, c2, d) => 0.5 * (2 * b + (-a + c2) * t + (2 * a - 5 * b + 4 * c2 - d) * t2 + (-a + 3 * b - 3 * c2 + d) * t3);
+    path.push({ x: f(p0.x, p1.x, p2.x, p3.x), y: f(p0.y, p1.y, p2.y, p3.y) });
+  }
+}
+const loop = [...path, path[0]];
+// How far round the loop each step of the centre line is, so a car's place is just a distance.
+const cum = [0];
+for (let i = 1; i <= path.length; i++) cum.push(cum[i - 1] + Math.hypot(loop[i].x - loop[i - 1].x, loop[i].y - loop[i - 1].y));
+const LENGTH = cum[path.length];
+function along(d) {
+  d = ((d % LENGTH) + LENGTH) % LENGTH;
+  let lo = 0, hi = path.length;
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (cum[m] <= d) lo = m; else hi = m; }
+  const a = loop[lo], b = loop[lo + 1], f = (d - cum[lo]) / (cum[lo + 1] - cum[lo] || 1), l = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+  const tx = (b.x - a.x) / l, ty = (b.y - a.y) / l;
+  return { x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f, tx, ty, nx: -ty, ny: tx };   // n points to the driver's right
+}
+// How sharp the road turns over the next stretch (radians), and the fastest a car can take it.
+function bendAt(d, ahead = 160) {
+  const a = along(d), b = along(d + ahead);
+  return Math.acos(Math.max(-1, Math.min(1, a.tx * b.tx + a.ty * b.ty)));
+}
+const cornerSpeed = (car, d) => car.top * (1 - Math.min(0.5, Math.max(0, bendAt(d) - 0.3) * 0.7 * CORNER));   // gentle bends are flat out
+const LANE_W = ROAD * 2 / LANES, laneOffset = lane => (lane - (LANES - 1) / 2) * LANE_W, CAR = 46;
+
+const keys = {};
+function changeLane(dir) { if (player && state === 'play') { const l = player.lane + dir; if (l >= 0 && l < LANES) { player.lane = l; GameSfx.play('whoosh', { volume: 0.4 }); } } }
+addEventListener('keydown', e => {
+  keys[e.code] = true; if (/Space|Arrow/.test(e.code)) e.preventDefault();
+  if (e.code === 'Space') start();
+  if (!e.repeat && (e.code === 'ArrowLeft' || e.code === 'KeyA')) changeLane(-1);
+  if (!e.repeat && (e.code === 'ArrowRight' || e.code === 'KeyD')) changeLane(1);
+});
+addEventListener('keyup', e => { keys[e.code] = false; });
+for (const [id, code] of [['left', 'ArrowLeft'], ['right', 'ArrowRight'], ['gas', 'ArrowUp'], ['brake', 'ArrowDown']]) {
+  const b = $(id);
+  b.addEventListener('pointerdown', e => { e.preventDefault(); start(); if (id === 'left') changeLane(-1); else if (id === 'right') changeLane(1); else keys[code] = true; });
+  for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) b.addEventListener(ev, () => { keys[code] = false; });
+}
+msg.addEventListener('pointerdown', () => start());
+
+let state = 'title', cars = [], player, clock = 0, countdown = 0, frame = 0;
+function makeCar(slot, color, isPlayer, top) {
+  const lane = slot % 2 ? LANES - 1 : 0;                                   // a two-wide grid behind the line
+  const car = { d: -40 - (slot >> 1) * 70, lane, off: laneOffset(lane), speed: 0, top, color, isPlayer, done: false, finish: 0, lap: 0, slide: 0, think: Math.random() };
+  placeCar(car); return car;
+}
+function start() {
+  if (state === 'play' || state === 'count') return;
+  cars = [makeCar(1, '#8b5cf6', true, TOP), ...RIVALS.map((r, i) => makeCar(i === 0 ? 0 : i + 1, r.color, false, r.top))];
+  player = cars[0]; clock = 0; countdown = 3; state = 'count'; msg.hidden = true; $('lap').textContent = 1;
+  GameSfx.play('tick');
+}
+const place = car => 1 + cars.filter(o => o !== car && (o.done ? (!car.done || o.finish < car.finish) : !car.done && o.d > car.d)).length;
+function finish() {
+  state = 'over';
+  const p = place(player);
+  GameSfx.play(p === 1 ? 'win' : 'success');
+  msg.replaceChildren(Object.assign(document.createElement('b'), { textContent: ['1st!', '2nd', '3rd', '4th'][p - 1] }),
+    Object.assign(document.createElement('span'), { textContent: 'Time ' + clock.toFixed(1) + ' s. Press Space or tap to race again' }));
+  msg.hidden = false;
+}
+// Is there room in a lane from `back` behind to `front` ahead of this car?
+const clear = (car, lane, back, front) => !cars.some(o => o !== car && Math.abs(o.off - laneOffset(lane)) < LANE_W * 0.7 && o.d - car.d > -back && o.d - car.d < front);
+
+function drive(car, gas, brake, dt) {
+  if (gas) car.speed += ACCEL * dt; else if (brake) car.speed -= ACCEL * 2.2 * dt; else car.speed -= car.speed * dt * 0.3;
+  car.speed = Math.max(0, Math.min(car.top, car.speed));
+  // too fast for the bend: the car slides wide into the barrier and scrubs off speed
+  const max = cornerSpeed(car, car.d);
+  if (car.speed > max * 1.08) {
+    car.speed -= (car.speed - max) * dt * 2.5; car.slide = Math.min(1, car.slide + dt * 3);
+    if (car.isPlayer && Math.random() < dt * 6) GameSfx.play('thud', { volume: 0.25 });
+  } else car.slide = Math.max(0, car.slide - dt * 2);
+  // the car in front in your lane blocks you: you can't drive through it
+  for (const o of cars) if (o !== car && Math.abs(o.off - car.off) < LANE_W * 0.7) {
+    const gap = o.d - car.d;
+    if (gap > 0 && gap < CAR) { car.d = o.d - CAR; if (car.speed > o.speed) { car.speed = o.speed * 0.97; if (car.isPlayer || o.isPlayer) GameSfx.play('thud', { volume: 0.3 }); } }
+  }
+  car.d += car.speed * dt;
+  car.off += (laneOffset(car.lane) - car.off) * Math.min(1, dt * 5);
+  const lap = Math.floor(car.d / LENGTH);
+  if (lap > car.lap) {
+    car.lap = lap;
+    if (car.isPlayer && lap < LAPS) { $('lap').textContent = lap + 1; GameSfx.play('levelup'); }
+    if (lap >= LAPS && !car.done) { car.done = true; car.finish = clock; if (car.isPlayer) finish(); }
+  }
+  placeCar(car);
+}
+function placeCar(car) {
+  const a = along(car.d), b = along(car.d + 120), turn = Math.sign(a.tx * b.ty - a.ty * b.tx);   // + when the road bends right
+  // sliding pushes the car toward the outside of the bend, up to the barrier
+  const off = Math.max(-ROAD + 12, Math.min(ROAD - 12, car.off - turn * car.slide * 40));
+  car.x = a.x + a.nx * off; car.y = a.y + a.ny * off;
+  car.angle = Math.atan2(a.ty, a.tx) + (laneOffset(car.lane) - car.off) * 0.006;
+}
+// A computer driver: gas and brake for the bends ahead, and a lane change when someone slow is in the way.
+function think(car, dt) {
+  const ahead = Math.min(cornerSpeed(car, car.d + 90), cornerSpeed(car, car.d + 180) + 30);
+  const want = car.done ? 60 : Math.min(car.top * (car.d > player.d + 400 ? 0.92 : 1), ahead);   // ease off when far ahead of you
+  car.think -= dt;
+  const blocker = cars.find(o => o !== car && Math.abs(o.off - car.off) < LANE_W * 0.7 && o.d - car.d > 0 && o.d - car.d < 120 && o.speed < car.speed + 10);
+  if (blocker && car.think <= 0) {
+    car.think = 0.6 + Math.random() * 0.6;
+    for (const l of [car.lane - 1, car.lane + 1].sort(() => Math.random() - 0.5)) if (l >= 0 && l < LANES && clear(car, l, 60, 120)) { car.lane = l; break; }
+  }
+  drive(car, car.speed < want, car.speed > want + 15, dt);
+}
+
+function update(dt) {
+  if (state === 'count') {
+    countdown -= dt;
+    big.textContent = countdown > 0 ? Math.ceil(countdown) : 'GO!';
+    if (Math.ceil(countdown) !== Math.ceil(countdown + dt) && countdown > 0) GameSfx.play('tick');
+    if (countdown <= 0) { state = 'play'; GameSfx.play('confirm'); setTimeout(() => { big.textContent = ''; }, 600); }
+    return;
+  }
+  if (state === 'play') clock += dt;
+  for (const car of cars) {
+    if (!car.isPlayer) think(car, dt);
+    else if (state === 'play') drive(car, keys.ArrowUp || keys.KeyW, keys.ArrowDown || keys.KeyS, dt);
+    else drive(car, false, true, dt);
+  }
+  if (state !== 'play') return;
+  $('time').textContent = clock.toFixed(1);
+  $('pos').textContent = 'Position ' + place(player) + '/' + cars.length;
+}
+
+function draw() {
+  const cam = player || path[0];
+  GameRacing.topdown.drawBackground(g, W, H, cam.x, cam.y, THEME, frame);
+  // the road surface (drawn here rather than with the kit, so the lane lines below are the only markings)
+  g.beginPath(); loop.forEach((p, i) => { const x = (p.x - cam.x) * ZOOM + W / 2, y = (p.y - cam.y) * ZOOM + H / 2; i ? g.lineTo(x, y) : g.moveTo(x, y); });
+  g.lineJoin = g.lineCap = 'round'; g.lineWidth = ROAD * 2 * ZOOM; g.strokeStyle = '#44464e'; g.stroke();
+  // the barriers along both edges
+  for (const side of [-1, 1]) {
+    g.beginPath();
+    loop.forEach((p, i) => {
+      const e = along(cum[i] + 0.5), x = (e.x + e.nx * side * (ROAD + 4) - cam.x) * ZOOM + W / 2, y = (e.y + e.ny * side * (ROAD + 4) - cam.y) * ZOOM + H / 2;
+      i ? g.lineTo(x, y) : g.moveTo(x, y);
+    });
+    g.lineWidth = 6 * ZOOM; g.strokeStyle = '#e5e7eb'; g.setLineDash([14 * ZOOM, 14 * ZOOM]); g.stroke();
+    g.strokeStyle = '#dc2626'; g.lineDashOffset = 14 * ZOOM; g.stroke(); g.setLineDash([]); g.lineDashOffset = 0;
+  }
+  // the lane lines
+  for (let k = 1; k < LANES; k++) {
+    const o = laneOffset(k) - LANE_W / 2;
+    g.beginPath();
+    loop.forEach((p, i) => { const a = along(cum[i] + 0.5), x = (a.x + a.nx * o - cam.x) * ZOOM + W / 2, y = (a.y + a.ny * o - cam.y) * ZOOM + H / 2; i ? g.lineTo(x, y) : g.moveTo(x, y); });
+    g.lineWidth = 3 * ZOOM; g.strokeStyle = '#ffffffaa'; g.setLineDash([22 * ZOOM, 22 * ZOOM]); g.stroke(); g.setLineDash([]);
+  }
+  // the start line
+  const s0 = path[0], s1 = path[1], a = Math.atan2(s1.y - s0.y, s1.x - s0.x);
+  g.save(); g.translate((s0.x - cam.x) * ZOOM + W / 2, (s0.y - cam.y) * ZOOM + H / 2); g.rotate(a);
+  for (let i = -6; i < 6; i++) for (let j = 0; j < 2; j++) { g.fillStyle = (i + j) % 2 ? '#fff' : '#111'; g.fillRect(j * 10 * ZOOM, i * ROAD / 6 * ZOOM, 10 * ZOOM, ROAD / 6 * ZOOM); }
+  g.restore();
+  for (const car of cars) GameRacing.car.drawTop(g, (car.x - cam.x) * ZOOM + W / 2, (car.y - cam.y) * ZOOM + H / 2, car.angle, { color: car.color, w: 22 * ZOOM, h: 38 * ZOOM, number: car.isPlayer ? '1' : '' });
+}
+
+let last = performance.now();
+function loopFrame(now) {
+  const dt = Math.min(0.033, (now - last) / 1000); last = now; frame++;
+  if (state !== 'title') update(dt);
+  draw();
+  requestAnimationFrame(loopFrame);
+}
+requestAnimationFrame(loopFrame);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: ['ArrowUp', 'Space'], rt: 'ArrowUp', b: 'ArrowDown', x: 'ArrowDown', lt: 'ArrowDown', lb: 'ArrowLeft', rb: 'ArrowRight', start: 'Space', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight', stick: 'arrows' });
+</script>
+</body>
+</html>

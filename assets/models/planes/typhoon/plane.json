@@ -1,0 +1,57 @@
+{
+  "key": "typhoon",
+  "aircraft": {
+    "name": "Eurofighter Typhoon",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#a3afb3",
+    "accent": "#667881",
+    "massKg": 16000,
+    "wingAreaM2": 51.2,
+    "spanM": 10.95,
+    "lengthM": 15.96,
+    "thrustN": 120000,
+    "abThrustN": 180000,
+    "spoolTau": 1.18,
+    "cd0": 0.021,
+    "clMax": 1.33,
+    "alpha0": -0.024,
+    "oswald": 0.72,
+    "flaps": {
+      "clBonus": 0.39,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.1
+    },
+    "rates": {
+      "roll": 4.25,
+      "pitch": 1.64,
+      "yaw": 0.61
+    },
+    "limits": {
+      "vneKt": 750,
+      "machMax": 2,
+      "gMax": 9
+    },
+    "real": {
+      "engine": "2× Eurojet EJ200",
+      "maxSpeedKt": 1150,
+      "cruiseKt": 510,
+      "stallKt": 120,
+      "ceilingFt": 55000,
+      "climbFpm": 62000,
+      "rangeNm": 1566,
+      "year": 2003
+    }
+  },
+  "model": {
+    "glb": "typhoon.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

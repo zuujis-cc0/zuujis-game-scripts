@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #ffd9a8; font-family: system-ui, sans-serif; overflow: hidden; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; font-weight: 800; font-size: 20px; color: #fff; text-shadow: 0 2px 0 #0006; }
+  #msg { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; text-shadow: 0 2px 0 #0008; background: #0004; text-align: center; }
+  #msg b { font-size: 40px; color: #8b5cf6; filter: brightness(1.6); } #msg span { font-size: 18px; }
+  #msg[hidden] { display: none; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">🎮 <span id="score">0</span> m</div>
+<div id="msg"><b>My Game</b><span>Jump the crates. Space, Up or tap to jump (twice for a double jump).</span><span>Press Space or tap to start</span></div>
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script>
+'use strict';
+// Endless runner: the world scrolls faster and faster; jump over obstacles and grab coins. Score = distance.
+// Make it yours: change OBSTACLES (any 'zuujis-tiles' sprite name), the speeds, add a slide, power-ups or a boss.
+const OBSTACLES = ['crate', 'barrel', 'boulder', 'bush'];
+const START_SPEED = 320, MAX_SPEED = 900, GRAVITY = 2200, JUMP = 820, S = 3;   // S: pixel art scale (16 px -> 48 px)
+const TILE = 16 * S;
+
+const c = document.getElementById('c'), g = c.getContext('2d');
+const scoreEl = document.getElementById('score'), msg = document.getElementById('msg');
+let W = 0, H = 0, GROUND = 0;
+function fit() { const d = devicePixelRatio || 1; W = innerWidth; H = innerHeight; c.width = W * d; c.height = H * d; g.setTransform(d, 0, 0, d, 0, 0); GROUND = H - TILE * 2; }
+addEventListener('resize', fit); fit();
+
+let art = null;
+Promise.all([GameAssets.sprites('zuujis-characters'), GameAssets.sprites('zuujis-tiles'), GameAssets.sprites('zuujis-items'), GameAssets.sprites('zuujis-flappy')])
+  .then(([chars, tiles, items, sky]) => { art = { chars, tiles, items, sky }; });
+
+let state = 'title', t = 0, speed, dist, scroll, hero, things, nextThing, jumps;
+function reset() {
+  speed = START_SPEED; dist = 0; scroll = 0; things = []; nextThing = 1.2; jumps = 0;
+  hero = { x: W * 0.18, y: GROUND - TILE, vy: 0 };
+}
+function jump() {
+  if (state !== 'play') { reset(); state = 'play'; msg.hidden = true; return; }
+  if (jumps < 2) { hero.vy = -JUMP * (jumps ? 0.85 : 1); jumps++; GameSfx.play(jumps === 1 ? 'jump' : 'jump2'); }
+}
+addEventListener('keydown', e => { if (/Space|ArrowUp|KeyW/.test(e.code)) { e.preventDefault(); if (!e.repeat) jump(); } });
+addEventListener('pointerdown', e => { e.preventDefault(); jump(); });
+
+function update(dt) {
+  speed = Math.min(MAX_SPEED, speed + dt * 12);
+  dist += speed * dt / TILE; scroll += speed * dt;
+  scoreEl.textContent = Math.floor(dist);
+  hero.vy += GRAVITY * dt; hero.y += hero.vy * dt;
+  if (hero.y >= GROUND - TILE) { hero.y = GROUND - TILE; hero.vy = 0; jumps = 0; }
+
+  nextThing -= dt;
+  if (nextThing <= 0) {                     // a new obstacle, sometimes with a coin above it
+    const kind = OBSTACLES[(Math.random() * OBSTACLES.length) | 0];
+    const tall = Math.random() < 0.3 ? 2 : 1;
+    things.push({ kind, x: W + TILE, y: GROUND - TILE * tall, h: tall, coin: false });
+    if (Math.random() < 0.6) things.push({ kind: 'coin', x: W + TILE, y: GROUND - TILE * (tall + 2), coin: true });
+    nextThing = 0.7 + Math.random() * 0.9 * (START_SPEED / speed) + 0.2;
+  }
+  for (const it of things) it.x -= speed * dt;
+  things = things.filter(it => {
+    if (it.x < -TILE * 2) return false;
+    const hit = Math.abs(it.x - hero.x) < TILE * 0.7 && hero.y + TILE * 0.9 > it.y && hero.y < it.y + TILE * (it.h || 1) - 6;
+    if (!hit) return true;
+    if (it.coin) { dist += 5; GameSfx.play('coins'); return false; }
+    over(); return true;
+  });
+}
+function over() {
+  state = 'over'; GameSfx.play('hurt');
+  msg.replaceChildren(Object.assign(document.createElement('b'), { textContent: Math.floor(dist) + ' m' }),
+    Object.assign(document.createElement('span'), { textContent: 'Press Space or tap to run again' }));
+  msg.hidden = false;
+}
+
+function draw() {
+  const sky = g.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, '#ff9e6d'); sky.addColorStop(0.6, '#ffd9a8'); sky.addColorStop(1, '#fff1d6');
+  g.fillStyle = sky; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#fff4'; g.beginPath(); g.arc(W * 0.75, H * 0.3, 70, 0, Math.PI * 2); g.fill();
+  if (!art) return;
+  for (let i = 0; i < 5; i++) {             // clouds drift slower than the ground (parallax)
+    const x = ((i * 420 - scroll * 0.2) % (W + 300) + W + 300) % (W + 300) - 150;
+    art.sky.draw(g, i % 2 ? 'cloud_a' : 'cloud_b', 0, x, 30 + (i % 3) * 50, { scale: 3 });
+  }
+  for (let x = -(scroll % TILE); x < W; x += TILE) {
+    art.tiles.draw(g, 'grass', 0, x, GROUND, { scale: S });
+    art.tiles.draw(g, 'dirt', 0, x, GROUND + TILE, { scale: S });
+  }
+  for (const it of things) {
+    if (it.coin) art.items.draw(g, 'coin', Math.floor(t * 8), it.x + 8, it.y + 8, { scale: 2 });
+    else for (let k = 0; k < it.h; k++) art.tiles.draw(g, it.kind, 0, it.x, it.y + k * TILE, { scale: S });
+  }
+  if (hero) art.chars.draw(g, 'runner', hero.y < GROUND - TILE ? 1 : Math.floor(t * 12) % 2,   // frames 0-1 walk; frame 2 of each character is its hit flash
+      hero.x, hero.y, { scale: S });
+}
+
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(0.033, (now - last) / 1000); last = now; t += dt;
+  if (state === 'play' && art) update(dt);
+  draw();
+  requestAnimationFrame(frame);
+}
+reset();
+requestAnimationFrame(frame);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: 'Space', b: 'Space', up: 'ArrowUp', start: 'Space' });
+</script>
+</body>
+</html>

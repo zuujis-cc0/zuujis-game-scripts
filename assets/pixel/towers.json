@@ -1,0 +1,29 @@
+{
+ "image": "towers.png",
+ "cell": [
+  16,
+  16
+ ],
+ "sprites": {
+  "archer": {
+   "row": 0,
+   "frames": 3
+  },
+  "ballista": {
+   "row": 1,
+   "frames": 3
+  },
+  "cannon": {
+   "row": 2,
+   "frames": 3
+  },
+  "frost": {
+   "row": 3,
+   "frames": 3
+  },
+  "watchtower": {
+   "row": 4,
+   "frames": 3
+  }
+ }
+}

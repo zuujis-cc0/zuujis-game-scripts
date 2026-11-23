@@ -1,0 +1,57 @@
+{
+  "key": "su27",
+  "aircraft": {
+    "name": "Su-27 Flanker",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#90a9b8",
+    "accent": "#567a9c",
+    "massKg": 23430,
+    "wingAreaM2": 62,
+    "spanM": 14.7,
+    "lengthM": 21.94,
+    "thrustN": 149000,
+    "abThrustN": 245200,
+    "spoolTau": 1.25,
+    "cd0": 0.019,
+    "clMax": 1.5,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.6
+    },
+    "rates": {
+      "roll": 3.55,
+      "pitch": 1.84,
+      "yaw": 0.68
+    },
+    "limits": {
+      "vneKt": 756,
+      "machMax": 2.35,
+      "gMax": 9
+    },
+    "real": {
+      "engine": "2× Saturn AL-31F",
+      "maxSpeedKt": 1350,
+      "cruiseKt": 490,
+      "stallKt": 125,
+      "ceilingFt": 60700,
+      "climbFpm": 59000,
+      "rangeNm": 1900,
+      "year": 1985
+    }
+  },
+  "model": {
+    "glb": "su27.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

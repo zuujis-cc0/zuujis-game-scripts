@@ -1,0 +1,15 @@
+{
+  "key": "spitfire",
+  "model": {
+    "glb": "mkvii.glb",
+    "rotateY": 0,
+    "scale": 1,
+    "gearNodes": [
+      "gear"
+    ],
+    "propNodes": [
+      "propeller"
+    ],
+    "propAxis": "z"
+  }
+}

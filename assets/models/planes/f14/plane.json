@@ -1,0 +1,57 @@
+{
+  "key": "f14",
+  "aircraft": {
+    "name": "F-14A Tomcat",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#b7b8b1",
+    "accent": "#343c45",
+    "massKg": 26600,
+    "wingAreaM2": 52.5,
+    "spanM": 19.54,
+    "lengthM": 19.1,
+    "thrustN": 107800,
+    "abThrustN": 186000,
+    "spoolTau": 1.25,
+    "cd0": 0.019,
+    "clMax": 1.5,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.65
+    },
+    "rates": {
+      "roll": 2.8,
+      "pitch": 1.25,
+      "yaw": 0.55
+    },
+    "limits": {
+      "vneKt": 750,
+      "machMax": 2.34,
+      "gMax": 6.5
+    },
+    "real": {
+      "engine": "2× Pratt & Whitney TF30-P-414A",
+      "maxSpeedKt": 1350,
+      "cruiseKt": 490,
+      "stallKt": 125,
+      "ceilingFt": 50000,
+      "climbFpm": 30000,
+      "rangeNm": 1600,
+      "year": 1974
+    }
+  },
+  "model": {
+    "glb": "f14.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

@@ -1,0 +1,440 @@
+{
+ "gain": {
+  "back": 0.7,
+  "bigExplosion": 0.9,
+  "blip": 0.5,
+  "bounce": 0.6,
+  "brickBreak": 0.6,
+  "brickHit": 0.7,
+  "cannon": 0.8,
+  "capture": 0.9,
+  "cardFan": 0.8,
+  "cardPlace": 0.9,
+  "cardShove": 0.8,
+  "cardShuffle": 0.9,
+  "cardSlide": 0.8,
+  "checker": 0.8,
+  "chipLay": 0.8,
+  "chipsCollide": 0.8,
+  "chipsHandle": 0.8,
+  "chipsStack": 0.8,
+  "click": 0.7,
+  "close": 0.7,
+  "coins": 0.8,
+  "confirm": 0.8,
+  "deal": 0.55,
+  "diceGrab": 0.8,
+  "diceShake": 0.8,
+  "diceThrow": 0.9,
+  "die": 0.7,
+  "discDrop": 0.9,
+  "error": 0.6,
+  "explosion": 0.55,
+  "flip": 0.6,
+  "glitch": 0.6,
+  "hit": 0.9,
+  "hurt": 0.7,
+  "jump": 0.5,
+  "jump2": 0.4,
+  "laser": 0.32,
+  "levelup": 0.7,
+  "lose": 0.8,
+  "open": 0.7,
+  "packOpen": 0.8,
+  "piecePlace": 0.9,
+  "ping": 0.8,
+  "pop": 0.55,
+  "powerup": 0.6,
+  "score": 0.6,
+  "select": 0.7,
+  "splash": 0.7,
+  "success": 0.7,
+  "sunk": 0.8,
+  "thud": 0.8,
+  "tick": 0.6,
+  "toggle": 0.7,
+  "whoosh": 0.5,
+  "win": 0.8,
+  "zap": 0.5
+ },
+ "rate": {
+  "bigExplosion": 0.6,
+  "bounce": 1.5,
+  "cannon": 0.85,
+  "deal": 1.12,
+  "splash": 0.75
+ },
+ "sounds": {
+  "back": [
+   "sounds/kenney-interface/back_001.ogg",
+   "sounds/kenney-interface/back_002.ogg",
+   "sounds/kenney-interface/back_003.ogg",
+   "sounds/kenney-interface/back_004.ogg"
+  ],
+  "bigExplosion": [
+   "sounds/kenney-impact/impactMetal_heavy_000.ogg",
+   "sounds/kenney-impact/impactMetal_heavy_001.ogg",
+   "sounds/kenney-impact/impactMetal_heavy_002.ogg",
+   "sounds/kenney-impact/impactMetal_heavy_003.ogg",
+   "sounds/kenney-impact/impactMetal_heavy_004.ogg"
+  ],
+  "blip": [
+   "sounds/kenney-digital/twoTone1.ogg",
+   "sounds/kenney-digital/twoTone2.ogg"
+  ],
+  "bounce": [
+   "sounds/kenney-impact/impactSoft_medium_000.ogg",
+   "sounds/kenney-impact/impactSoft_medium_001.ogg",
+   "sounds/kenney-impact/impactSoft_medium_002.ogg",
+   "sounds/kenney-impact/impactSoft_medium_003.ogg",
+   "sounds/kenney-impact/impactSoft_medium_004.ogg"
+  ],
+  "brickBreak": [
+   "sounds/kenney-impact/impactGlass_light_000.ogg",
+   "sounds/kenney-impact/impactGlass_light_001.ogg",
+   "sounds/kenney-impact/impactGlass_light_002.ogg",
+   "sounds/kenney-impact/impactGlass_light_003.ogg",
+   "sounds/kenney-impact/impactGlass_light_004.ogg"
+  ],
+  "brickHit": [
+   "sounds/kenney-impact/impactPlate_medium_000.ogg",
+   "sounds/kenney-impact/impactPlate_medium_001.ogg",
+   "sounds/kenney-impact/impactPlate_medium_002.ogg",
+   "sounds/kenney-impact/impactPlate_medium_003.ogg",
+   "sounds/kenney-impact/impactPlate_medium_004.ogg"
+  ],
+  "cannon": [
+   "sounds/kenney-impact/impactMetal_heavy_000.ogg",
+   "sounds/kenney-impact/impactMetal_heavy_001.ogg",
+   "sounds/kenney-impact/impactMetal_heavy_002.ogg",
+   "sounds/kenney-impact/impactMetal_heavy_003.ogg",
+   "sounds/kenney-impact/impactMetal_heavy_004.ogg"
+  ],
+  "capture": [
+   "sounds/kenney-impact/impactWood_heavy_000.ogg",
+   "sounds/kenney-impact/impactWood_heavy_001.ogg",
+   "sounds/kenney-impact/impactWood_heavy_002.ogg",
+   "sounds/kenney-impact/impactWood_heavy_003.ogg",
+   "sounds/kenney-impact/impactWood_heavy_004.ogg"
+  ],
+  "cardFan": [
+   "sounds/kenney-casino/card-fan-1.ogg",
+   "sounds/kenney-casino/card-fan-2.ogg"
+  ],
+  "cardPlace": [
+   "sounds/kenney-casino/card-place-1.ogg",
+   "sounds/kenney-casino/card-place-2.ogg",
+   "sounds/kenney-casino/card-place-3.ogg",
+   "sounds/kenney-casino/card-place-4.ogg"
+  ],
+  "cardShove": [
+   "sounds/kenney-casino/card-shove-1.ogg",
+   "sounds/kenney-casino/card-shove-2.ogg",
+   "sounds/kenney-casino/card-shove-3.ogg",
+   "sounds/kenney-casino/card-shove-4.ogg"
+  ],
+  "cardShuffle": [
+   "sounds/kenney-casino/card-shuffle.ogg"
+  ],
+  "cardSlide": [
+   "sounds/kenney-casino/card-slide-1.ogg",
+   "sounds/kenney-casino/card-slide-2.ogg",
+   "sounds/kenney-casino/card-slide-3.ogg",
+   "sounds/kenney-casino/card-slide-4.ogg",
+   "sounds/kenney-casino/card-slide-5.ogg",
+   "sounds/kenney-casino/card-slide-6.ogg",
+   "sounds/kenney-casino/card-slide-7.ogg",
+   "sounds/kenney-casino/card-slide-8.ogg"
+  ],
+  "checker": [
+   "sounds/kenney-impact/impactPlate_light_000.ogg",
+   "sounds/kenney-impact/impactPlate_light_001.ogg",
+   "sounds/kenney-impact/impactPlate_light_002.ogg",
+   "sounds/kenney-impact/impactPlate_light_003.ogg",
+   "sounds/kenney-impact/impactPlate_light_004.ogg"
+  ],
+  "chipLay": [
+   "sounds/kenney-casino/chip-lay-1.ogg",
+   "sounds/kenney-casino/chip-lay-2.ogg",
+   "sounds/kenney-casino/chip-lay-3.ogg"
+  ],
+  "chipsCollide": [
+   "sounds/kenney-casino/chips-collide-1.ogg",
+   "sounds/kenney-casino/chips-collide-2.ogg",
+   "sounds/kenney-casino/chips-collide-3.ogg",
+   "sounds/kenney-casino/chips-collide-4.ogg"
+  ],
+  "chipsHandle": [
+   "sounds/kenney-casino/chips-handle-1.ogg",
+   "sounds/kenney-casino/chips-handle-2.ogg",
+   "sounds/kenney-casino/chips-handle-3.ogg",
+   "sounds/kenney-casino/chips-handle-4.ogg",
+   "sounds/kenney-casino/chips-handle-5.ogg",
+   "sounds/kenney-casino/chips-handle-6.ogg"
+  ],
+  "chipsStack": [
+   "sounds/kenney-casino/chips-stack-1.ogg",
+   "sounds/kenney-casino/chips-stack-2.ogg",
+   "sounds/kenney-casino/chips-stack-3.ogg",
+   "sounds/kenney-casino/chips-stack-4.ogg",
+   "sounds/kenney-casino/chips-stack-5.ogg",
+   "sounds/kenney-casino/chips-stack-6.ogg"
+  ],
+  "click": [
+   "sounds/kenney-interface/click_001.ogg",
+   "sounds/kenney-interface/click_002.ogg",
+   "sounds/kenney-interface/click_003.ogg",
+   "sounds/kenney-interface/click_004.ogg",
+   "sounds/kenney-interface/click_005.ogg"
+  ],
+  "close": [
+   "sounds/kenney-interface/close_001.ogg",
+   "sounds/kenney-interface/close_002.ogg",
+   "sounds/kenney-interface/close_003.ogg",
+   "sounds/kenney-interface/close_004.ogg"
+  ],
+  "coins": [
+   "sounds/kenney-rpg/handleCoins.ogg",
+   "sounds/kenney-rpg/handleCoins2.ogg"
+  ],
+  "confirm": [
+   "sounds/kenney-interface/confirmation_001.ogg",
+   "sounds/kenney-interface/confirmation_002.ogg",
+   "sounds/kenney-interface/confirmation_003.ogg",
+   "sounds/kenney-interface/confirmation_004.ogg"
+  ],
+  "deal": [
+   "sounds/kenney-casino/card-slide-1.ogg",
+   "sounds/kenney-casino/card-slide-2.ogg",
+   "sounds/kenney-casino/card-slide-3.ogg",
+   "sounds/kenney-casino/card-slide-4.ogg",
+   "sounds/kenney-casino/card-slide-5.ogg",
+   "sounds/kenney-casino/card-slide-6.ogg",
+   "sounds/kenney-casino/card-slide-7.ogg",
+   "sounds/kenney-casino/card-slide-8.ogg"
+  ],
+  "diceGrab": [
+   "sounds/kenney-casino/dice-grab-1.ogg",
+   "sounds/kenney-casino/dice-grab-2.ogg"
+  ],
+  "diceShake": [
+   "sounds/kenney-casino/dice-shake-1.ogg",
+   "sounds/kenney-casino/dice-shake-2.ogg",
+   "sounds/kenney-casino/dice-shake-3.ogg"
+  ],
+  "diceThrow": [
+   "sounds/kenney-casino/dice-throw-1.ogg",
+   "sounds/kenney-casino/dice-throw-2.ogg",
+   "sounds/kenney-casino/dice-throw-3.ogg",
+   "sounds/kenney-casino/die-throw-1.ogg",
+   "sounds/kenney-casino/die-throw-2.ogg",
+   "sounds/kenney-casino/die-throw-3.ogg",
+   "sounds/kenney-casino/die-throw-4.ogg"
+  ],
+  "die": [
+   "sounds/kenney-digital/zapThreeToneDown.ogg",
+   "sounds/kenney-digital/lowDown.ogg"
+  ],
+  "discDrop": [
+   "sounds/kenney-impact/impactWood_medium_000.ogg",
+   "sounds/kenney-impact/impactWood_medium_001.ogg",
+   "sounds/kenney-impact/impactWood_medium_002.ogg",
+   "sounds/kenney-impact/impactWood_medium_003.ogg",
+   "sounds/kenney-impact/impactWood_medium_004.ogg"
+  ],
+  "error": [
+   "sounds/kenney-interface/error_001.ogg",
+   "sounds/kenney-interface/error_002.ogg",
+   "sounds/kenney-interface/error_003.ogg",
+   "sounds/kenney-interface/error_004.ogg",
+   "sounds/kenney-interface/error_005.ogg",
+   "sounds/kenney-interface/error_006.ogg",
+   "sounds/kenney-interface/error_007.ogg",
+   "sounds/kenney-interface/error_008.ogg"
+  ],
+  "explosion": [
+   "sounds/kenney-digital/spaceTrash1.ogg",
+   "sounds/kenney-digital/spaceTrash2.ogg",
+   "sounds/kenney-digital/spaceTrash3.ogg",
+   "sounds/kenney-digital/spaceTrash4.ogg",
+   "sounds/kenney-digital/spaceTrash5.ogg"
+  ],
+  "flip": [
+   "sounds/kenney-interface/drop_001.ogg",
+   "sounds/kenney-interface/drop_002.ogg",
+   "sounds/kenney-interface/drop_003.ogg",
+   "sounds/kenney-interface/drop_004.ogg"
+  ],
+  "glitch": [
+   "sounds/kenney-interface/glitch_001.ogg",
+   "sounds/kenney-interface/glitch_002.ogg",
+   "sounds/kenney-interface/glitch_003.ogg",
+   "sounds/kenney-interface/glitch_004.ogg"
+  ],
+  "hit": [
+   "sounds/kenney-impact/impactMetal_medium_000.ogg",
+   "sounds/kenney-impact/impactMetal_medium_001.ogg",
+   "sounds/kenney-impact/impactMetal_medium_002.ogg",
+   "sounds/kenney-impact/impactMetal_medium_003.ogg",
+   "sounds/kenney-impact/impactMetal_medium_004.ogg"
+  ],
+  "hurt": [
+   "sounds/kenney-impact/impactPunch_medium_000.ogg",
+   "sounds/kenney-impact/impactPunch_medium_001.ogg",
+   "sounds/kenney-impact/impactPunch_medium_002.ogg",
+   "sounds/kenney-impact/impactPunch_medium_003.ogg",
+   "sounds/kenney-impact/impactPunch_medium_004.ogg"
+  ],
+  "jump": [
+   "sounds/kenney-digital/phaseJump1.ogg",
+   "sounds/kenney-digital/phaseJump2.ogg",
+   "sounds/kenney-digital/phaseJump3.ogg",
+   "sounds/kenney-digital/phaseJump4.ogg",
+   "sounds/kenney-digital/phaseJump5.ogg"
+  ],
+  "jump2": [
+   "sounds/kenney-digital/phaserUp1.ogg",
+   "sounds/kenney-digital/phaserUp2.ogg",
+   "sounds/kenney-digital/phaserUp3.ogg",
+   "sounds/kenney-digital/phaserUp4.ogg",
+   "sounds/kenney-digital/phaserUp5.ogg",
+   "sounds/kenney-digital/phaserUp6.ogg",
+   "sounds/kenney-digital/phaserUp7.ogg"
+  ],
+  "laser": [
+   "sounds/kenney-digital/laser1.ogg",
+   "sounds/kenney-digital/laser2.ogg",
+   "sounds/kenney-digital/laser3.ogg",
+   "sounds/kenney-digital/laser4.ogg",
+   "sounds/kenney-digital/laser5.ogg",
+   "sounds/kenney-digital/laser6.ogg",
+   "sounds/kenney-digital/laser7.ogg",
+   "sounds/kenney-digital/laser8.ogg",
+   "sounds/kenney-digital/laser9.ogg"
+  ],
+  "levelup": [
+   "sounds/kenney-digital/threeTone1.ogg",
+   "sounds/kenney-digital/threeTone2.ogg"
+  ],
+  "lose": [
+   "sounds/kenney-jingles/Steel jingles/jingles_STEEL05.ogg",
+   "sounds/kenney-jingles/Pizzicato jingles/jingles_PIZZI01.ogg",
+   "sounds/kenney-jingles/8-Bit jingles/jingles_NES13.ogg",
+   "sounds/kenney-jingles/Sax jingles/jingles_SAX01.ogg"
+  ],
+  "open": [
+   "sounds/kenney-interface/open_001.ogg",
+   "sounds/kenney-interface/open_002.ogg",
+   "sounds/kenney-interface/open_003.ogg",
+   "sounds/kenney-interface/open_004.ogg"
+  ],
+  "packOpen": [
+   "sounds/kenney-casino/cards-pack-open-1.ogg",
+   "sounds/kenney-casino/cards-pack-open-2.ogg"
+  ],
+  "piecePlace": [
+   "sounds/kenney-impact/impactWood_light_000.ogg",
+   "sounds/kenney-impact/impactWood_light_001.ogg",
+   "sounds/kenney-impact/impactWood_light_002.ogg",
+   "sounds/kenney-impact/impactWood_light_003.ogg",
+   "sounds/kenney-impact/impactWood_light_004.ogg"
+  ],
+  "ping": [
+   "sounds/kenney-interface/pluck_001.ogg",
+   "sounds/kenney-interface/pluck_002.ogg"
+  ],
+  "pop": [
+   "sounds/kenney-interface/glass_001.ogg",
+   "sounds/kenney-interface/glass_002.ogg",
+   "sounds/kenney-interface/glass_003.ogg",
+   "sounds/kenney-interface/glass_004.ogg",
+   "sounds/kenney-interface/glass_005.ogg",
+   "sounds/kenney-interface/glass_006.ogg"
+  ],
+  "powerup": [
+   "sounds/kenney-digital/powerUp1.ogg",
+   "sounds/kenney-digital/powerUp10.ogg",
+   "sounds/kenney-digital/powerUp11.ogg",
+   "sounds/kenney-digital/powerUp12.ogg",
+   "sounds/kenney-digital/powerUp2.ogg",
+   "sounds/kenney-digital/powerUp3.ogg",
+   "sounds/kenney-digital/powerUp4.ogg",
+   "sounds/kenney-digital/powerUp5.ogg",
+   "sounds/kenney-digital/powerUp6.ogg",
+   "sounds/kenney-digital/powerUp7.ogg",
+   "sounds/kenney-digital/powerUp8.ogg",
+   "sounds/kenney-digital/powerUp9.ogg"
+  ],
+  "score": [
+   "sounds/kenney-digital/pepSound1.ogg",
+   "sounds/kenney-digital/pepSound2.ogg",
+   "sounds/kenney-digital/pepSound3.ogg",
+   "sounds/kenney-digital/pepSound4.ogg",
+   "sounds/kenney-digital/pepSound5.ogg"
+  ],
+  "select": [
+   "sounds/kenney-interface/select_001.ogg",
+   "sounds/kenney-interface/select_002.ogg",
+   "sounds/kenney-interface/select_003.ogg",
+   "sounds/kenney-interface/select_004.ogg",
+   "sounds/kenney-interface/select_005.ogg",
+   "sounds/kenney-interface/select_006.ogg",
+   "sounds/kenney-interface/select_007.ogg",
+   "sounds/kenney-interface/select_008.ogg"
+  ],
+  "splash": [
+   "sounds/kenney-impact/impactSoft_medium_000.ogg",
+   "sounds/kenney-impact/impactSoft_medium_001.ogg",
+   "sounds/kenney-impact/impactSoft_medium_002.ogg",
+   "sounds/kenney-impact/impactSoft_medium_003.ogg",
+   "sounds/kenney-impact/impactSoft_medium_004.ogg"
+  ],
+  "success": [
+   "sounds/kenney-jingles/Hit jingles/jingles_HIT10.ogg",
+   "sounds/kenney-jingles/Hit jingles/jingles_HIT11.ogg"
+  ],
+  "sunk": [
+   "sounds/kenney-impact/impactBell_heavy_000.ogg",
+   "sounds/kenney-impact/impactBell_heavy_001.ogg",
+   "sounds/kenney-impact/impactBell_heavy_002.ogg",
+   "sounds/kenney-impact/impactBell_heavy_003.ogg",
+   "sounds/kenney-impact/impactBell_heavy_004.ogg"
+  ],
+  "thud": [
+   "sounds/kenney-impact/impactSoft_heavy_000.ogg",
+   "sounds/kenney-impact/impactSoft_heavy_001.ogg",
+   "sounds/kenney-impact/impactSoft_heavy_002.ogg",
+   "sounds/kenney-impact/impactSoft_heavy_003.ogg",
+   "sounds/kenney-impact/impactSoft_heavy_004.ogg"
+  ],
+  "tick": [
+   "sounds/kenney-interface/tick_001.ogg",
+   "sounds/kenney-interface/tick_002.ogg",
+   "sounds/kenney-interface/tick_004.ogg"
+  ],
+  "toggle": [
+   "sounds/kenney-interface/toggle_001.ogg",
+   "sounds/kenney-interface/toggle_002.ogg",
+   "sounds/kenney-interface/toggle_003.ogg",
+   "sounds/kenney-interface/toggle_004.ogg"
+  ],
+  "whoosh": [
+   "sounds/kenney-interface/scroll_001.ogg",
+   "sounds/kenney-interface/scroll_002.ogg",
+   "sounds/kenney-interface/scroll_003.ogg",
+   "sounds/kenney-interface/scroll_004.ogg",
+   "sounds/kenney-interface/scroll_005.ogg"
+  ],
+  "win": [
+   "sounds/kenney-jingles/8-Bit jingles/jingles_NES12.ogg",
+   "sounds/kenney-jingles/8-Bit jingles/jingles_NES00.ogg",
+   "sounds/kenney-jingles/Pizzicato jingles/jingles_PIZZI02.ogg",
+   "sounds/kenney-jingles/Sax jingles/jingles_SAX02.ogg"
+  ],
+  "zap": [
+   "sounds/kenney-digital/zap1.ogg",
+   "sounds/kenney-digital/zap2.ogg"
+  ]
+ },
+ "version": 1
+}

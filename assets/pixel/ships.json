@@ -1,0 +1,77 @@
+{
+ "image": "ships.png",
+ "cell": [
+  64,
+  44
+ ],
+ "sprites": {
+  "ss_player": {
+   "row": 0,
+   "frames": 2
+  },
+  "ss_basic": {
+   "row": 1,
+   "frames": 1
+  },
+  "ss_zigzag": {
+   "row": 2,
+   "frames": 1
+  },
+  "ss_diver": {
+   "row": 3,
+   "frames": 1
+  },
+  "ss_tank": {
+   "row": 4,
+   "frames": 1
+  },
+  "ss_shot_player": {
+   "row": 5,
+   "frames": 1
+  },
+  "ss_shot_enemy": {
+   "row": 6,
+   "frames": 1
+  },
+  "ss_boss_red": {
+   "row": 7,
+   "frames": 1
+  },
+  "ss_boss_orange": {
+   "row": 8,
+   "frames": 1
+  },
+  "ss_boss_blue": {
+   "row": 9,
+   "frames": 1
+  },
+  "ss_boss_green": {
+   "row": 10,
+   "frames": 1
+  },
+  "ss_player_r": {
+   "row": 11,
+   "frames": 2
+  },
+  "ss_shot_player_r": {
+   "row": 12,
+   "frames": 1
+  },
+  "ss_capsule": {
+   "row": 13,
+   "frames": 2
+  },
+  "ss_basic_l": {
+   "row": 14,
+   "frames": 1
+  },
+  "ss_zigzag_l": {
+   "row": 15,
+   "frames": 1
+  },
+  "ss_diver_l": {
+   "row": 16,
+   "frames": 1
+  }
+ }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0d1020; font-family: system-ui, sans-serif; overflow: hidden; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; right: 16px; display: flex; justify-content: space-between; font-weight: 800; font-size: 20px; color: #fff; text-shadow: 0 2px 0 #0008; pointer-events: none; }
+  #cross { position: fixed; left: 50%; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; pointer-events: none; }
+  #cross::before, #cross::after { content: ''; position: absolute; background: #fffc; }
+  #cross::before { left: 8px; top: 0; width: 2px; height: 18px; } #cross::after { top: 8px; left: 0; height: 2px; width: 18px; }
+  #hurt { position: fixed; inset: 0; background: radial-gradient(transparent 40%, #dc2626aa); opacity: 0; pointer-events: none; transition: opacity .3s; }
+  #msg { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; background: #000a; text-align: center; padding: 20px; }
+  #msg b { font-size: 40px; color: #8b5cf6; filter: brightness(1.6); } #msg span { font-size: 18px; max-width: 560px; line-height: 1.5; }
+  #msg[hidden] { display: none; }
+  .pad { position: fixed; bottom: 18px; width: 70px; height: 70px; border-radius: 50%; border: 0; background: #ffffff33; color: #fff; font: 700 15px system-ui; touch-action: none; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  #gsfx-btn { top: calc(44px + env(safe-area-inset-top)) !important; bottom: auto !important; right: calc(10px + env(safe-area-inset-right)) !important; }   /* the sound button, out of the touch buttons' way */
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="cross"></div><div id="hurt"></div>
+<div id="hud"><span>🎮 <span id="got">0</span>/<span id="all"></span> crystals</span><span>❤️ <span id="hp">100</span></span></div>
+<div id="msg"><b>My Game</b><span>Find every crystal in the ruins. Drones guard them: shoot them before they reach you. WASD or arrows to move, the mouse to look, click to fire.</span><span>Click or tap to start</span></div>
+<button class="pad" data-k="KeyW" style="left:86px;bottom:94px">▲</button>
+<button class="pad" data-k="KeyA" style="left:12px">◀</button>
+<button class="pad" data-k="KeyS" style="left:86px">▼</button>
+<button class="pad" data-k="KeyD" style="left:160px">▶</button>
+<button class="pad" data-k="fire" style="right:16px;width:84px;height:84px">Fire</button>
+<script type="importmap">{ "imports": { "three": "/js/three.module.min.js", "three/addons/": "/js/three-addons/" } }</script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script type="module">
+// First person: walk through a level drawn as text, collect crystals, shoot the drones that come for you.
+// Make it yours: draw new levels in LEVELS (legend below), change SPEED, the drones' DRONE_SPEED and DAMAGE,
+// the colours in LOOK, add doors and keys, health packs, more kinds of enemy, or a timer.
+//   #  wall   .  floor   *  crystal   d  drone   P  where you start   (each character is one ROOM-sized square)
+import * as THREE from 'three';
+const LEVELS = [[
+  '##############',
+  '#P...#.....*.#',
+  '#.##.#.###...#',
+  '#.#*...#d#.#.#',
+  '#.####.#.#.#.#',
+  '#......#...#*#',
+  '###.####.###.#',
+  '#*..d.......d#',
+  '#.######.###.#',
+  '#....*...#*..#',
+  '##############',
+]];
+const ROOM = 4, SPEED = 6, DRONE_SPEED = 2.2, DAMAGE = 20;
+const LOOK = { fog: '#0d1020', floor: '#3a3f52', wall: '#6b5d4f', crystal: '#8b5cf6', drone: '#ef4444' };
+
+const $ = id => document.getElementById(id), msg = $('msg');
+const canvas = $('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(2, devicePixelRatio));
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(LOOK.fog); scene.fog = new THREE.Fog(LOOK.fog, 4, 30);
+const camera = new THREE.PerspectiveCamera(72, 1, 0.05, 100);
+camera.rotation.order = 'YXZ';
+function fit() { renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); }
+addEventListener('resize', fit); fit();
+scene.add(new THREE.HemisphereLight(0xa0b0e0, 0x302418, 1.8));
+const torch = new THREE.PointLight(0xffe2b0, 45, 16); scene.add(torch);   // the light you carry
+
+// Stone walls and floor, drawn once on a canvas so they need no image files.
+function stone(base, lines) {
+  const cv = document.createElement('canvas'); cv.width = cv.height = 128; const x = cv.getContext('2d');
+  x.fillStyle = base; x.fillRect(0, 0, 128, 128);
+  for (let i = 0; i < 400; i++) { x.fillStyle = `rgba(0,0,0,${Math.random() * 0.15})`; x.fillRect(Math.random() * 128, Math.random() * 128, 3, 3); }
+  x.strokeStyle = '#0004'; x.lineWidth = 3;
+  if (lines) for (let r = 0; r < 4; r++) { x.beginPath(); x.moveTo(0, r * 32); x.lineTo(128, r * 32); x.stroke(); for (let c = 0; c < 2; c++) { const cx = c * 64 + (r % 2) * 32; x.beginPath(); x.moveTo(cx, r * 32); x.lineTo(cx, r * 32 + 32); x.stroke(); } }
+  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; return t;
+}
+const wallMat = new THREE.MeshStandardMaterial({ map: stone(LOOK.wall, true), roughness: 0.9 });
+const floorTex = stone(LOOK.floor, false);
+const crystalGeo = new THREE.OctahedronGeometry(0.4), crystalMat = new THREE.MeshStandardMaterial({ color: LOOK.crystal, emissive: LOOK.crystal, emissiveIntensity: 0.8, flatShading: true });
+
+let map, level = 0, walls, crystals, drones, shots = [], hp, got, state = 'title', world = new THREE.Group();
+scene.add(world);
+const solid = (x, z) => { const r = map[Math.floor(z / ROOM)]; return !r || r[Math.floor(x / ROOM)] === '#' || r[Math.floor(x / ROOM)] === undefined; };
+function drone() {
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.SphereGeometry(0.35, 16, 12), new THREE.MeshStandardMaterial({ color: '#2b2f3a', metalness: 0.7, roughness: 0.3 }));
+  const eye = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 8), new THREE.MeshBasicMaterial({ color: LOOK.drone })); eye.position.z = 0.28;
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.05, 8, 24), new THREE.MeshStandardMaterial({ color: '#9ca3af', metalness: 0.8 })); ring.rotation.x = Math.PI / 2;
+  const glow = new THREE.PointLight(LOOK.drone, 3, 4); glow.position.z = 0.4;
+  g.add(body, eye, ring, glow);
+  return g;
+}
+function load(n) {
+  world.clear(); map = LEVELS[n].map(r => r.split(''));
+  crystals = []; drones = []; shots = [];
+  const rows = map.length, cols = map[0].length;
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(cols * ROOM, rows * ROOM).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ map: floorTex, roughness: 1 }));
+  floorTex.repeat.set(cols, rows); floor.position.set(cols * ROOM / 2, 0, rows * ROOM / 2); world.add(floor);
+  const ceil = floor.clone(); ceil.rotation.x = Math.PI; ceil.position.y = ROOM * 0.8; ceil.material = new THREE.MeshStandardMaterial({ color: '#15182a' }); world.add(ceil);
+  const wallGeo = new THREE.BoxGeometry(ROOM, ROOM * 0.8, ROOM).translate(0, ROOM * 0.4, 0);
+  const count = map.flat().filter(c => c === '#').length, wallsMesh = new THREE.InstancedMesh(wallGeo, wallMat, count);
+  let k = 0; const m4 = new THREE.Matrix4();
+  map.forEach((row, z) => row.forEach((ch, x) => {
+    const cx = (x + 0.5) * ROOM, cz = (z + 0.5) * ROOM;
+    if (ch === '#') wallsMesh.setMatrixAt(k++, m4.makeTranslation(cx, 0, cz));
+    if (ch === 'P') { camera.position.set(cx, 1.6, cz); camera.rotation.set(0, Math.PI, 0); }
+    if (ch === '*') { const c = new THREE.Mesh(crystalGeo, crystalMat); c.position.set(cx, 1.2, cz); world.add(c); crystals.push(c); }
+    if (ch === 'd') { const d = drone(); d.position.set(cx, 1.5, cz); world.add(d); d.hp = 3; d.cool = 0; d.wake = false; drones.push(d); }
+  }));
+  world.add(wallsMesh);
+  got = 0; $('got').textContent = 0; $('all').textContent = crystals.length;
+}
+function start() {
+  if (state === 'play') return lock();
+  level = 0; hp = 100; $('hp').textContent = hp; load(level);
+  state = 'play'; msg.hidden = true; lock(); GameSfx.play('confirm');
+}
+function end(title, sub, win) {
+  state = 'over'; GameSfx.play(win ? 'win' : 'lose'); document.exitPointerLock?.();
+  msg.replaceChildren(Object.assign(document.createElement('b'), { textContent: title }), Object.assign(document.createElement('span'), { textContent: sub }));
+  msg.hidden = false;
+}
+
+// Looking: the mouse when the pointer is locked to the game; dragging (mouse or finger) when it is not.
+const keys = {};
+let yaw = Math.PI, pitch = 0, drag = null;
+function lock() { if (!matchMedia('(pointer: coarse)').matches) canvas.requestPointerLock?.()?.catch?.(() => {}); }
+function look(dx, dy) { yaw -= dx * 0.0025; pitch = Math.max(-1.4, Math.min(1.4, pitch - dy * 0.0025)); }
+addEventListener('mousemove', e => { if (document.pointerLockElement === canvas) look(e.movementX, e.movementY); });
+canvas.addEventListener('pointerdown', e => {
+  if (state !== 'play') return;
+  if (document.pointerLockElement === canvas) return fire();
+  drag = { x: e.clientX, y: e.clientY, moved: 0, id: e.pointerId };
+});
+addEventListener('pointermove', e => { if (drag && e.pointerId === drag.id) { look((e.clientX - drag.x) * 1.6, (e.clientY - drag.y) * 1.6); drag.moved += Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y); drag.x = e.clientX; drag.y = e.clientY; } });
+addEventListener('pointerup', e => { if (drag && e.pointerId === drag.id) { if (drag.moved < 8 && e.pointerType === 'mouse') { lock(); } drag = null; } });
+msg.addEventListener('pointerdown', () => start());
+addEventListener('keydown', e => { keys[e.code] = true; if (/Arrow|Space/.test(e.code)) e.preventDefault(); if (e.code === 'Space') state === 'play' ? fire() : start(); });
+addEventListener('keyup', e => { keys[e.code] = false; });
+for (const b of document.querySelectorAll('.pad')) {
+  b.addEventListener('pointerdown', e => { e.preventDefault(); e.stopPropagation(); if (b.dataset.k === 'fire') fire(); else keys[b.dataset.k] = true; });
+  for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) b.addEventListener(ev, () => { keys[b.dataset.k] = false; });
+}
+
+// Firing: a ray from the middle of the screen; the first drone it meets before a wall takes a hit.
+const ray = new THREE.Raycaster();
+function fire() {
+  if (state !== 'play') return;
+  GameSfx.play('laser', { volume: 0.5 });
+  ray.setFromCamera(new THREE.Vector2(0, 0), camera);
+  const hits = ray.intersectObjects(drones, true);
+  const end = hits.length ? hits[0].point : camera.position.clone().add(ray.ray.direction.clone().multiplyScalar(20));
+  // stop at the first wall on the way
+  const step = ray.ray.direction.clone().multiplyScalar(0.2), p = camera.position.clone(); let blocked = false;
+  for (let d = 0; d < camera.position.distanceTo(end); d += 0.2) { p.add(step); if (solid(p.x, p.z)) { blocked = true; break; } }
+  const beam = new THREE.Line(new THREE.BufferGeometry().setFromPoints([camera.position.clone().add(new THREE.Vector3(0.15, -0.15, 0).applyEuler(camera.rotation)), blocked ? p : end]), new THREE.LineBasicMaterial({ color: LOOK.crystal }));
+  world.add(beam); shots.push({ mesh: beam, t: 0.08 });
+  if (!blocked && hits.length) {
+    let d = hits[0].object; while (!drones.includes(d)) d = d.parent;
+    d.hp--; d.wake = true; GameSfx.play('hit', { volume: 0.6 });
+    if (d.hp <= 0) { world.remove(d); drones.splice(drones.indexOf(d), 1); GameSfx.play('explosion', { volume: 0.6 }); }
+  }
+}
+
+// Moving with walls: try across, then along, so you slide along a wall instead of sticking.
+function move(o, dx, dz, r) {
+  if (!solid(o.x + dx + Math.sign(dx) * r, o.z) ) o.x += dx;
+  if (!solid(o.x, o.z + dz + Math.sign(dz) * r)) o.z += dz;
+}
+function update(dt, t) {
+  const pad = GamePad.stick();                 // a gamepad's right stick looks around
+  if (pad.rx || pad.ry) look(pad.rx * 900 * dt, pad.ry * 700 * dt);
+  camera.rotation.set(pitch, yaw, 0);
+  const f = (keys.KeyW || keys.ArrowUp ? 1 : 0) - (keys.KeyS || keys.ArrowDown ? 1 : 0), s = (keys.KeyD || keys.ArrowRight ? 1 : 0) - (keys.KeyA || keys.ArrowLeft ? 1 : 0);
+  const sin = Math.sin(yaw), cos = Math.cos(yaw);
+  move(camera.position, (-sin * f + cos * s) * SPEED * dt, (-cos * f - sin * s) * SPEED * dt, 0.35);
+  camera.position.y = 1.6 + (f || s ? Math.sin(t * 10) * 0.04 : 0);   // a little step bob
+  torch.position.copy(camera.position);
+  for (const c of crystals) {
+    c.rotation.y += dt * 2; c.position.y = 1.2 + Math.sin(t * 3 + c.position.x) * 0.15;
+    if (c.visible && c.position.distanceTo(camera.position) < 1.1) { c.visible = false; got++; $('got').textContent = got; GameSfx.play('coins'); }
+  }
+  if (got === crystals.length) return end('All crystals found!', 'Press Space or tap to play again', true);
+  for (const d of drones) {
+    const to = camera.position.clone().sub(d.position); to.y = 0; const dist = to.length();
+    if (dist < 10) d.wake = true;
+    d.position.y = 1.5 + Math.sin(t * 2 + d.id) * 0.2; d.children[2].rotation.z += dt * 4;
+    if (!d.wake) continue;
+    d.lookAt(camera.position.x, d.position.y, camera.position.z);
+    if (dist > 0.9) { to.normalize(); move(d.position, to.x * DRONE_SPEED * dt, to.z * DRONE_SPEED * dt, 0.4); }
+    d.cool -= dt;
+    if (dist < 1.3 && d.cool <= 0) {
+      d.cool = 1; hp -= DAMAGE; $('hp').textContent = Math.max(0, hp); GameSfx.play('hurt');
+      $('hurt').style.opacity = 1; setTimeout(() => { $('hurt').style.opacity = 0; }, 200);
+      if (hp <= 0) return end('The drones got you', 'Crystals ' + got + '/' + crystals.length + '. Press Space or tap to try again');
+    }
+  }
+  for (const s of shots) { s.t -= dt; if (s.t <= 0) world.remove(s.mesh); }
+  shots = shots.filter(s => s.t > 0);
+}
+
+load(0);
+let last = performance.now(), t = 0;
+renderer.setAnimationLoop(now => {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now; t += dt;
+  if (state === 'play') update(dt, t); else { yaw += dt * 0.15; camera.rotation.set(0, yaw, 0); torch.position.copy(camera.position); }
+  renderer.render(scene, camera);
+});
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: 'Space', rt: 'Space', rb: 'Space', start: 'Space', stick: 'wasd', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' });
+</script>
+</body>
+</html>

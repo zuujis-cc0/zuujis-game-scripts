@@ -1,0 +1,57 @@
+{
+  "key": "g650",
+  "aircraft": {
+    "name": "Gulfstream G650",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#edefef",
+    "accent": "#2e5753",
+    "massKg": 40000,
+    "wingAreaM2": 119.2,
+    "spanM": 30.41,
+    "lengthM": 30.36,
+    "thrustN": 143200,
+    "abThrustN": 0,
+    "spoolTau": 2.55,
+    "cd0": 0.022,
+    "clMax": 1.46,
+    "alpha0": -0.024,
+    "oswald": 0.83,
+    "flaps": {
+      "clBonus": 0.71,
+      "cdPenalty": 0.039
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 3.25
+    },
+    "rates": {
+      "roll": 0.9,
+      "pitch": 0.54,
+      "yaw": 0.33
+    },
+    "limits": {
+      "vneKt": 340,
+      "machMax": 0.925,
+      "gMax": 2.5
+    },
+    "real": {
+      "engine": "2× Rolls-Royce BR725",
+      "maxSpeedKt": 530,
+      "cruiseKt": 488,
+      "stallKt": 117,
+      "ceilingFt": 51000,
+      "climbFpm": 3500,
+      "rangeNm": 7000,
+      "year": 2012
+    }
+  },
+  "model": {
+    "glb": "g650.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

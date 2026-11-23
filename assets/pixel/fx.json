@@ -1,0 +1,53 @@
+{
+ "image": "fx.png",
+ "cell": [
+  16,
+  16
+ ],
+ "sprites": {
+  "sparkle": {
+   "row": 0,
+   "frames": 4
+  },
+  "hit": {
+   "row": 1,
+   "frames": 4
+  },
+  "puff": {
+   "row": 2,
+   "frames": 5
+  },
+  "explosion": {
+   "row": 3,
+   "frames": 6
+  },
+  "pulse": {
+   "row": 4,
+   "frames": 4
+  },
+  "heal": {
+   "row": 5,
+   "frames": 4
+  },
+  "flame": {
+   "row": 6,
+   "frames": 4
+  },
+  "splash": {
+   "row": 7,
+   "frames": 4
+  },
+  "star_burst": {
+   "row": 8,
+   "frames": 4
+  },
+  "dust": {
+   "row": 9,
+   "frames": 4
+  },
+  "smoke": {
+   "row": 10,
+   "frames": 4
+  }
+ }
+}

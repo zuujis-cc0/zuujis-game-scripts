@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #2e1065; font-family: system-ui, sans-serif; overflow: hidden; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; right: 16px; display: flex; justify-content: space-between; font-weight: 800; font-size: 20px; color: #fff; }
+  #msg { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; background: #0008; text-align: center; padding: 20px; }
+  #msg b { font-size: 40px; color: #8b5cf6; filter: brightness(1.6); } #msg span { font-size: 18px; }
+  #msg[hidden] { display: none; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><span>🎮 <span id="score">0</span></span><span><span id="moves"></span> moves</span></div>
+<div id="msg"><b>My Game</b><span>Swap two neighbours to line up three or more of a kind. Bigger lines and chains score more.</span><span>Tap or press Space to start</span></div>
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script>
+'use strict';
+// Match three: swap neighbouring pieces to make lines of three or more; they clear, the rest fall, new ones drop in.
+// Make it yours: change PIECES (any 'zuujis-items' names: gem_red, potion_blue, heart, star, coin ...), SIZE, MOVES,
+// add special pieces for lines of four or five, goals ("clear 20 red gems"), or levels.
+const PIECES = ['gem_red', 'gem_blue', 'gem_green', 'star', 'heart', 'potion_blue'];
+const SIZE = 8, MOVES = 25;
+
+const c = document.getElementById('c'), g = c.getContext('2d');
+const scoreEl = document.getElementById('score'), movesEl = document.getElementById('moves'), msg = document.getElementById('msg');
+let W = 0, H = 0;
+function fit() { const d = devicePixelRatio || 1; W = innerWidth; H = innerHeight; c.width = W * d; c.height = H * d; g.setTransform(d, 0, 0, d, 0, 0); }
+addEventListener('resize', fit); fit();
+
+let items = null;
+GameAssets.sprites('zuujis-items').then(s => { items = s; });
+
+let state = 'title', board, score, moves, pick = null, busy = false, pops = [];
+const rnd = () => (Math.random() * PIECES.length) | 0;
+// board[y][x] = { k: piece index, y: drawn row (it falls toward its real row) }
+function fill() {
+  board = [];
+  for (let y = 0; y < SIZE; y++) {
+    board.push([]);
+    for (let x = 0; x < SIZE; x++) {
+      let k; do k = rnd(); while ((x > 1 && board[y][x - 1].k === k && board[y][x - 2].k === k) || (y > 1 && board[y - 1][x].k === k && board[y - 2][x].k === k));
+      board[y].push({ k, y: y - SIZE });
+    }
+  }
+}
+function start() {
+  if (state === 'play') return;
+  score = 0; moves = MOVES; scoreEl.textContent = 0; movesEl.textContent = moves;
+  fill(); state = 'play'; msg.hidden = true;
+}
+// Every cell that is part of a line of three or more.
+function matches() {
+  const hit = new Set();
+  for (let y = 0; y < SIZE; y++) for (let x = 0; x < SIZE; x++) {
+    const k = board[y][x].k;
+    if (x < SIZE - 2 && board[y][x + 1].k === k && board[y][x + 2].k === k) for (let i = 0; i < 3; i++) hit.add(y * SIZE + x + i);
+    if (y < SIZE - 2 && board[y + 1][x].k === k && board[y + 2][x].k === k) for (let i = 0; i < 3; i++) hit.add((y + i) * SIZE + x);
+  }
+  return hit;
+}
+const wait = ms => new Promise(r => setTimeout(r, ms));
+async function swap(a, b) {
+  busy = true;
+  [board[a.y][a.x], board[b.y][b.x]] = [board[b.y][b.x], board[a.y][a.x]];
+  let hit = matches();
+  if (!hit.size) {                           // no line: swap back
+    GameSfx.play('error', { volume: 0.5 }); await wait(150);
+    [board[a.y][a.x], board[b.y][b.x]] = [board[b.y][b.x], board[a.y][a.x]];
+    busy = false; return;
+  }
+  moves--; movesEl.textContent = moves;
+  let chain = 1;
+  while (hit.size) {                         // clear, drop, refill, and again while new lines appear
+    score += hit.size * 10 * chain; scoreEl.textContent = score;
+    GameSfx.play(chain > 1 ? 'levelup' : 'pop', { rate: 1 + chain * 0.1 });
+    for (const i of hit) { const x = i % SIZE, y = (i / SIZE) | 0; pops.push({ x, y, t: 0 }); board[y][x] = null; }
+    await wait(120);
+    for (let x = 0; x < SIZE; x++) {
+      let fall = SIZE - 1;
+      for (let y = SIZE - 1; y >= 0; y--) if (board[y][x]) { const p = board[y][x]; board[y][x] = null; board[fall--][x] = p; }
+      for (let y = fall, n = 1; y >= 0; y--, n++) board[y][x] = { k: rnd(), y: -n };
+    }
+    await wait(300);
+    hit = matches(); chain++;
+  }
+  busy = false;
+  if (moves <= 0) {
+    state = 'over'; GameSfx.play('win');
+    msg.replaceChildren(Object.assign(document.createElement('b'), { textContent: 'Score ' + score }),
+      Object.assign(document.createElement('span'), { textContent: 'Tap to play again' }));
+    msg.hidden = false;
+  }
+}
+
+let geo = { cell: 0, ox: 0, oy: 0 }, down = null, cursor = null;   // cursor: the keyboard's (and gamepad's) square
+function cellAt(e) {
+  const x = Math.floor((e.clientX - geo.ox) / geo.cell), y = Math.floor((e.clientY - geo.oy) / geo.cell);
+  return x >= 0 && y >= 0 && x < SIZE && y < SIZE ? { x, y } : null;
+}
+addEventListener('pointerdown', e => {
+  cursor = null;
+  if (state !== 'play') return start();
+  if (busy) return;
+  down = cellAt(e);
+});
+addEventListener('pointerup', e => {           // tap one then a neighbour, or drag from one to the next
+  if (state !== 'play' || busy || !down) return;
+  const up = cellAt(e), from = down; down = null;
+  if (!up) return;
+  const target = up.x !== from.x || up.y !== from.y ? up : null;
+  if (target) { pick = null; const dx = Math.sign(target.x - from.x), dy = Math.sign(target.y - from.y); if (!dx || !dy) swap(from, { x: from.x + dx, y: from.y + dy }); return; }
+  if (pick && Math.abs(pick.x - from.x) + Math.abs(pick.y - from.y) === 1) { const p = pick; pick = null; swap(p, from); }
+  else { pick = from; GameSfx.play('select', { volume: 0.5 }); }
+});
+
+// Keys and gamepad: arrows move a cursor, Space picks a piece and Space on a neighbour swaps them; Escape lets go.
+addEventListener('keydown', e => {
+  const MOVE = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+  if (MOVE[e.code] || e.code === 'Space' || e.code === 'Enter') e.preventDefault();
+  if (state !== 'play') { if (e.code === 'Space' || e.code === 'Enter') start(); return; }
+  if (!cursor) cursor = { x: SIZE >> 1, y: SIZE >> 1 };
+  if (MOVE[e.code]) { cursor.x = Math.max(0, Math.min(SIZE - 1, cursor.x + MOVE[e.code][0])); cursor.y = Math.max(0, Math.min(SIZE - 1, cursor.y + MOVE[e.code][1])); return; }
+  if (e.code === 'Escape') { pick = null; return; }
+  if ((e.code === 'Space' || e.code === 'Enter') && !busy) {
+    if (pick && Math.abs(pick.x - cursor.x) + Math.abs(pick.y - cursor.y) === 1) { const p = pick; pick = null; swap(p, { ...cursor }); }
+    else { pick = { ...cursor }; GameSfx.play('select', { volume: 0.5 }); }
+  }
+});
+
+function draw(dt) {
+  g.fillStyle = '#2e1065'; g.fillRect(0, 0, W, H);
+  const cell = Math.floor(Math.min(W - 20, H - 80) / SIZE), ox = (W - cell * SIZE) / 2, oy = 50 + (H - 50 - cell * SIZE) / 2;
+  geo = { cell, ox, oy };
+  g.fillStyle = '#4c1d95'; g.beginPath(); g.roundRect(ox - 6, oy - 6, cell * SIZE + 12, cell * SIZE + 12, 12); g.fill();
+  if (!board || !items) return;
+  const s = Math.max(1, Math.floor(cell / 16 * 0.8 * 2) / 2), size = 16 * s;
+  for (let y = 0; y < SIZE; y++) for (let x = 0; x < SIZE; x++) {
+    const p = board[y][x]; if (!p) continue;
+    p.y = Math.min(y, p.y + dt * 14);       // fall toward its row
+    if (pick && pick.x === x && pick.y === y) { g.fillStyle = '#fff3'; g.fillRect(ox + x * cell, oy + y * cell, cell, cell); }
+    items.draw(g, PIECES[p.k], 0, ox + x * cell + (cell - size) / 2, oy + p.y * cell + (cell - size) / 2, { scale: s });
+  }
+  for (const p of pops) {
+    p.t += dt; g.strokeStyle = `rgba(255,255,255,${1 - p.t * 3})`; g.lineWidth = 3;
+    g.beginPath(); g.arc(ox + (p.x + 0.5) * cell, oy + (p.y + 0.5) * cell, cell * (0.2 + p.t * 2), 0, Math.PI * 2); g.stroke();
+  }
+  pops = pops.filter(p => p.t < 0.33);
+  if (cursor && state === 'play') { g.strokeStyle = '#fff'; g.lineWidth = 3; g.strokeRect(ox + cursor.x * cell + 2, oy + cursor.y * cell + 2, cell - 4, cell - 4); }
+}
+
+let last = performance.now();
+function frame(now) { const dt = Math.min(0.05, (now - last) / 1000); last = now; draw(dt); requestAnimationFrame(frame); }
+requestAnimationFrame(frame);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: 'Space', b: 'Escape', start: 'Space', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight', stick: 'arrows' });
+</script>
+</body>
+</html>

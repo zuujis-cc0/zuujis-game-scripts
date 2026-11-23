@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #a6d4f5; }
+  canvas { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script src="/js/game-vision.js"></script>
+<script>
+'use strict';
+// Tell a vision as a story: the world changes chapter by chapter (Next / Back, or Play). Places rise as they are
+// built, grow as they level up, the air clears, trees return, people arrive. Great for "how we get there".
+//
+// To tell YOUR story, edit:
+//   STORY     the title card
+//   MAP       the land, one character per plot (the same legend as the Explore starter:
+//             .  grass   =  path   ~  water   t  trees   T  woods   o  fruit trees   *  bushes   other letters: PLACES)
+//   PLACES    every place that will ever appear. hidden: true = not built yet when the story starts.
+//   CHAPTERS  what changes in each step. Each chapter can:
+//               show: ['G']          build places (they rise into place)        hide: ['X']   take places away
+//               levels: { H: 2 }     grow a place to level 1, 2 or 3            focus: 'G'    fly the camera to a place
+//               season: 'spring'     spring | summer | autumn | winter          time: 0..1    0 day, 1 night
+//               haze: 0..1           an unhealthy sky                           trees: 0..1   how many trees are standing
+//               people: 20           walkers on the paths                       vehicles: 3
+//             A chapter keeps everything the chapters before it changed.
+const STORY = {
+  title: document.title,
+  subtitle: 'How an ordinary town grew into one that feeds, powers and cleans itself, one step at a time.',
+  icon: '🎮',
+  accent: '#8b5cf6',
+};
+
+const MAP = [
+  '  ~~~~~      ',
+  ' ~~~~~TTT    ',
+  '~~~R~~.tTTt  ',
+  '~~~~~.H.tS.t.',
+  '~~~~.=======.',
+  ' ~~W.=.G.E=.t',
+  '  ~~.=.*..=.t',
+  '  ~..=M.C.=F.',
+  '   ~.=======.',
+  '   ~.A.o.t.P ',
+  '    ~.B.tT.. ',
+  '     ~~..t   ',
+  '      ~~..   ',
+];
+
+const PLACES = {
+  H: { art: 'homes', level: 1 },
+  E: { art: 'school', level: 1 },
+  M: { art: 'market', level: 1 },
+  W: { art: 'water_tower', level: 1 },
+  C: { art: 'community_centre', level: 1, hidden: true },
+  A: { art: 'allotments', level: 1, hidden: true },
+  B: { art: 'bee_meadow', level: 1, hidden: true },
+  G: { art: 'greenhouse', level: 1, hidden: true },
+  S: { art: 'solar', level: 1, hidden: true },
+  R: { art: 'reedbed', level: 1, hidden: true },
+  F: { art: 'recycler', level: 1, hidden: true },
+  P: { art: 'park', level: 1, hidden: true },
+};
+
+const CHAPTERS = [
+  { step: 'Today', title: 'A tired town', text: 'Grey air, bare ground, long drives for food. Most of what the town needs comes from far away, and most of what it throws out goes far away too.',
+    season: 'autumn', haze: 0.7, trees: 0.25, people: 4, vehicles: 4 },
+  { step: 'Year 1', title: 'People start talking', text: 'Neighbours meet in an empty hall and ask: what could we do ourselves? The commons opens its doors.',
+    show: ['C'], focus: 'C', people: 8 },
+  { step: 'Year 1', title: 'Gardens on spare land', text: 'Allotments on a dumped lot and a wild-flower meadow for the bees. The first vegetables are shared at the market.',
+    show: ['A', 'B'], focus: 'A', season: 'spring', trees: 0.4 },
+  { step: 'Year 2', title: 'Sun and glass', text: 'A shared solar field powers the street lights and the new glass farm, which grows food all year.',
+    show: ['S', 'G'], focus: 'G', season: 'summer', haze: 0.45 },
+  { step: 'Year 3', title: 'Clean water, nothing wasted', text: 'Reed beds clean the grey water before it returns to the river. The recycler turns waste into materials, and its heat warms the glass farm.',
+    show: ['R', 'F'], focus: 'R', haze: 0.25, trees: 0.6 },
+  { step: 'Year 5', title: 'Homes that give back', text: 'Houses are insulated and roofed with panels. The school teaches in the gardens. The market is busy every day.',
+    levels: { H: 3, E: 3, M: 3, C: 2, A: 2, G: 2, S: 2 }, focus: 'H', haze: 0.1, people: 16, vehicles: 2 },
+  { step: 'Year 10', title: 'A town that grows itself', text: 'A park where the car park was. Trees everywhere. Clean air, local food, its own power and water.',
+    show: ['P'], levels: { G: 3, S: 3, R: 3, F: 2, B: 2, A: 3, C: 3, W: 2 }, haze: 0, trees: 1, people: 22, vehicles: 1 },
+  { step: 'And at night', title: 'Lights on, bills down', text: 'The town makes more power than it uses. The lights stay on, and the money stays in town.',
+    time: 1 },
+];
+
+const world = GameVision.create(document.getElementById('c'), {
+  map: MAP, places: PLACES, accent: STORY.accent, season: 'autumn', people: 4, vehicles: 4, haze: 0.7,
+});
+world.setTrees(0.25);
+GameVision.story(world, CHAPTERS, STORY);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: 'Enter', b: 'PageUp', lb: 'PageUp', rb: 'PageDown', left: 'PageUp', right: 'PageDown', start: 'Enter' });
+</script>
+</body>
+</html>

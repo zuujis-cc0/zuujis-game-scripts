@@ -1,0 +1,69 @@
+{
+ "image": "flappy.png",
+ "cell": [
+  40,
+  16
+ ],
+ "sprites": {
+  "bird": {
+   "row": 0,
+   "frames": 3
+  },
+  "pipe_body": {
+   "row": 1,
+   "frames": 1
+  },
+  "pipe_cap": {
+   "row": 2,
+   "frames": 1
+  },
+  "cloud_a": {
+   "row": 3,
+   "frames": 1
+  },
+  "cloud_b": {
+   "row": 4,
+   "frames": 1
+  },
+  "sky_day_0": {
+   "row": 5,
+   "frames": 1
+  },
+  "sky_day_1": {
+   "row": 6,
+   "frames": 1
+  },
+  "sky_day_2": {
+   "row": 7,
+   "frames": 1
+  },
+  "sky_day_3": {
+   "row": 8,
+   "frames": 1
+  },
+  "sky_day_4": {
+   "row": 9,
+   "frames": 1
+  },
+  "sky_night_0": {
+   "row": 10,
+   "frames": 1
+  },
+  "sky_night_1": {
+   "row": 11,
+   "frames": 1
+  },
+  "sky_night_2": {
+   "row": 12,
+   "frames": 1
+  },
+  "sky_night_3": {
+   "row": 13,
+   "frames": 1
+  },
+  "sky_night_4": {
+   "row": 14,
+   "frames": 1
+  }
+ }
+}

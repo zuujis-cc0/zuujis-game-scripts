@@ -1,0 +1,57 @@
+{
+  "key": "t38",
+  "aircraft": {
+    "name": "T-38 Talon",
+    "type": "jet",
+    "icon": "🛩️",
+    "color": "#e9e9e4",
+    "accent": "#284e89",
+    "massKg": 5360,
+    "wingAreaM2": 15.79,
+    "spanM": 7.7,
+    "lengthM": 14.14,
+    "thrustN": 18200,
+    "abThrustN": 25800,
+    "spoolTau": 1.35,
+    "cd0": 0.021,
+    "clMax": 1.37,
+    "alpha0": -0.024,
+    "oswald": 0.8,
+    "flaps": {
+      "clBonus": 0.42,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 1.65
+    },
+    "rates": {
+      "roll": 3.2,
+      "pitch": 1.33,
+      "yaw": 0.52
+    },
+    "limits": {
+      "vneKt": 700,
+      "machMax": 1.3,
+      "gMax": 7.33
+    },
+    "real": {
+      "engine": "2× General Electric J85-GE-5",
+      "maxSpeedKt": 740,
+      "cruiseKt": 480,
+      "stallKt": 140,
+      "ceilingFt": 55000,
+      "climbFpm": 30000,
+      "rangeNm": 1093,
+      "year": 1961
+    }
+  },
+  "model": {
+    "glb": "t38.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

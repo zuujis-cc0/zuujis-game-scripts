@@ -1,0 +1,11 @@
+{
+  "key": "a320",
+  "model": {
+    "glb": "a320.glb",
+    "rotateY": 0,
+    "scale": 1,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

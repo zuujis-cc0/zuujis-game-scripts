@@ -1,0 +1,57 @@
+{
+  "key": "f35",
+  "aircraft": {
+    "name": "F-35A Lightning II",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#606368",
+    "accent": "#8b9096",
+    "massKg": 22470,
+    "wingAreaM2": 42.7,
+    "spanM": 10.67,
+    "lengthM": 15.67,
+    "thrustN": 125000,
+    "abThrustN": 191000,
+    "spoolTau": 1.25,
+    "cd0": 0.019,
+    "clMax": 1.5,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.15
+    },
+    "rates": {
+      "roll": 3.92,
+      "pitch": 1.6,
+      "yaw": 0.66
+    },
+    "limits": {
+      "vneKt": 700,
+      "machMax": 1.6,
+      "gMax": 9
+    },
+    "real": {
+      "engine": "Pratt & Whitney F135-PW-100",
+      "maxSpeedKt": 918,
+      "cruiseKt": 490,
+      "stallKt": 135,
+      "ceilingFt": 50000,
+      "climbFpm": 45000,
+      "rangeNm": 1200,
+      "year": 2016
+    }
+  },
+  "model": {
+    "glb": "f35.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

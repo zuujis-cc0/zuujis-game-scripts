@@ -1,0 +1,57 @@
+{
+  "key": "mig29",
+  "aircraft": {
+    "name": "MiG-29 Fulcrum",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#8a9790",
+    "accent": "#576b5b",
+    "massKg": 15240,
+    "wingAreaM2": 38,
+    "spanM": 11.36,
+    "lengthM": 17.32,
+    "thrustN": 99000,
+    "abThrustN": 163200,
+    "spoolTau": 1.25,
+    "cd0": 0.019,
+    "clMax": 1.5,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.25
+    },
+    "rates": {
+      "roll": 4.05,
+      "pitch": 1.62,
+      "yaw": 0.62
+    },
+    "limits": {
+      "vneKt": 810,
+      "machMax": 2.25,
+      "gMax": 9
+    },
+    "real": {
+      "engine": "2× Klimov RD-33",
+      "maxSpeedKt": 1320,
+      "cruiseKt": 460,
+      "stallKt": 130,
+      "ceilingFt": 59055,
+      "climbFpm": 65000,
+      "rangeNm": 770,
+      "year": 1983
+    }
+  },
+  "model": {
+    "glb": "mig29.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "key": "f86",
+  "aircraft": {
+    "name": "F-86F Sabre",
+    "type": "jet",
+    "icon": "🛩️",
+    "color": "#c3c8cd",
+    "accent": "#dcb330",
+    "massKg": 6890,
+    "wingAreaM2": 29.12,
+    "spanM": 11.31,
+    "lengthM": 11.43,
+    "thrustN": 26300,
+    "abThrustN": 0,
+    "spoolTau": 1.8,
+    "cd0": 0.025,
+    "clMax": 1.41,
+    "alpha0": -0.024,
+    "oswald": 0.77,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 1.6
+    },
+    "rates": {
+      "roll": 2.45,
+      "pitch": 1.15,
+      "yaw": 0.49
+    },
+    "limits": {
+      "vneKt": 600,
+      "machMax": 0.95,
+      "gMax": 7.33
+    },
+    "real": {
+      "engine": "General Electric J47-GE-27",
+      "maxSpeedKt": 599,
+      "cruiseKt": 439,
+      "stallKt": 116,
+      "ceilingFt": 49600,
+      "climbFpm": 9000,
+      "rangeNm": 1015,
+      "year": 1952
+    }
+  },
+  "model": {
+    "glb": "f86.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

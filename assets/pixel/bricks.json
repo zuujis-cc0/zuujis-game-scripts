@@ -1,0 +1,49 @@
+{
+ "image": "bricks.png",
+ "cell": [
+  20,
+  10
+ ],
+ "sprites": {
+  "brick_red": {
+   "row": 0,
+   "frames": 2
+  },
+  "brick_orange": {
+   "row": 1,
+   "frames": 2
+  },
+  "brick_yellow": {
+   "row": 2,
+   "frames": 2
+  },
+  "brick_green": {
+   "row": 3,
+   "frames": 2
+  },
+  "brick_blue": {
+   "row": 4,
+   "frames": 2
+  },
+  "paddle_green": {
+   "row": 5,
+   "frames": 1
+  },
+  "paddle_blue": {
+   "row": 6,
+   "frames": 1
+  },
+  "paddle_orange": {
+   "row": 7,
+   "frames": 1
+  },
+  "paddle_red": {
+   "row": 8,
+   "frames": 1
+  },
+  "ball": {
+   "row": 9,
+   "frames": 1
+  }
+ }
+}

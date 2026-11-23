@@ -1,0 +1,57 @@
+{
+  "key": "concorde",
+  "aircraft": {
+    "name": "Concorde",
+    "type": "jet",
+    "icon": "🌐",
+    "color": "#f5f2e9",
+    "accent": "#283963",
+    "massKg": 175000,
+    "wingAreaM2": 358.25,
+    "spanM": 25.56,
+    "lengthM": 61.66,
+    "thrustN": 556000,
+    "abThrustN": 676800,
+    "spoolTau": 2.7,
+    "cd0": 0.022,
+    "clMax": 0.94,
+    "alpha0": -0.05,
+    "oswald": 0.68,
+    "flaps": {
+      "clBonus": 0.09,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 5.5
+    },
+    "rates": {
+      "roll": 0.56,
+      "pitch": 0.35,
+      "yaw": 0.24
+    },
+    "limits": {
+      "vneKt": 400,
+      "machMax": 2.04,
+      "gMax": 2.5
+    },
+    "real": {
+      "engine": "4× Rolls-Royce/Snecma Olympus 593 Mk 610",
+      "maxSpeedKt": 1176,
+      "cruiseKt": 1160,
+      "stallKt": 160,
+      "ceilingFt": 60000,
+      "climbFpm": 3400,
+      "rangeNm": 3900,
+      "year": 1976
+    }
+  },
+  "model": {
+    "glb": "concorde.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

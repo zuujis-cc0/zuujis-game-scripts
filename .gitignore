@@ -1,0 +1,5 @@
+dist/
+.DS_Store
+__pycache__/
+# A global "Icon?" rule (macOS icon files) would also match folders named icons
+!icons

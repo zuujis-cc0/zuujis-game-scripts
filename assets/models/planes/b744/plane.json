@@ -1,0 +1,57 @@
+{
+  "key": "b744",
+  "aircraft": {
+    "name": "Boeing 747-400",
+    "type": "jet",
+    "icon": "🛫",
+    "color": "#f4f3ee",
+    "accent": "#253e76",
+    "massKg": 320000,
+    "wingAreaM2": 541.2,
+    "spanM": 64.44,
+    "lengthM": 70.67,
+    "thrustN": 1009700,
+    "abThrustN": 0,
+    "spoolTau": 3.25,
+    "cd0": 0.024,
+    "clMax": 1.48,
+    "alpha0": -0.024,
+    "oswald": 0.82,
+    "flaps": {
+      "clBonus": 0.88,
+      "cdPenalty": 0.039
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 5.9
+    },
+    "rates": {
+      "roll": 0.4,
+      "pitch": 0.28,
+      "yaw": 0.22
+    },
+    "limits": {
+      "vneKt": 365,
+      "machMax": 0.92,
+      "gMax": 2.5
+    },
+    "real": {
+      "engine": "4× Pratt & Whitney PW4056",
+      "maxSpeedKt": 530,
+      "cruiseKt": 493,
+      "stallKt": 147,
+      "ceilingFt": 45100,
+      "climbFpm": 2000,
+      "rangeNm": 7260,
+      "year": 1989
+    }
+  },
+  "model": {
+    "glb": "b744.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

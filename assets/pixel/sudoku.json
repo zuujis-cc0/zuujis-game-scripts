@@ -1,0 +1,29 @@
+{
+ "image": "sudoku.png",
+ "cell": [
+  30,
+  30
+ ],
+ "sprites": {
+  "sd_cell": {
+   "row": 0,
+   "frames": 1
+  },
+  "sd_group": {
+   "row": 1,
+   "frames": 1
+  },
+  "sd_same": {
+   "row": 2,
+   "frames": 1
+  },
+  "sd_conflict": {
+   "row": 3,
+   "frames": 1
+  },
+  "sd_sel": {
+   "row": 4,
+   "frames": 1
+  }
+ }
+}

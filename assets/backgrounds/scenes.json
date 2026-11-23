@@ -1,0 +1,148 @@
+{
+  "scenes": {
+    "meadow-day": {
+      "layers": [
+        {
+          "file": "meadow-day/1.png",
+          "speed": 0
+        },
+        {
+          "file": "meadow-day/2.png",
+          "speed": 0.22
+        },
+        {
+          "file": "meadow-day/3.png",
+          "speed": 0.55
+        },
+        {
+          "file": "meadow-day/4.png",
+          "speed": 0.8
+        },
+        {
+          "file": "meadow-day/5.png",
+          "speed": 1
+        }
+      ]
+    },
+    "forest-dusk": {
+      "layers": [
+        {
+          "file": "forest-dusk/1.png",
+          "speed": 0
+        },
+        {
+          "file": "forest-dusk/2.png",
+          "speed": 0.22
+        },
+        {
+          "file": "forest-dusk/3.png",
+          "speed": 0.55
+        },
+        {
+          "file": "forest-dusk/4.png",
+          "speed": 0.8
+        },
+        {
+          "file": "forest-dusk/5.png",
+          "speed": 1
+        }
+      ]
+    },
+    "desert-noon": {
+      "layers": [
+        {
+          "file": "desert-noon/1.png",
+          "speed": 0
+        },
+        {
+          "file": "desert-noon/2.png",
+          "speed": 0.22
+        },
+        {
+          "file": "desert-noon/3.png",
+          "speed": 0.55
+        },
+        {
+          "file": "desert-noon/4.png",
+          "speed": 0.8
+        },
+        {
+          "file": "desert-noon/5.png",
+          "speed": 1
+        }
+      ]
+    },
+    "snow-mountains": {
+      "layers": [
+        {
+          "file": "snow-mountains/1.png",
+          "speed": 0
+        },
+        {
+          "file": "snow-mountains/2.png",
+          "speed": 0.22
+        },
+        {
+          "file": "snow-mountains/3.png",
+          "speed": 0.55
+        },
+        {
+          "file": "snow-mountains/4.png",
+          "speed": 0.8
+        },
+        {
+          "file": "snow-mountains/5.png",
+          "speed": 1
+        }
+      ]
+    },
+    "city-night": {
+      "layers": [
+        {
+          "file": "city-night/1.png",
+          "speed": 0
+        },
+        {
+          "file": "city-night/2.png",
+          "speed": 0.22
+        },
+        {
+          "file": "city-night/3.png",
+          "speed": 0.55
+        },
+        {
+          "file": "city-night/4.png",
+          "speed": 0.8
+        },
+        {
+          "file": "city-night/5.png",
+          "speed": 1
+        }
+      ]
+    },
+    "alien-planet": {
+      "layers": [
+        {
+          "file": "alien-planet/1.png",
+          "speed": 0
+        },
+        {
+          "file": "alien-planet/2.png",
+          "speed": 0.22
+        },
+        {
+          "file": "alien-planet/3.png",
+          "speed": 0.55
+        },
+        {
+          "file": "alien-planet/4.png",
+          "speed": 0.8
+        },
+        {
+          "file": "alien-planet/5.png",
+          "speed": 1
+        }
+      ]
+    }
+  }
+}

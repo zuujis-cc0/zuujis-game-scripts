@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #9fd0f2; font-family: system-ui, sans-serif; overflow: hidden; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; right: 16px; display: flex; justify-content: space-between; font-weight: 800; font-size: 18px; color: #fff; text-shadow: 0 2px 0 #0007; pointer-events: none; }
+  #warn { position: fixed; top: 46px; left: 0; right: 0; text-align: center; font: 900 22px system-ui; color: #fde047; text-shadow: 0 2px 0 #0008; pointer-events: none; }
+  #msg { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; background: #0007; text-align: center; padding: 20px; }
+  #msg b { font-size: 40px; color: #8b5cf6; filter: brightness(1.6); } #msg span { font-size: 17px; max-width: 580px; line-height: 1.5; }
+  #msg[hidden] { display: none; }
+  .pad { position: fixed; width: 62px; height: 62px; border-radius: 50%; border: 0; background: #ffffff40; color: #fff; font: 700 15px system-ui; touch-action: none; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  #gsfx-btn { top: calc(44px + env(safe-area-inset-top)) !important; bottom: auto !important; right: calc(10px + env(safe-area-inset-right)) !important; }   /* the sound button, out of the touch buttons' way */
+  @media (max-width: 560px) { #hud { flex-wrap: wrap; gap: 2px 12px; } #ins { order: 3; width: 100%; font-size: 14px; } #warn { top: 64px; } }
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><span>🎮 Rings <span id="rings">0</span>/<span id="all"></span></span><span id="ins"></span><span id="time">0.0</span></div>
+<div id="warn"></div>
+<div id="msg"><b>My Game</b><span>Take off, fly through every ring in order, then land back on the runway. Throttle up with W, pull back on Down (or S) to lift off at about 70 knots.
+  Arrows: pitch and roll. A and D: rudder. W and S: throttle. F: flaps. G: gear. B: brakes.</span><span>Press Space or tap to fly</span></div>
+<button class="pad" data-k="ArrowUp" style="left:80px;bottom:150px">Dive</button>
+<button class="pad" data-k="ArrowLeft" style="left:10px;bottom:80px">◀</button>
+<button class="pad" data-k="ArrowRight" style="left:150px;bottom:80px">▶</button>
+<button class="pad" data-k="ArrowDown" style="left:80px;bottom:10px">Climb</button>
+<button class="pad" data-k="KeyW" style="right:12px;bottom:84px">+</button>
+<button class="pad" data-k="KeyS" style="right:12px;bottom:12px">−</button>
+<button class="pad" data-k="KeyF" style="right:82px;bottom:12px">Flaps</button>
+<button class="pad" data-k="KeyB" style="right:82px;bottom:84px">Brake</button>
+<script type="importmap">{ "imports": { "three": "/js/three.module.min.js", "three/addons/": "/js/three-addons/" } }</script>
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script src="/js/game-flight.js"></script>
+<script type="module">
+// Flight: real flight physics (game-flight.js: lift, drag, thrust, stalls, the landing gear) with a plane from the
+// shared library (models/planes: c208b, spitfire, f16, a320 ...). Take off, fly the rings, land.
+// Make it yours: pick another PLANE, move the RINGS (x east, y height, z south, in metres), change the WIND,
+// add hills under getGroundY, a second runway, a cargo drop, a race against the clock or a ghost of your best flight.
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/GLTFLoader.js';
+
+const PLANE = 'c208b';
+const RUNWAY = { length: 1400, width: 30, headingDeg: 0 };      // heading 0 = north, along -z
+const RINGS = [[0, 120, -1900], [500, 220, -2700], [1400, 300, -2600], [1900, 260, -1600], [1500, 200, -400], [700, 140, 300], [0, 90, 900]];
+const RING_SIZE = 40, WIND = { x: 0, z: 0 };
+const LOOK = { sky: '#9fd0f2', grass: '#6ea84a', fields: ['#7fb455', '#9cbf5a', '#c9b46a', '#5e9a44'], runway: '#3a3c42', ring: '#8b5cf6' };
+
+const $ = id => document.getElementById(id), msg = $('msg'), warn = $('warn');
+$('all').textContent = RINGS.length;
+const renderer = new THREE.WebGLRenderer({ canvas: $('c'), antialias: true, logarithmicDepthBuffer: true });
+renderer.setPixelRatio(Math.min(2, devicePixelRatio)); renderer.shadowMap.enabled = true;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(LOOK.sky); scene.fog = new THREE.Fog(LOOK.sky, 1500, 9000);
+const camera = new THREE.PerspectiveCamera(60, 1, 0.5, 20000);
+function fit() { renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); }
+addEventListener('resize', fit); fit();
+scene.add(new THREE.HemisphereLight(0xeaf4ff, 0x4a6a3a, 1.3));
+const sun = new THREE.DirectionalLight(0xffffff, 2.4); sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024);
+Object.assign(sun.shadow.camera, { left: -40, right: 40, top: 40, bottom: -40, far: 800 }); scene.add(sun, sun.target);
+
+// The land: a patchwork of fields on a canvas, a runway with its markings, and a few clouds.
+const fields = document.createElement('canvas'); fields.width = fields.height = 512;
+{ const x = fields.getContext('2d'); x.fillStyle = LOOK.grass; x.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 90; i++) { x.fillStyle = LOOK.fields[i % 4]; x.fillRect(Math.random() * 512, Math.random() * 512, 20 + Math.random() * 60, 20 + Math.random() * 60); } }
+const fieldTex = new THREE.CanvasTexture(fields); fieldTex.wrapS = fieldTex.wrapT = THREE.RepeatWrapping; fieldTex.repeat.set(24, 24); fieldTex.colorSpace = THREE.SRGBColorSpace;
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(40000, 40000).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ map: fieldTex, roughness: 1 }));
+ground.receiveShadow = true; scene.add(ground);
+const strip = document.createElement('canvas'); strip.width = 64; strip.height = 1024;
+{ const x = strip.getContext('2d'); x.fillStyle = LOOK.runway; x.fillRect(0, 0, 64, 1024); x.fillStyle = '#fff';
+  for (let y = 60; y < 960; y += 48) x.fillRect(31, y, 2, 24);            // centre line
+  for (const y of [8, 996]) for (let i = 0; i < 6; i++) x.fillRect(6 + i * 9 + (i > 2 ? 4 : 0), y, 5, 20); }   // thresholds
+const runway = new THREE.Mesh(new THREE.PlaneGeometry(RUNWAY.width, RUNWAY.length).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ map: new THREE.CanvasTexture(strip), roughness: 0.9 }));
+runway.position.set(0, 0.05, -RUNWAY.length / 2 + 100); runway.receiveShadow = true; scene.add(runway);
+const cloudMat = new THREE.MeshLambertMaterial({ color: '#ffffff', emissive: '#c8d6e6', transparent: true, opacity: 0.92, flatShading: true, fog: false });
+for (let i = 0; i < 60; i++) {
+  const c = new THREE.Group(), x = (Math.random() - 0.5) * 12000, z = (Math.random() - 0.5) * 12000, y = 500 + Math.random() * 500;
+  for (let j = 0; j < 5; j++) { const p = new THREE.Mesh(new THREE.IcosahedronGeometry(40 + Math.random() * 50, 0), cloudMat); p.position.set(j * 50 - 100, Math.random() * 20, Math.random() * 40); c.add(p); }
+  c.position.set(x, y, z); scene.add(c);
+}
+// the rings to fly through, each turned to face the next
+const rings = RINGS.map(([x, y, z], i) => {
+  const m = new THREE.Mesh(new THREE.TorusGeometry(RING_SIZE / 2, 2, 10, 40), new THREE.MeshStandardMaterial({ color: LOOK.ring, emissive: LOOK.ring, emissiveIntensity: 0.5 }));
+  m.position.set(x, y, z); const n = RINGS[i + 1] || RINGS[i - 1]; m.lookAt(n[0], n[1], n[2]); scene.add(m); return m;
+});
+
+// The plane: its flight figures and its model come from the library; a simple drawn plane flies until the model arrives.
+const F = window.GameFlight;
+let plane = new THREE.Group(), props = [];
+{ const white = new THREE.MeshStandardMaterial({ color: '#f3f4f6' }), accent = new THREE.MeshStandardMaterial({ color: '#8b5cf6' });
+  plane.add(new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.4, 11), white), new THREE.Mesh(new THREE.BoxGeometry(15, 0.2, 1.8), accent),
+    new THREE.Mesh(new THREE.BoxGeometry(5, 0.15, 1.2).translate(0, 0, 4.8), accent), new THREE.Mesh(new THREE.BoxGeometry(0.15, 2, 1.4).translate(0, 1, 4.8), accent));
+  plane.children[1].position.set(0, 0.7, -0.5); }
+scene.add(plane);
+async function loadPlane() {
+  await GameAssets.ready();
+  const def = await fetch(GameAssets.url(`models/planes/${PLANE}/plane.json`)).then(r => r.json());
+  F.register(PLANE, def.aircraft);
+  reset();
+  const gltf = await new GLTFLoader().loadAsync(GameAssets.url(`models/planes/${PLANE}/${def.model.glb}`));
+  const inner = gltf.scene; if (def.model.rotateY) inner.rotation.y = def.model.rotateY * Math.PI / 180;
+  const box = new THREE.Box3().setFromObject(inner), size = box.getSize(new THREE.Vector3());
+  inner.scale.setScalar(def.model.scale || def.aircraft.spanM / size.x);
+  const b2 = new THREE.Box3().setFromObject(inner), c = b2.getCenter(new THREE.Vector3());
+  inner.position.set(-c.x, -b2.min.y - def.aircraft.gear.height, -c.z);
+  const g = new THREE.Group(); g.add(inner);
+  const pk = def.model.propNodes || ['prop'];
+  inner.traverse(n => { if (n.isMesh) n.castShadow = true; if (pk.some(k => (n.name || '').toLowerCase().includes(k))) props.push(n); });
+  props.axis = def.model.propAxis || 'z';
+  scene.remove(plane); plane = g; scene.add(plane);
+}
+let sim = null;
+function reset() {
+  if (!F.aircraft[PLANE]) return;
+  sim = F.createSim(PLANE, { x: 0, z: 0, headingDeg: RUNWAY.headingDeg, onGround: true, flaps: 0.3, assists: true, wind: WIND });
+}
+loadPlane().catch(() => { console.warn('flight: plane model not loaded'); if (!sim) { F.register(PLANE, F.aircraft.c172); reset(); } });
+
+const keys = {};
+addEventListener('keydown', e => {
+  keys[e.code] = true; if (/Arrow|Space/.test(e.code)) e.preventDefault();
+  if (e.code === 'Space') start();
+  if (!sim || state !== 'fly') return;
+  if (e.code === 'KeyG' && !e.repeat && sim.aircraft.gear.retractable) sim.setControls({ gear: !sim.controls.gear });
+  if (e.code === 'KeyF' && !e.repeat) sim.setControls({ flaps: sim.controls.flaps >= 0.6 ? 0 : sim.controls.flaps + 0.3 });
+});
+addEventListener('keyup', e => { keys[e.code] = false; });
+for (const b of document.querySelectorAll('.pad')) {
+  // each button presses its key, so touch plays exactly like the keyboard
+  const press = down => document.dispatchEvent(new KeyboardEvent(down ? 'keydown' : 'keyup', { code: b.dataset.k, bubbles: true }));
+  b.addEventListener('pointerdown', e => { e.preventDefault(); start(); press(true); });
+  for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) b.addEventListener(ev, () => { if (keys[b.dataset.k]) press(false); });
+}
+msg.addEventListener('pointerdown', () => start());
+
+let state = 'title', next = 0, clock = 0, throttle = 0, landed = false;
+function start() {
+  if (state === 'fly' || !sim) return;
+  reset(); next = 0; clock = 0; throttle = 0; landed = false; $('rings').textContent = 0;
+  rings.forEach((r, i) => { r.visible = true; r.material.emissiveIntensity = i === 0 ? 1.2 : 0.3; });
+  state = 'fly'; msg.hidden = true; GameSfx.play('confirm');
+}
+function end(title, sub, win) {
+  state = 'over'; GameSfx.play(win ? 'win' : 'lose');
+  msg.replaceChildren(Object.assign(document.createElement('b'), { textContent: title }), Object.assign(document.createElement('span'), { textContent: sub }));
+  msg.hidden = false;
+}
+
+const q = new THREE.Quaternion(), pos = new THREE.Vector3(), lastPos = new THREE.Vector3();
+function update(dt) {
+  clock += dt;
+  const pad = GamePad.stick();                 // a gamepad: left stick flies, right trigger more throttle, left trigger less
+  throttle = Math.max(0, Math.min(1, throttle + ((keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0) + pad.rt - pad.lt) * dt * 0.6));
+  sim.setControls({
+    throttle,
+    pitch: Math.max(-1, Math.min(1, (keys.ArrowDown ? 1 : 0) - (keys.ArrowUp ? 1 : 0) + pad.ly)),   // pull back (Down) to climb, like a real stick
+    roll: Math.max(-1, Math.min(1, (keys.ArrowRight ? 1 : 0) - (keys.ArrowLeft ? 1 : 0) + pad.lx)),
+    // on the ground the left and right arrows steer the nose wheel too
+    yaw: (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0) + (sim.state.onGround ? ((keys.ArrowRight ? 1 : 0) - (keys.ArrowLeft ? 1 : 0)) * 0.8 : 0),
+    brakes: keys.KeyB ? 1 : 0,
+  });
+  lastPos.copy(pos);
+  sim.step(dt);
+  const s = sim.state, ins = sim.instruments();
+  pos.set(s.pos.x, s.pos.y, s.pos.z);
+  // a ring counts when the plane passes through its middle
+  const r = rings[next];
+  if (r) {
+    const normal = new THREE.Vector3(0, 0, 1).applyQuaternion(r.quaternion), a = lastPos.clone().sub(r.position).dot(normal), b = pos.clone().sub(r.position).dot(normal);
+    if (Math.sign(a) !== Math.sign(b) && pos.distanceTo(r.position) < RING_SIZE / 2 + 4) {
+      r.visible = false; next++; $('rings').textContent = next; GameSfx.play(next === rings.length ? 'levelup' : 'coins');
+      if (rings[next]) rings[next].material.emissiveIntensity = 1.2;
+    }
+  }
+  const onRunway = Math.abs(s.pos.x) < RUNWAY.width / 2 && s.pos.z < 100 && s.pos.z > 100 - RUNWAY.length;
+  if (ins.crashed) return end('Crashed', ins.failure + '. Rings ' + next + '/' + rings.length + '. Press Space or tap to fly again');
+  if (next === rings.length && s.onGround && !onRunway && ins.iasKt > 5) return end('Off the runway', 'Land on the runway. Press Space or tap to try again');
+  if (next === rings.length && s.onGround && onRunway && ins.iasKt < 3) return end('Landed!', 'All rings in ' + clock.toFixed(1) + ' s. Press Space or tap to fly again', true);
+  $('ins').textContent = Math.round(ins.iasKt) + ' kt · ' + Math.round(ins.aglFt) + ' ft · ' + Math.round(throttle * 100) + '%' + (sim.controls.flaps ? ' · flaps ' + Math.round(sim.controls.flaps * 100) + '%' : '') + (sim.controls.gear ? '' : ' · gear up');
+  $('time').textContent = clock.toFixed(1);
+  warn.textContent = ins.stalled ? 'STALL' : ins.overspeed ? 'OVERSPEED' : !s.onGround && ins.aglFt < 300 && ins.vsiFpm < -1200 ? 'PULL UP' : '';
+}
+
+const camPos = new THREE.Vector3(0, 8, 30);
+function draw(dt) {
+  if (sim) {
+    const s = sim.state;
+    plane.position.set(s.pos.x, s.pos.y, s.pos.z); q.set(s.quat.x, s.quat.y, s.quat.z, s.quat.w); plane.quaternion.copy(q);
+    for (const p of props) p.rotation[props.axis] += (5 + throttle * 60) * dt;
+    // the camera sits behind and above, following the plane's heading smoothly
+    const back = new THREE.Vector3(0, 4, 26).applyQuaternion(q); back.y = Math.max(back.y, 3);
+    const want = plane.position.clone().add(back); want.y = Math.max(want.y, 2);
+    camPos.lerp(want, Math.min(1, dt * 4)); camera.position.copy(camPos);
+    camera.lookAt(plane.position.x, plane.position.y + 2, plane.position.z);
+    sun.position.set(s.pos.x + 200, s.pos.y + 400, s.pos.z + 100); sun.target.position.copy(plane.position);
+  }
+  for (const r of rings) r.rotation.z += dt * 0.5;
+  renderer.render(scene, camera);
+}
+
+let last = performance.now();
+renderer.setAnimationLoop(now => {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  if (state === 'fly' && sim) update(dt);
+  draw(dt);
+});
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: 'Space', start: 'Space', x: 'KeyF', y: 'KeyG', b: 'KeyB', lb: 'KeyA', rb: 'KeyD', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' });
+</script>
+</body>
+</html>

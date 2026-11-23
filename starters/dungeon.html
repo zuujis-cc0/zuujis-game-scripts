@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #1c1917; font-family: system-ui, sans-serif; overflow: hidden; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; right: 16px; display: flex; justify-content: space-between; font-weight: 800; font-size: 20px; color: #fff; }
+  #msg { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; background: #0008; text-align: center; padding: 20px; }
+  #msg b { font-size: 40px; color: #8b5cf6; filter: brightness(1.6); } #msg span { font-size: 18px; }
+  #msg[hidden] { display: none; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><span>🎮 <span id="gems">0</span> gems</span><span id="info"></span></div>
+<div id="msg"><b>My Game</b><span>Collect every gem, find the key, reach the stairs. Avoid the monsters.</span><span>Arrows/WASD or swipe to move. Press Space or tap to start</span></div>
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script>
+'use strict';
+// Dungeon: a top-down, tile-by-tile adventure. Each move is one tile; monsters move when you do.
+// Make it yours: draw rooms in LEVELS (legend below; add more levels to the list), change the HERO and MONSTERS
+// (names from 'zuujis-characters': knight, mage, rogue, archer, skeleton, slime, bat, goblin, orc, wolf, dragon ...),
+// add potions, doors, swords that let you fight back.
+//   #  wall   .  floor   *  gem   k  key   D  locked door   >  stairs (goal)   P  hero   m  monster
+const LEVELS = [[
+  '###############',
+  '#P..#.....*...#',
+  '#.*.#.###.###.#',
+  '#...#...#...#.#',
+  '###.###.#.#.#.#',
+  '#*....m.#.#...#',
+  '#.#####.#.###D#',
+  '#.#k..#...#..>#',
+  '#.#.#.#####.###',
+  '#...#*......m.#',
+  '###############',
+], [
+  '###############',
+  '#P....#.....*.#',
+  '#.###.#.###.#.#',
+  '#.#*..m.#k#.#.#',
+  '#.#####.#.#.#.#',
+  '#...*...#...#*#',
+  '###.#########.#',
+  '#m..........D>#',
+  '###############',
+]];
+const HERO = 'knight', MONSTERS = ['slime', 'skeleton', 'bat', 'goblin'];
+
+const c = document.getElementById('c'), g = c.getContext('2d');
+const gemsEl = document.getElementById('gems'), infoEl = document.getElementById('info'), msg = document.getElementById('msg');
+let W = 0, H = 0;
+function fit() { const d = devicePixelRatio || 1; W = innerWidth; H = innerHeight; c.width = W * d; c.height = H * d; g.setTransform(d, 0, 0, d, 0, 0); }
+addEventListener('resize', fit); fit();
+
+let art = null;
+Promise.all([GameAssets.sprites('zuujis-characters'), GameAssets.sprites('zuujis-tiles'), GameAssets.sprites('zuujis-items')])
+  .then(([chars, tiles, items]) => { art = { chars, tiles, items }; });
+
+let state = 'title', t = 0, level = 0, map, hero, monsters, gems, left, hasKey;
+function load(n) {
+  map = LEVELS[n].map(r => r.split('')); monsters = []; left = 0; hasKey = false;
+  map.forEach((row, y) => row.forEach((ch, x) => {
+    if (ch === 'P') { hero = { x, y, face: 1 }; row[x] = '.'; }
+    if (ch === 'm') { monsters.push({ x, y, kind: MONSTERS[monsters.length % MONSTERS.length] }); row[x] = '.'; }
+    if (ch === '*') left++;
+  }));
+  infoEl.textContent = 'Level ' + (n + 1);
+}
+function start() {
+  if (state === 'play') return;
+  if (state !== 'won') { level = 0; gems = 0; gemsEl.textContent = 0; }
+  load(level); state = 'play'; msg.hidden = true;
+}
+const free = (x, y) => map[y] && map[y][x] && map[y][x] !== '#' && map[y][x] !== 'D';
+
+function move(dx, dy) {
+  if (state !== 'play') return start();
+  if (dx) hero.face = dx;
+  const nx = hero.x + dx, ny = hero.y + dy, ch = map[ny][nx];
+  if (ch === 'D' && hasKey) { map[ny][nx] = '.'; GameSfx.play('open'); }
+  else if (!free(nx, ny)) { GameSfx.play('thud', { volume: 0.4 }); return; }
+  hero.x = nx; hero.y = ny;
+  if (ch === '*') { map[ny][nx] = '.'; gems++; left--; gemsEl.textContent = gems; GameSfx.play('coins'); }
+  if (ch === 'k') { map[ny][nx] = '.'; hasKey = true; GameSfx.play('powerup'); }
+  if (ch === '>') {
+    if (left > 0) { GameSfx.play('error'); return; }
+    GameSfx.play('levelup');
+    if (++level >= LEVELS.length) return end('You escaped!', 'All ' + gems + ' gems. Press Space or tap to play again', true);
+    state = 'won'; return start();
+  }
+  // Monsters step toward you when they can see you, or wander.
+  for (const m of monsters) {
+    const options = [[1, 0], [-1, 0], [0, 1], [0, -1]].filter(([ax, ay]) => free(m.x + ax, m.y + ay));
+    options.sort((a, b) => Math.hypot(m.x + a[0] - hero.x, m.y + a[1] - hero.y) - Math.hypot(m.x + b[0] - hero.x, m.y + b[1] - hero.y));
+    const near = Math.abs(m.x - hero.x) + Math.abs(m.y - hero.y) < 6;
+    const step = near ? options[0] : options[(Math.random() * options.length) | 0];
+    if (step && Math.random() < 0.8) { m.x += step[0]; m.y += step[1]; }
+  }
+  if (monsters.some(m => m.x === hero.x && m.y === hero.y)) end('Caught!', 'Press Space or tap to try again');
+}
+function end(title, sub, win) {
+  state = 'over'; GameSfx.play(win ? 'win' : 'lose'); level = 0;
+  msg.replaceChildren(Object.assign(document.createElement('b'), { textContent: title }), Object.assign(document.createElement('span'), { textContent: sub }));
+  msg.hidden = false;
+}
+
+const KEYS = { ArrowLeft: [-1, 0], KeyA: [-1, 0], ArrowRight: [1, 0], KeyD: [1, 0], ArrowUp: [0, -1], KeyW: [0, -1], ArrowDown: [0, 1], KeyS: [0, 1] };
+addEventListener('keydown', e => {
+  if (KEYS[e.code]) { e.preventDefault(); move(...KEYS[e.code]); }
+  if (e.code === 'Space') { e.preventDefault(); start(); }
+});
+let touch = null;                           // swipe to move; a tap starts
+addEventListener('pointerdown', e => { touch = { x: e.clientX, y: e.clientY }; });
+addEventListener('pointerup', e => {
+  if (!touch) return;
+  const dx = e.clientX - touch.x, dy = e.clientY - touch.y; touch = null;
+  if (Math.hypot(dx, dy) < 20) { if (state !== 'play') start(); return; }
+  Math.abs(dx) > Math.abs(dy) ? move(Math.sign(dx), 0) : move(0, Math.sign(dy));
+});
+
+function draw() {
+  g.fillStyle = '#1c1917'; g.fillRect(0, 0, W, H);
+  if (!art || !map) return;
+  const cols = map[0].length, rows = map.length;
+  const s = Math.max(1, Math.floor(Math.min(W / cols, (H - 60) / rows) / 16 * 2) / 2);  // whole or half pixel steps
+  const T = 16 * s, ox = (W - cols * T) / 2, oy = 50 + (H - 50 - rows * T) / 2;
+  map.forEach((row, y) => row.forEach((ch, x) => {
+    const px = ox + x * T, py = oy + y * T;
+    art.tiles.draw(g, ch === '#' ? 'rock' : 'flagstone', 0, px, py, { scale: s });
+    if (ch === '*') art.items.draw(g, 'gem_blue', 0, px, py + Math.sin(t * 4 + x) * s, { scale: s });
+    if (ch === 'k') art.items.draw(g, 'key', 0, px, py, { scale: s });
+    if (ch === 'D') art.tiles.draw(g, 'crate', 0, px, py, { scale: s });
+    if (ch === '>') art.tiles.draw(g, 'portal', Math.floor(t * 6), px, py, { scale: s });
+  }));
+  for (const m of monsters) art.chars.draw(g, m.kind, Math.floor(t * 4) % 2, ox + m.x * T, oy + m.y * T, { scale: s });
+  art.chars.draw(g, HERO, Math.floor(t * 4) % 2, ox + hero.x * T, oy + hero.y * T, { scale: s, flip: hero.face < 0 });
+  if (hasKey) art.items.draw(g, 'key', 0, W - 16 - 2 * 16, 44, { scale: 2 });
+}
+
+let last = performance.now();
+function frame(now) { t += Math.min(0.05, (now - last) / 1000); last = now; draw(); requestAnimationFrame(frame); }
+load(0);
+requestAnimationFrame(frame);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: 'Space', start: 'Space', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight', stick: 'arrows' });
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "key": "gripen",
+  "aircraft": {
+    "name": "Saab JAS 39 Gripen C",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#a9b4be",
+    "accent": "#526273",
+    "massKg": 8500,
+    "wingAreaM2": 30,
+    "spanM": 8.4,
+    "lengthM": 14.9,
+    "thrustN": 54000,
+    "abThrustN": 80500,
+    "spoolTau": 1.18,
+    "cd0": 0.021,
+    "clMax": 1.33,
+    "alpha0": -0.024,
+    "oswald": 0.72,
+    "flaps": {
+      "clBonus": 0.39,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 1.95
+    },
+    "rates": {
+      "roll": 4.25,
+      "pitch": 1.64,
+      "yaw": 0.61
+    },
+    "limits": {
+      "vneKt": 750,
+      "machMax": 2,
+      "gMax": 9
+    },
+    "real": {
+      "engine": "Volvo RM12",
+      "maxSpeedKt": 1150,
+      "cruiseKt": 490,
+      "stallKt": 115,
+      "ceilingFt": 50000,
+      "climbFpm": 47000,
+      "rangeNm": 1730,
+      "year": 2002
+    }
+  },
+  "model": {
+    "glb": "gripen.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

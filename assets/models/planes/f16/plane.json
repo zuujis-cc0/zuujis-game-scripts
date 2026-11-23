@@ -1,0 +1,11 @@
+{
+  "key": "f16",
+  "model": {
+    "glb": "F16.glb",
+    "rotateY": 0,
+    "scale": 1,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

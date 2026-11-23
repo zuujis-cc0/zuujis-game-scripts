@@ -1,0 +1,34 @@
+{
+  "key": "p51",
+  "aircraft": {
+    "name": "P-51D Mustang",
+    "type": "prop",
+    "icon": "🛩",
+    "color": "#b8bcc2",
+    "accent": "#d23c3c",
+    "massKg": 4175,
+    "wingAreaM2": 21.83,
+    "spanM": 11.28,
+    "lengthM": 9.83,
+    "powerW": 1111000,
+    "propEff": 0.8,
+    "cd0": 0.0163,
+    "clMax": 1.48,
+    "alpha0": -0.025,
+    "oswald": 0.84,
+    "flaps": { "clBonus": 0.5, "cdPenalty": 0.06 },
+    "gear": { "retractable": true, "cd": 0.02, "height": 2.0 },
+    "rates": { "roll": 1.7, "pitch": 1.0, "yaw": 0.7 },
+    "limits": { "vneKt": 439, "gMax": 8 },
+    "real": {
+      "engine": "Packard V-1650 Merlin · 1,490 hp",
+      "maxSpeedKt": 380,
+      "cruiseKt": 315,
+      "stallKt": 87,
+      "ceilingFt": 41900,
+      "climbFpm": 3200,
+      "rangeNm": 1434,
+      "year": 1944
+    }
+  }
+}

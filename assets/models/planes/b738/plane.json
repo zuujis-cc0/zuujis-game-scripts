@@ -1,0 +1,57 @@
+{
+  "key": "b738",
+  "aircraft": {
+    "name": "Boeing 737-800",
+    "type": "jet",
+    "icon": "🛫",
+    "color": "#f2f4f7",
+    "accent": "#275ca6",
+    "massKg": 68000,
+    "wingAreaM2": 124.6,
+    "spanM": 35.79,
+    "lengthM": 39.47,
+    "thrustN": 242800,
+    "abThrustN": 0,
+    "spoolTau": 3.25,
+    "cd0": 0.024,
+    "clMax": 1.48,
+    "alpha0": -0.024,
+    "oswald": 0.82,
+    "flaps": {
+      "clBonus": 0.88,
+      "cdPenalty": 0.039
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 3.25
+    },
+    "rates": {
+      "roll": 0.49,
+      "pitch": 0.31,
+      "yaw": 0.25
+    },
+    "limits": {
+      "vneKt": 340,
+      "machMax": 0.82,
+      "gMax": 2.5
+    },
+    "real": {
+      "engine": "2× CFM International CFM56-7B27",
+      "maxSpeedKt": 470,
+      "cruiseKt": 447,
+      "stallKt": 125,
+      "ceilingFt": 41000,
+      "climbFpm": 3000,
+      "rangeNm": 2935,
+      "year": 1998
+    }
+  },
+  "model": {
+    "glb": "b738.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "key": "mig15",
+  "aircraft": {
+    "name": "MiG-15bis",
+    "type": "jet",
+    "icon": "🛩️",
+    "color": "#abb4bc",
+    "accent": "#ae3532",
+    "massKg": 4960,
+    "wingAreaM2": 20.6,
+    "spanM": 10.08,
+    "lengthM": 10.1,
+    "thrustN": 26500,
+    "abThrustN": 0,
+    "spoolTau": 1.8,
+    "cd0": 0.025,
+    "clMax": 1.41,
+    "alpha0": -0.024,
+    "oswald": 0.77,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 1.6
+    },
+    "rates": {
+      "roll": 2.45,
+      "pitch": 1.15,
+      "yaw": 0.49
+    },
+    "limits": {
+      "vneKt": 500,
+      "machMax": 0.92,
+      "gMax": 8
+    },
+    "real": {
+      "engine": "Klimov VK-1",
+      "maxSpeedKt": 575,
+      "cruiseKt": 460,
+      "stallKt": 95,
+      "ceilingFt": 51000,
+      "climbFpm": 10080,
+      "rangeNm": 670,
+      "year": 1950
+    }
+  },
+  "model": {
+    "glb": "mig15.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

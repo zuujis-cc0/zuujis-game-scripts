@@ -1,0 +1,61 @@
+{
+ "image": "tile2048.png",
+ "cell": [
+  26,
+  26
+ ],
+ "sprites": {
+  "t2": {
+   "row": 0,
+   "frames": 1
+  },
+  "t4": {
+   "row": 1,
+   "frames": 1
+  },
+  "t8": {
+   "row": 2,
+   "frames": 1
+  },
+  "t16": {
+   "row": 3,
+   "frames": 1
+  },
+  "t32": {
+   "row": 4,
+   "frames": 1
+  },
+  "t64": {
+   "row": 5,
+   "frames": 1
+  },
+  "t128": {
+   "row": 6,
+   "frames": 1
+  },
+  "t256": {
+   "row": 7,
+   "frames": 1
+  },
+  "t512": {
+   "row": 8,
+   "frames": 1
+  },
+  "t1024": {
+   "row": 9,
+   "frames": 1
+  },
+  "t2048": {
+   "row": 10,
+   "frames": 1
+  },
+  "tmax": {
+   "row": 11,
+   "frames": 1
+  },
+  "slot": {
+   "row": 12,
+   "frames": 1
+  }
+ }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 98" width="70" height="98">
+  <defs>
+    <pattern id="stripes" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect x="0" y="0" width="6" height="12" fill="rgba(212,175,55,0.3)"/>
+    </pattern>
+    <clipPath id="card">
+      <rect x="2" y="2" width="66" height="94" rx="5" ry="5"/>
+    </clipPath>
+  </defs>
+  <rect x="1" y="1" width="68" height="96" rx="6" ry="6" fill="#1a4a1f" stroke="#0d2e11" stroke-width="1.5"/>
+  <rect x="3" y="3" width="64" height="92" rx="4" ry="4" fill="url(#stripes)" clip-path="url(#card)"/>
+  <rect x="3" y="3" width="64" height="92" rx="4" ry="4" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="1"/>
+  <text x="35" y="55" font-family="serif" font-size="18" text-anchor="middle" fill="rgba(212,175,55,0.15)" font-weight="bold">♣</text>
+</svg>

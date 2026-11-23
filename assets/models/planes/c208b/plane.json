@@ -1,0 +1,46 @@
+{
+  "key": "c208b",
+  "aircraft": {
+    "name": "Cessna 208B Grand Caravan",
+    "type": "prop",
+    "icon": "🛩",
+    "color": "#e8e8e4",
+    "accent": "#1f6fb2",
+    "massKg": 3300,
+    "wingAreaM2": 25.96,
+    "spanM": 15.88,
+    "lengthM": 12.67,
+    "powerW": 503000,
+    "propEff": 0.82,
+    "cd0": 0.035,
+    "clMax": 1.6,
+    "alpha0": -0.035,
+    "oswald": 0.75,
+    "flaps": { "clBonus": 0.6, "cdPenalty": 0.04 },
+    "gear": { "retractable": false, "cd": 0.012, "height": 2.2 },
+    "rates": { "roll": 0.8, "pitch": 0.5, "yaw": 0.45 },
+    "limits": { "vneKt": 175, "gMax": 3.8 },
+    "real": {
+      "engine": "P&WC PT6A-114A · 675 shp",
+      "maxSpeedKt": 186,
+      "cruiseKt": 175,
+      "stallKt": 61,
+      "ceilingFt": 25000,
+      "climbFpm": 925,
+      "rangeNm": 912,
+      "year": 1990
+    }
+  },
+  "model": {
+    "glb": "c208b.glb",
+    "rotateY": 0,
+    "scale": 1,
+    "gearNodes": [
+      "gear"
+    ],
+    "propNodes": [
+      "propeller"
+    ],
+    "propAxis": "z"
+  }
+}

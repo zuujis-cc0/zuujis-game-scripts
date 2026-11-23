@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: linear-gradient(#bfe3ff, #f3f7e8); font-family: system-ui, sans-serif; overflow: hidden; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; font-weight: 800; font-size: 20px; color: #1f2937; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">🎮 <span id="score">0</span></div>
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script>
+'use strict';
+// Catch: painted props from the shared library fall; move the basket (arrow keys, mouse or finger) to catch them.
+// Swap the pictures for any in the library: the Assets panel beside the editor lists them.
+const PICTURES = ['painted/props/bench.webp', 'painted/props/bin.webp', 'painted/props/bush-summer.webp', 'painted/props/birch-autumn.webp'];
+const c = document.getElementById('c'), g = c.getContext('2d'), scoreEl = document.getElementById('score');
+let W = 0, H = 0, S = 1;
+function fit() { S = devicePixelRatio; W = c.width = innerWidth * S; H = c.height = innerHeight * S; }
+addEventListener('resize', fit); fit();
+
+const images = [];
+GameAssets.ready().then(() => {
+  for (const p of PICTURES) { const img = new Image(); img.src = GameAssets.url(p); images.push(img); }
+});
+
+const basket = { x: W / 2, w: 140, h: 28 };
+const keys = {};
+addEventListener('keydown', e => { keys[e.key] = true; });
+addEventListener('keyup', e => { keys[e.key] = false; });
+c.addEventListener('pointermove', e => { basket.x = e.clientX * S; });
+c.addEventListener('pointerdown', e => { basket.x = e.clientX * S; });
+
+let items = [], score = 0, missed = 0, spawn = 0, last = performance.now();
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  const bw = basket.w * S, by = H - 60 * S;
+  if (keys.ArrowLeft) basket.x -= 700 * S * dt;
+  if (keys.ArrowRight) basket.x += 700 * S * dt;
+  basket.x = Math.max(bw / 2, Math.min(W - bw / 2, basket.x));
+
+  spawn -= dt;
+  if (spawn <= 0 && images.length) {
+    spawn = Math.max(0.35, 1.1 - score * 0.02);
+    items.push({ x: (0.1 + Math.random() * 0.8) * W, y: -60 * S, v: (160 + score * 6) * S, img: images[(Math.random() * images.length) | 0] });
+  }
+  for (const it of items) it.y += it.v * dt;
+  items = items.filter(it => {
+    if (it.y > by - 20 * S && it.y < by + 10 * S && Math.abs(it.x - basket.x) < bw / 2) {
+      score++; scoreEl.textContent = score; GameSfx.play('coins'); return false;
+    }
+    if (it.y > H + 60 * S) { missed++; GameSfx.play('error'); return false; }
+    return true;
+  });
+
+  g.clearRect(0, 0, W, H);
+  for (const it of items) {
+    const size = 72 * S;
+    if (it.img.complete && it.img.naturalWidth) g.drawImage(it.img, it.x - size / 2, it.y - size / 2, size, size * it.img.naturalHeight / it.img.naturalWidth);
+  }
+  g.fillStyle = '#8b5cf6';
+  g.fillRect(basket.x - bw / 2, by, bw, basket.h * S);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ left: 'ArrowLeft', right: 'ArrowRight', stick: 'arrows' });
+</script>
+</body>
+</html>

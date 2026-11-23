@@ -1,0 +1,5219 @@
+{
+ "packs": {
+  "brackeys-particles": {
+   "bytes": 4159127,
+   "credit": "Brackeys; Picster (Godot-particle-and-vfx-textures); Kenney Particle Pack",
+   "dir": "vfx/brackeys/particles/alpha",
+   "files": [
+    "circle_01_a.png",
+    "circle_02_a.png",
+    "circle_03_a.png",
+    "circle_04_a.png",
+    "circle_05_a.png",
+    "dirt_01_a.png",
+    "dirt_02_a.png",
+    "dirt_03_a.png",
+    "effect_01_a.png",
+    "effect_02_a.png",
+    "effect_03_a.png",
+    "fire_01_a.png",
+    "fire_02_a.png",
+    "flame_01_a.png",
+    "flame_02_a.png",
+    "flame_03_a.png",
+    "flame_04_a.png",
+    "flame_05_a.png",
+    "flame_06_a.png",
+    "flare_01_a.png",
+    "light_01_a.png",
+    "light_02_a.png",
+    "light_03_a.png",
+    "magic_01_a.png",
+    "magic_02_a.png",
+    "magic_03_a.png",
+    "magic_04_a.png",
+    "magic_05_a.png",
+    "muzzle_01_a.png",
+    "muzzle_02_a.png",
+    "muzzle_03_a.png",
+    "muzzle_04_a.png",
+    "muzzle_05_a.png",
+    "scorch_01_a.png",
+    "scorch_02_a.png",
+    "scorch_03_a.png",
+    "scratch_01_a.png",
+    "slash_01_a.png",
+    "slash_02_a.png",
+    "slash_03_a.png",
+    "slash_04_a.png",
+    "smoke_01_a.png",
+    "smoke_02_a.png",
+    "smoke_03_a.png",
+    "smoke_04_a.png",
+    "smoke_05_a.png",
+    "smoke_06_a.png",
+    "smoke_07_a.png",
+    "smoke_07_strong_a.png",
+    "smoke_08_a.png",
+    "smoke_09_a.png",
+    "smoke_10_a.png",
+    "spark_01_a.png",
+    "spark_02_a.png",
+    "spark_03_a.png",
+    "spark_04_a.png",
+    "spark_05_a.png",
+    "spark_06_a.png",
+    "spark_07_a.png",
+    "spotlight_01_a.png",
+    "spotlight_02_a.png",
+    "spotlight_03_a.png",
+    "spotlight_04_a.png",
+    "spotlight_05_a.png",
+    "spotlight_06_a.png",
+    "spotlight_07_a.png",
+    "spotlight_08_a.png",
+    "star_01_a.png",
+    "star_02_a.png",
+    "star_03_a.png",
+    "star_04_a.png",
+    "star_05_a.png",
+    "star_06_a.png",
+    "star_07_a.png",
+    "star_08_a.png",
+    "star_09_a.png",
+    "symbol_01_a.png",
+    "symbol_02_a.png",
+    "trace_01_a.png",
+    "trace_02_a.png",
+    "trace_03_a.png",
+    "trace_04_a.png",
+    "trace_05_a.png",
+    "trace_06_a.png",
+    "trace_07_a.png",
+    "twirl_01_a.png",
+    "twirl_02_a.png",
+    "twirl_03_a.png",
+    "twirl_04_a.png",
+    "window_01_a.png",
+    "window_02_a.png",
+    "window_03_a.png",
+    "window_04_a.png"
+   ],
+   "files_total": 93,
+   "grade": "B",
+   "grade_note": "Good; large 512 px textures (about 4 MB).",
+   "kind": "vfx-particles",
+   "license": "CC0",
+   "note": "512px soft particle textures (alpha).",
+   "use": "anywhere"
+  },
+  "instrument-sans": {
+   "bytes": 141955,
+   "credit": "Instrument Sans by Rodrigo Fuenzalida and Jordan Egstad (OFL.txt)",
+   "dir": "fonts/instrument-sans",
+   "files": [
+    "InstrumentSans-Bold.ttf",
+    "InstrumentSans-SemiBold.ttf"
+   ],
+   "files_total": 3,
+   "grade": "B",
+   "grade_note": "Good, generic.",
+   "kind": "fonts",
+   "license": "OFL-1.1",
+   "note": "Instrument Sans Bold (700) and SemiBold (600) TTF; load with new FontFace(name, `url(${GameAssets.url('fonts/instrument-sans/InstrumentSans-Bold.ttf')})`).",
+   "use": "anywhere"
+  },
+  "kenney-board-game-icons": {
+   "bytes": 450109,
+   "cell": 64,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "icons/board",
+   "files": [
+    "64/arrow_clockwise.png",
+    "64/arrow_counterclockwise.png",
+    "64/arrow_cross.png",
+    "64/arrow_cross_divided.png",
+    "64/arrow_diagonal.png",
+    "64/arrow_diagonal_cross.png",
+    "64/arrow_diagonal_cross_divided.png",
+    "64/arrow_horizontal.png",
+    "64/arrow_reserve.png",
+    "64/arrow_right.png",
+    "64/arrow_right_curve.png",
+    "64/arrow_rotate.png",
+    "64/award.png",
+    "64/book_closed.png",
+    "64/book_open.png",
+    "64/bow.png",
+    "64/campfire.png",
+    "64/card.png",
+    "64/card_add.png",
+    "64/card_diagonal.png",
+    "64/card_down.png",
+    "64/card_down_outline.png",
+    "64/card_flip.png",
+    "64/card_flipdouble.png",
+    "64/card_lift.png",
+    "64/card_outline.png",
+    "64/card_outline_lift.png",
+    "64/card_outline_place.png",
+    "64/card_outline_remove.png",
+    "64/card_place.png",
+    "64/card_remove.png",
+    "64/card_rotate.png",
+    "64/card_subtract.png",
+    "64/card_tap.png",
+    "64/card_tap_down.png",
+    "64/card_tap_outline.png",
+    "64/card_tap_outline_down.png",
+    "64/card_tap_outline_up.png",
+    "64/card_tap_up.png",
+    "64/card_target.png",
+    "64/cards_collection.png",
+    "64/cards_collection_outline.png",
+    "64/cards_diagonal.png",
+    "64/cards_fan.png",
+    "64/cards_fan_outline.png",
+    "64/cards_flip.png",
+    "64/cards_order.png",
+    "64/cards_return.png",
+    "64/cards_seek.png",
+    "64/cards_seek_top.png",
+    "64/cards_shift.png",
+    "64/cards_shuffle.png",
+    "64/cards_skull.png",
+    "64/cards_stack.png",
+    "64/cards_stack_cross.png",
+    "64/cards_stack_high.png",
+    "64/cards_take.png",
+    "64/cards_under.png",
+    "64/character.png",
+    "64/character_lift.png",
+    "64/character_place.png",
+    "64/character_remove.png",
+    "64/chess_bishop.png",
+    "64/chess_king.png",
+    "64/chess_knight.png",
+    "64/chess_pawn.png",
+    "64/chess_queen.png",
+    "64/chess_rook.png",
+    "64/crown_a.png",
+    "64/crown_b.png",
+    "64/d10.png",
+    "64/d10_number.png",
+    "64/d10_outline.png",
+    "64/d10_outline_number.png",
+    "64/d12.png",
+    "64/d12_number.png",
+    "64/d12_outline.png",
+    "64/d12_outline_number.png",
+    "64/d2.png",
+    "64/d20.png",
+    "64/d20_number.png",
+    "64/d20_outline.png",
+    "64/d20_outline_number.png",
+    "64/d2_number.png",
+    "64/d2_outline.png",
+    "64/d2_outline_number.png",
+    "64/d3.png",
+    "64/d3_number.png",
+    "64/d3_outline.png",
+    "64/d3_outline_number.png",
+    "64/d4.png",
+    "64/d4_number.png",
+    "64/d4_outline.png",
+    "64/d4_outline_number.png",
+    "64/d6.png",
+    "64/d6_number.png",
+    "64/d6_outline.png",
+    "64/d6_outline_number.png",
+    "64/d8.png",
+    "64/d8_number.png",
+    "64/d8_outline.png",
+    "64/d8_outline_number.png",
+    "64/dice.png",
+    "64/dice_1.png",
+    "64/dice_2.png",
+    "64/dice_3.png",
+    "64/dice_3D.png",
+    "64/dice_3D_detailed.png",
+    "64/dice_4.png",
+    "64/dice_5.png",
+    "64/dice_6.png",
+    "64/dice_close.png",
+    "64/dice_detailed.png",
+    "64/dice_empty.png",
+    "64/dice_out.png",
+    "64/dice_question.png",
+    "64/dice_shield.png",
+    "64/dice_skull.png",
+    "64/dice_sword.png",
+    "64/direction_e.png",
+    "64/direction_n.png",
+    "64/direction_s.png",
+    "64/direction_w.png",
+    "64/dollar.png",
+    "64/exploding.png",
+    "64/exploding_6.png",
+    "64/fire.png",
+    "64/flag_square.png",
+    "64/flag_triangle.png",
+    "64/flask_empty.png",
+    "64/flask_full.png",
+    "64/flask_half.png",
+    "64/flip_empty.png",
+    "64/flip_full.png",
+    "64/flip_half.png",
+    "64/flip_head.png",
+    "64/flip_tails.png",
+    "64/hand.png",
+    "64/hand_card.png",
+    "64/hand_cross.png",
+    "64/hand_cube.png",
+    "64/hand_hexagon.png",
+    "64/hand_token.png",
+    "64/hand_token_open.png",
+    "64/hexagon.png",
+    "64/hexagon_in.png",
+    "64/hexagon_out.png",
+    "64/hexagon_outline.png",
+    "64/hexagon_question.png",
+    "64/hexagon_switch.png",
+    "64/hexagon_tile.png",
+    "64/hourglass.png",
+    "64/hourglass_bottom.png",
+    "64/hourglass_top.png",
+    "64/lock_closed.png",
+    "64/lock_open.png",
+    "64/notepad.png",
+    "64/notepad_write.png",
+    "64/pawn.png",
+    "64/pawn_clockwise.png",
+    "64/pawn_counterclockwise.png",
+    "64/pawn_down.png",
+    "64/pawn_flip.png",
+    "64/pawn_left.png",
+    "64/pawn_reverse.png",
+    "64/pawn_right.png",
+    "64/pawn_skip.png",
+    "64/pawn_table.png",
+    "64/pawn_up.png",
+    "64/pawns.png",
+    "64/pentagon.png",
+    "64/pentagon_outline.png",
+    "64/pentagon_question.png",
+    "64/pouch.png",
+    "64/pouch_add.png",
+    "64/pouch_remove.png",
+    "64/puzzle.png",
+    "64/resource_apple.png",
+    "64/resource_iron.png",
+    "64/resource_lumber.png",
+    "64/resource_planks.png",
+    "64/resource_wheat.png",
+    "64/resource_wood.png",
+    "64/rhombus.png",
+    "64/rhombus_outline.png",
+    "64/rhombus_question.png",
+    "64/shield.png",
+    "64/skull.png",
+    "64/spinner.png",
+    "64/spinner_segment.png",
+    "64/structure_church.png",
+    "64/structure_farm.png",
+    "64/structure_gate.png",
+    "64/structure_house.png",
+    "64/structure_tower.png",
+    "64/structure_wall.png",
+    "64/structure_watchtower.png",
+    "64/suit_clubs.png",
+    "64/suit_diamonds.png",
+    "64/suit_hearts.png",
+    "64/suit_hearts_broken.png",
+    "64/suit_spades.png",
+    "64/sword.png",
+    "64/tag_1.png",
+    "64/tag_10.png",
+    "64/tag_2.png",
+    "64/tag_3.png",
+    "64/tag_4.png",
+    "64/tag_5.png",
+    "64/tag_6.png",
+    "64/tag_7.png",
+    "64/tag_8.png",
+    "64/tag_9.png",
+    "64/tag_d6.png",
+    "64/tag_d6_1.png",
+    "64/tag_d6_2.png",
+    "64/tag_d6_3.png",
+    "64/tag_d6_4.png",
+    "64/tag_d6_5.png",
+    "64/tag_d6_6.png",
+    "64/tag_d6_check.png",
+    "64/tag_d6_cross.png",
+    "64/tag_d6_infinte.png",
+    "64/tag_empty.png",
+    "64/tag_infinite.png",
+    "64/tag_shield.png",
+    "64/tag_shield_1.png",
+    "64/tag_shield_10.png",
+    "64/tag_shield_2.png",
+    "64/tag_shield_3.png",
+    "64/tag_shield_4.png",
+    "64/tag_shield_5.png",
+    "64/tag_shield_6.png",
+    "64/tag_shield_7.png",
+    "64/tag_shield_8.png",
+    "64/tag_shield_9.png",
+    "64/tag_shield_infinite.png",
+    "64/timer_0.png",
+    "64/timer_100.png",
+    "64/timer_CCW_25.png",
+    "64/timer_CCW_50.png",
+    "64/timer_CCW_75.png",
+    "64/timer_CW_25.png",
+    "64/timer_CW_50.png",
+    "64/timer_CW_75.png",
+    "64/token.png",
+    "64/token_add.png",
+    "64/token_give.png",
+    "64/token_in.png",
+    "64/token_out.png",
+    "64/token_remove.png",
+    "64/token_subtract.png",
+    "64/tokens.png",
+    "64/tokens_shadow.png",
+    "64/tokens_stack.png",
+    "Preview.png",
+    "Tilesheet/iconsDefault.png",
+    "Tilesheet/iconsDouble.png"
+   ],
+   "files_total": 260,
+   "grade": "B",
+   "grade_note": "Good CC0 pack, generic look.",
+   "kind": "icons",
+   "license": "CC0",
+   "note": "255 icons at 64px in 64/, plus a Tilesheet/. Dice faces, cards, arrows, meeples, tokens, stars.",
+   "source": "https://kenney.nl/assets/board-game-icons",
+   "use": "anywhere"
+  },
+  "kenney-boardgame": {
+   "bytes": 1580563,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "sprites/kenney-boardgame",
+   "files": [
+    "PNG/Cards/cardBack_blue1.png",
+    "PNG/Cards/cardBack_blue2.png",
+    "PNG/Cards/cardBack_blue3.png",
+    "PNG/Cards/cardBack_blue4.png",
+    "PNG/Cards/cardBack_blue5.png",
+    "PNG/Cards/cardBack_green1.png",
+    "PNG/Cards/cardBack_green2.png",
+    "PNG/Cards/cardBack_green3.png",
+    "PNG/Cards/cardBack_green4.png",
+    "PNG/Cards/cardBack_green5.png",
+    "PNG/Cards/cardBack_red1.png",
+    "PNG/Cards/cardBack_red2.png",
+    "PNG/Cards/cardBack_red3.png",
+    "PNG/Cards/cardBack_red4.png",
+    "PNG/Cards/cardBack_red5.png",
+    "PNG/Cards/cardClubs10.png",
+    "PNG/Cards/cardClubs2.png",
+    "PNG/Cards/cardClubs3.png",
+    "PNG/Cards/cardClubs4.png",
+    "PNG/Cards/cardClubs5.png",
+    "PNG/Cards/cardClubs6.png",
+    "PNG/Cards/cardClubs7.png",
+    "PNG/Cards/cardClubs8.png",
+    "PNG/Cards/cardClubs9.png",
+    "PNG/Cards/cardClubsA.png",
+    "PNG/Cards/cardClubsJ.png",
+    "PNG/Cards/cardClubsK.png",
+    "PNG/Cards/cardClubsQ.png",
+    "PNG/Cards/cardDiamonds10.png",
+    "PNG/Cards/cardDiamonds2.png",
+    "PNG/Cards/cardDiamonds3.png",
+    "PNG/Cards/cardDiamonds4.png",
+    "PNG/Cards/cardDiamonds5.png",
+    "PNG/Cards/cardDiamonds6.png",
+    "PNG/Cards/cardDiamonds7.png",
+    "PNG/Cards/cardDiamonds8.png",
+    "PNG/Cards/cardDiamonds9.png",
+    "PNG/Cards/cardDiamondsA.png",
+    "PNG/Cards/cardDiamondsJ.png",
+    "PNG/Cards/cardDiamondsK.png",
+    "PNG/Cards/cardDiamondsQ.png",
+    "PNG/Cards/cardHearts10.png",
+    "PNG/Cards/cardHearts2.png",
+    "PNG/Cards/cardHearts3.png",
+    "PNG/Cards/cardHearts4.png",
+    "PNG/Cards/cardHearts5.png",
+    "PNG/Cards/cardHearts6.png",
+    "PNG/Cards/cardHearts7.png",
+    "PNG/Cards/cardHearts8.png",
+    "PNG/Cards/cardHearts9.png",
+    "PNG/Cards/cardHeartsA.png",
+    "PNG/Cards/cardHeartsJ.png",
+    "PNG/Cards/cardHeartsK.png",
+    "PNG/Cards/cardHeartsQ.png",
+    "PNG/Cards/cardJoker.png",
+    "PNG/Cards/cardSpades10.png",
+    "PNG/Cards/cardSpades2.png",
+    "PNG/Cards/cardSpades3.png",
+    "PNG/Cards/cardSpades4.png",
+    "PNG/Cards/cardSpades5.png",
+    "PNG/Cards/cardSpades6.png",
+    "PNG/Cards/cardSpades7.png",
+    "PNG/Cards/cardSpades8.png",
+    "PNG/Cards/cardSpades9.png",
+    "PNG/Cards/cardSpadesA.png",
+    "PNG/Cards/cardSpadesJ.png",
+    "PNG/Cards/cardSpadesK.png",
+    "PNG/Cards/cardSpadesQ.png",
+    "PNG/Chips/chipBlackWhite.png",
+    "PNG/Chips/chipBlackWhite_border.png",
+    "PNG/Chips/chipBlackWhite_side.png",
+    "PNG/Chips/chipBlackWhite_sideBorder.png",
+    "PNG/Chips/chipBlue.png",
+    "PNG/Chips/chipBlueWhite.png",
+    "PNG/Chips/chipBlueWhite_border.png",
+    "PNG/Chips/chipBlueWhite_side.png",
+    "PNG/Chips/chipBlueWhite_sideBorder.png",
+    "PNG/Chips/chipBlue_border.png",
+    "PNG/Chips/chipBlue_side.png",
+    "PNG/Chips/chipBlue_sideBorder.png",
+    "PNG/Chips/chipGreen.png",
+    "PNG/Chips/chipGreenWhite.png",
+    "PNG/Chips/chipGreenWhite_border.png",
+    "PNG/Chips/chipGreenWhite_side.png",
+    "PNG/Chips/chipGreenWhite_sideBorder.png",
+    "PNG/Chips/chipGreen_border.png",
+    "PNG/Chips/chipGreen_side.png",
+    "PNG/Chips/chipGreen_sideBorder.png",
+    "PNG/Chips/chipRedWhite.png",
+    "PNG/Chips/chipRedWhite_border.png",
+    "PNG/Chips/chipRedWhite_side.png",
+    "PNG/Chips/chipRedWhite_sideBorder.png",
+    "PNG/Chips/chipWhite.png",
+    "PNG/Chips/chipWhiteBlue.png",
+    "PNG/Chips/chipWhiteBlue_border.png",
+    "PNG/Chips/chipWhiteBlue_side.png",
+    "PNG/Chips/chipWhiteBlue_sideBorder.png",
+    "PNG/Chips/chipWhite_border.png",
+    "PNG/Chips/chipWhite_side.png",
+    "PNG/Chips/chipWhite_sideBorder.png",
+    "PNG/Dice/dieRed1.png",
+    "PNG/Dice/dieRed2.png",
+    "PNG/Dice/dieRed3.png",
+    "PNG/Dice/dieRed4.png",
+    "PNG/Dice/dieRed5.png",
+    "PNG/Dice/dieRed6.png",
+    "PNG/Dice/dieRed_border1.png",
+    "PNG/Dice/dieRed_border2.png",
+    "PNG/Dice/dieRed_border3.png",
+    "PNG/Dice/dieRed_border4.png",
+    "PNG/Dice/dieRed_border5.png",
+    "PNG/Dice/dieRed_border6.png",
+    "PNG/Dice/dieWhite1.png",
+    "PNG/Dice/dieWhite2.png",
+    "PNG/Dice/dieWhite3.png",
+    "PNG/Dice/dieWhite4.png",
+    "PNG/Dice/dieWhite5.png",
+    "PNG/Dice/dieWhite6.png",
+    "PNG/Dice/dieWhite_border1.png",
+    "PNG/Dice/dieWhite_border2.png",
+    "PNG/Dice/dieWhite_border3.png",
+    "PNG/Dice/dieWhite_border4.png",
+    "PNG/Dice/dieWhite_border5.png",
+    "PNG/Dice/dieWhite_border6.png",
+    "PNG/Pieces (Black)/pieceBlack_border00.png",
+    "PNG/Pieces (Black)/pieceBlack_border01.png",
+    "PNG/Pieces (Black)/pieceBlack_border02.png",
+    "PNG/Pieces (Black)/pieceBlack_border03.png",
+    "PNG/Pieces (Black)/pieceBlack_border04.png",
+    "PNG/Pieces (Black)/pieceBlack_border05.png",
+    "PNG/Pieces (Black)/pieceBlack_border06.png",
+    "PNG/Pieces (Black)/pieceBlack_border07.png",
+    "PNG/Pieces (Black)/pieceBlack_border08.png",
+    "PNG/Pieces (Black)/pieceBlack_border09.png",
+    "PNG/Pieces (Black)/pieceBlack_border10.png",
+    "PNG/Pieces (Black)/pieceBlack_border11.png",
+    "PNG/Pieces (Black)/pieceBlack_border12.png",
+    "PNG/Pieces (Black)/pieceBlack_border13.png",
+    "PNG/Pieces (Black)/pieceBlack_border14.png",
+    "PNG/Pieces (Black)/pieceBlack_border15.png",
+    "PNG/Pieces (Black)/pieceBlack_border16.png",
+    "PNG/Pieces (Black)/pieceBlack_border17.png",
+    "PNG/Pieces (Black)/pieceBlack_border18.png",
+    "PNG/Pieces (Black)/pieceBlack_multi00.png",
+    "PNG/Pieces (Black)/pieceBlack_multi01.png",
+    "PNG/Pieces (Black)/pieceBlack_multi02.png",
+    "PNG/Pieces (Black)/pieceBlack_multi03.png",
+    "PNG/Pieces (Black)/pieceBlack_multi04.png",
+    "PNG/Pieces (Black)/pieceBlack_multi05.png",
+    "PNG/Pieces (Black)/pieceBlack_multi06.png",
+    "PNG/Pieces (Black)/pieceBlack_multi07.png",
+    "PNG/Pieces (Black)/pieceBlack_multi08.png",
+    "PNG/Pieces (Black)/pieceBlack_multi09.png",
+    "PNG/Pieces (Black)/pieceBlack_multi10.png",
+    "PNG/Pieces (Black)/pieceBlack_multi11.png",
+    "PNG/Pieces (Black)/pieceBlack_multi12.png",
+    "PNG/Pieces (Black)/pieceBlack_multi13.png",
+    "PNG/Pieces (Black)/pieceBlack_multi14.png",
+    "PNG/Pieces (Black)/pieceBlack_multi15.png",
+    "PNG/Pieces (Black)/pieceBlack_multi16.png",
+    "PNG/Pieces (Black)/pieceBlack_multi17.png",
+    "PNG/Pieces (Black)/pieceBlack_multi18.png",
+    "PNG/Pieces (Black)/pieceBlack_single00.png",
+    "PNG/Pieces (Black)/pieceBlack_single01.png",
+    "PNG/Pieces (Black)/pieceBlack_single02.png",
+    "PNG/Pieces (Black)/pieceBlack_single03.png",
+    "PNG/Pieces (Black)/pieceBlack_single04.png",
+    "PNG/Pieces (Black)/pieceBlack_single05.png",
+    "PNG/Pieces (Black)/pieceBlack_single06.png",
+    "PNG/Pieces (Black)/pieceBlack_single07.png",
+    "PNG/Pieces (Black)/pieceBlack_single08.png",
+    "PNG/Pieces (Black)/pieceBlack_single09.png",
+    "PNG/Pieces (Black)/pieceBlack_single10.png",
+    "PNG/Pieces (Black)/pieceBlack_single11.png",
+    "PNG/Pieces (Black)/pieceBlack_single12.png",
+    "PNG/Pieces (Black)/pieceBlack_single13.png",
+    "PNG/Pieces (Black)/pieceBlack_single14.png",
+    "PNG/Pieces (Black)/pieceBlack_single15.png",
+    "PNG/Pieces (Black)/pieceBlack_single16.png",
+    "PNG/Pieces (Black)/pieceBlack_single17.png",
+    "PNG/Pieces (Black)/pieceBlack_single18.png",
+    "PNG/Pieces (Blue)/pieceBlue_border00.png",
+    "PNG/Pieces (Blue)/pieceBlue_border01.png",
+    "PNG/Pieces (Blue)/pieceBlue_border02.png",
+    "PNG/Pieces (Blue)/pieceBlue_border03.png",
+    "PNG/Pieces (Blue)/pieceBlue_border04.png",
+    "PNG/Pieces (Blue)/pieceBlue_border05.png",
+    "PNG/Pieces (Blue)/pieceBlue_border06.png",
+    "PNG/Pieces (Blue)/pieceBlue_border07.png",
+    "PNG/Pieces (Blue)/pieceBlue_border08.png",
+    "PNG/Pieces (Blue)/pieceBlue_border09.png",
+    "PNG/Pieces (Blue)/pieceBlue_border10.png",
+    "PNG/Pieces (Blue)/pieceBlue_border11.png",
+    "PNG/Pieces (Blue)/pieceBlue_border12.png",
+    "PNG/Pieces (Blue)/pieceBlue_border13.png",
+    "PNG/Pieces (Blue)/pieceBlue_border14.png",
+    "PNG/Pieces (Blue)/pieceBlue_border15.png",
+    "PNG/Pieces (Blue)/pieceBlue_border16.png",
+    "PNG/Pieces (Blue)/pieceBlue_border17.png",
+    "PNG/Pieces (Blue)/pieceBlue_border18.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi00.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi01.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi02.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi03.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi04.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi05.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi06.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi07.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi08.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi09.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi10.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi11.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi12.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi13.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi14.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi15.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi16.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi17.png",
+    "PNG/Pieces (Blue)/pieceBlue_multi18.png",
+    "PNG/Pieces (Blue)/pieceBlue_single00.png",
+    "PNG/Pieces (Blue)/pieceBlue_single01.png",
+    "PNG/Pieces (Blue)/pieceBlue_single02.png",
+    "PNG/Pieces (Blue)/pieceBlue_single03.png",
+    "PNG/Pieces (Blue)/pieceBlue_single04.png",
+    "PNG/Pieces (Blue)/pieceBlue_single05.png",
+    "PNG/Pieces (Blue)/pieceBlue_single06.png",
+    "PNG/Pieces (Blue)/pieceBlue_single07.png",
+    "PNG/Pieces (Blue)/pieceBlue_single08.png",
+    "PNG/Pieces (Blue)/pieceBlue_single09.png",
+    "PNG/Pieces (Blue)/pieceBlue_single10.png",
+    "PNG/Pieces (Blue)/pieceBlue_single11.png",
+    "PNG/Pieces (Blue)/pieceBlue_single12.png",
+    "PNG/Pieces (Blue)/pieceBlue_single13.png",
+    "PNG/Pieces (Blue)/pieceBlue_single14.png",
+    "PNG/Pieces (Blue)/pieceBlue_single15.png",
+    "PNG/Pieces (Blue)/pieceBlue_single16.png",
+    "PNG/Pieces (Blue)/pieceBlue_single17.png",
+    "PNG/Pieces (Blue)/pieceBlue_single18.png",
+    "PNG/Pieces (Green)/pieceGreen_border00.png",
+    "PNG/Pieces (Green)/pieceGreen_border01.png",
+    "PNG/Pieces (Green)/pieceGreen_border02.png",
+    "PNG/Pieces (Green)/pieceGreen_border03.png",
+    "PNG/Pieces (Green)/pieceGreen_border04.png",
+    "PNG/Pieces (Green)/pieceGreen_border05.png",
+    "PNG/Pieces (Green)/pieceGreen_border06.png",
+    "PNG/Pieces (Green)/pieceGreen_border07.png",
+    "PNG/Pieces (Green)/pieceGreen_border08.png",
+    "PNG/Pieces (Green)/pieceGreen_border09.png",
+    "PNG/Pieces (Green)/pieceGreen_border10.png",
+    "PNG/Pieces (Green)/pieceGreen_border11.png",
+    "PNG/Pieces (Green)/pieceGreen_border12.png",
+    "PNG/Pieces (Green)/pieceGreen_border13.png",
+    "PNG/Pieces (Green)/pieceGreen_border14.png",
+    "PNG/Pieces (Green)/pieceGreen_border15.png",
+    "PNG/Pieces (Green)/pieceGreen_border16.png",
+    "PNG/Pieces (Green)/pieceGreen_border17.png",
+    "PNG/Pieces (Green)/pieceGreen_border18.png",
+    "PNG/Pieces (Green)/pieceGreen_multi00.png",
+    "PNG/Pieces (Green)/pieceGreen_multi01.png",
+    "PNG/Pieces (Green)/pieceGreen_multi02.png",
+    "PNG/Pieces (Green)/pieceGreen_multi03.png",
+    "PNG/Pieces (Green)/pieceGreen_multi04.png",
+    "PNG/Pieces (Green)/pieceGreen_multi05.png",
+    "PNG/Pieces (Green)/pieceGreen_multi06.png",
+    "PNG/Pieces (Green)/pieceGreen_multi07.png",
+    "PNG/Pieces (Green)/pieceGreen_multi08.png",
+    "PNG/Pieces (Green)/pieceGreen_multi09.png",
+    "PNG/Pieces (Green)/pieceGreen_multi10.png",
+    "PNG/Pieces (Green)/pieceGreen_multi11.png",
+    "PNG/Pieces (Green)/pieceGreen_multi12.png",
+    "PNG/Pieces (Green)/pieceGreen_multi13.png",
+    "PNG/Pieces (Green)/pieceGreen_multi14.png",
+    "PNG/Pieces (Green)/pieceGreen_multi15.png",
+    "PNG/Pieces (Green)/pieceGreen_multi16.png",
+    "PNG/Pieces (Green)/pieceGreen_multi17.png",
+    "PNG/Pieces (Green)/pieceGreen_multi18.png",
+    "PNG/Pieces (Green)/pieceGreen_single00.png",
+    "PNG/Pieces (Green)/pieceGreen_single01.png",
+    "PNG/Pieces (Green)/pieceGreen_single02.png",
+    "PNG/Pieces (Green)/pieceGreen_single03.png",
+    "PNG/Pieces (Green)/pieceGreen_single04.png",
+    "PNG/Pieces (Green)/pieceGreen_single05.png",
+    "PNG/Pieces (Green)/pieceGreen_single06.png",
+    "PNG/Pieces (Green)/pieceGreen_single07.png",
+    "PNG/Pieces (Green)/pieceGreen_single08.png",
+    "PNG/Pieces (Green)/pieceGreen_single09.png",
+    "PNG/Pieces (Green)/pieceGreen_single10.png",
+    "PNG/Pieces (Green)/pieceGreen_single11.png",
+    "PNG/Pieces (Green)/pieceGreen_single12.png",
+    "PNG/Pieces (Green)/pieceGreen_single13.png",
+    "PNG/Pieces (Green)/pieceGreen_single14.png",
+    "PNG/Pieces (Green)/pieceGreen_single15.png",
+    "PNG/Pieces (Green)/pieceGreen_single16.png",
+    "PNG/Pieces (Green)/pieceGreen_single17.png",
+    "PNG/Pieces (Green)/pieceGreen_single18.png",
+    "PNG/Pieces (Purple)/piecePurple_border00.png",
+    "PNG/Pieces (Purple)/piecePurple_border01.png",
+    "PNG/Pieces (Purple)/piecePurple_border02.png",
+    "PNG/Pieces (Purple)/piecePurple_border03.png",
+    "PNG/Pieces (Purple)/piecePurple_border04.png",
+    "PNG/Pieces (Purple)/piecePurple_border05.png",
+    "PNG/Pieces (Purple)/piecePurple_border06.png",
+    "PNG/Pieces (Purple)/piecePurple_border07.png",
+    "PNG/Pieces (Purple)/piecePurple_border08.png",
+    "PNG/Pieces (Purple)/piecePurple_border09.png",
+    "PNG/Pieces (Purple)/piecePurple_border10.png",
+    "PNG/Pieces (Purple)/piecePurple_border11.png",
+    "PNG/Pieces (Purple)/piecePurple_border12.png",
+    "PNG/Pieces (Purple)/piecePurple_border13.png",
+    "PNG/Pieces (Purple)/piecePurple_border14.png",
+    "PNG/Pieces (Purple)/piecePurple_border15.png",
+    "PNG/Pieces (Purple)/piecePurple_border16.png",
+    "PNG/Pieces (Purple)/piecePurple_border17.png",
+    "PNG/Pieces (Purple)/piecePurple_border18.png",
+    "PNG/Pieces (Purple)/piecePurple_multi00.png",
+    "PNG/Pieces (Purple)/piecePurple_multi01.png",
+    "PNG/Pieces (Purple)/piecePurple_multi02.png",
+    "PNG/Pieces (Purple)/piecePurple_multi03.png",
+    "PNG/Pieces (Purple)/piecePurple_multi04.png",
+    "PNG/Pieces (Purple)/piecePurple_multi05.png",
+    "PNG/Pieces (Purple)/piecePurple_multi06.png",
+    "PNG/Pieces (Purple)/piecePurple_multi07.png",
+    "PNG/Pieces (Purple)/piecePurple_multi08.png",
+    "PNG/Pieces (Purple)/piecePurple_multi09.png",
+    "PNG/Pieces (Purple)/piecePurple_multi10.png",
+    "PNG/Pieces (Purple)/piecePurple_multi11.png",
+    "PNG/Pieces (Purple)/piecePurple_multi12.png",
+    "PNG/Pieces (Purple)/piecePurple_multi13.png",
+    "PNG/Pieces (Purple)/piecePurple_multi14.png",
+    "PNG/Pieces (Purple)/piecePurple_multi15.png",
+    "PNG/Pieces (Purple)/piecePurple_multi16.png",
+    "PNG/Pieces (Purple)/piecePurple_multi17.png",
+    "PNG/Pieces (Purple)/piecePurple_multi18.png",
+    "PNG/Pieces (Purple)/piecePurple_single00.png",
+    "PNG/Pieces (Purple)/piecePurple_single01.png",
+    "PNG/Pieces (Purple)/piecePurple_single02.png",
+    "PNG/Pieces (Purple)/piecePurple_single03.png",
+    "PNG/Pieces (Purple)/piecePurple_single04.png",
+    "PNG/Pieces (Purple)/piecePurple_single05.png",
+    "PNG/Pieces (Purple)/piecePurple_single06.png",
+    "PNG/Pieces (Purple)/piecePurple_single07.png",
+    "PNG/Pieces (Purple)/piecePurple_single08.png",
+    "PNG/Pieces (Purple)/piecePurple_single09.png",
+    "PNG/Pieces (Purple)/piecePurple_single10.png",
+    "PNG/Pieces (Purple)/piecePurple_single11.png",
+    "PNG/Pieces (Purple)/piecePurple_single12.png",
+    "PNG/Pieces (Purple)/piecePurple_single13.png",
+    "PNG/Pieces (Purple)/piecePurple_single14.png",
+    "PNG/Pieces (Purple)/piecePurple_single15.png",
+    "PNG/Pieces (Purple)/piecePurple_single16.png",
+    "PNG/Pieces (Purple)/piecePurple_single17.png",
+    "PNG/Pieces (Purple)/piecePurple_single18.png",
+    "PNG/Pieces (Red)/pieceRed_border00.png",
+    "PNG/Pieces (Red)/pieceRed_border01.png",
+    "PNG/Pieces (Red)/pieceRed_border02.png",
+    "PNG/Pieces (Red)/pieceRed_border03.png",
+    "PNG/Pieces (Red)/pieceRed_border04.png",
+    "PNG/Pieces (Red)/pieceRed_border05.png",
+    "PNG/Pieces (Red)/pieceRed_border06.png",
+    "PNG/Pieces (Red)/pieceRed_border07.png",
+    "PNG/Pieces (Red)/pieceRed_border08.png",
+    "PNG/Pieces (Red)/pieceRed_border09.png",
+    "PNG/Pieces (Red)/pieceRed_border10.png",
+    "PNG/Pieces (Red)/pieceRed_border11.png",
+    "PNG/Pieces (Red)/pieceRed_border12.png",
+    "PNG/Pieces (Red)/pieceRed_border13.png",
+    "PNG/Pieces (Red)/pieceRed_border14.png",
+    "PNG/Pieces (Red)/pieceRed_border15.png",
+    "PNG/Pieces (Red)/pieceRed_border16.png",
+    "PNG/Pieces (Red)/pieceRed_border17.png",
+    "PNG/Pieces (Red)/pieceRed_border18.png",
+    "PNG/Pieces (Red)/pieceRed_multi00.png",
+    "PNG/Pieces (Red)/pieceRed_multi01.png",
+    "PNG/Pieces (Red)/pieceRed_multi02.png",
+    "PNG/Pieces (Red)/pieceRed_multi03.png",
+    "PNG/Pieces (Red)/pieceRed_multi04.png",
+    "PNG/Pieces (Red)/pieceRed_multi05.png",
+    "PNG/Pieces (Red)/pieceRed_multi06.png",
+    "PNG/Pieces (Red)/pieceRed_multi07.png",
+    "PNG/Pieces (Red)/pieceRed_multi08.png",
+    "PNG/Pieces (Red)/pieceRed_multi09.png",
+    "PNG/Pieces (Red)/pieceRed_multi10.png",
+    "PNG/Pieces (Red)/pieceRed_multi11.png",
+    "PNG/Pieces (Red)/pieceRed_multi12.png",
+    "PNG/Pieces (Red)/pieceRed_multi13.png",
+    "PNG/Pieces (Red)/pieceRed_multi14.png",
+    "PNG/Pieces (Red)/pieceRed_multi15.png",
+    "PNG/Pieces (Red)/pieceRed_multi16.png",
+    "PNG/Pieces (Red)/pieceRed_multi17.png",
+    "PNG/Pieces (Red)/pieceRed_multi18.png",
+    "PNG/Pieces (Red)/pieceRed_single00.png",
+    "PNG/Pieces (Red)/pieceRed_single01.png",
+    "PNG/Pieces (Red)/pieceRed_single02.png",
+    "PNG/Pieces (Red)/pieceRed_single03.png",
+    "PNG/Pieces (Red)/pieceRed_single04.png",
+    "PNG/Pieces (Red)/pieceRed_single05.png",
+    "PNG/Pieces (Red)/pieceRed_single06.png",
+    "PNG/Pieces (Red)/pieceRed_single07.png",
+    "PNG/Pieces (Red)/pieceRed_single08.png",
+    "PNG/Pieces (Red)/pieceRed_single09.png",
+    "PNG/Pieces (Red)/pieceRed_single10.png",
+    "PNG/Pieces (Red)/pieceRed_single11.png",
+    "PNG/Pieces (Red)/pieceRed_single12.png",
+    "PNG/Pieces (Red)/pieceRed_single13.png",
+    "PNG/Pieces (Red)/pieceRed_single14.png",
+    "PNG/Pieces (Red)/pieceRed_single15.png",
+    "PNG/Pieces (Red)/pieceRed_single16.png",
+    "PNG/Pieces (Red)/pieceRed_single17.png",
+    "PNG/Pieces (Red)/pieceRed_single18.png",
+    "PNG/Pieces (White)/pieceWhite_border00.png",
+    "PNG/Pieces (White)/pieceWhite_border01.png",
+    "PNG/Pieces (White)/pieceWhite_border02.png",
+    "PNG/Pieces (White)/pieceWhite_border03.png",
+    "PNG/Pieces (White)/pieceWhite_border04.png",
+    "PNG/Pieces (White)/pieceWhite_border05.png",
+    "PNG/Pieces (White)/pieceWhite_border06.png",
+    "PNG/Pieces (White)/pieceWhite_border07.png",
+    "PNG/Pieces (White)/pieceWhite_border08.png",
+    "PNG/Pieces (White)/pieceWhite_border09.png",
+    "PNG/Pieces (White)/pieceWhite_border10.png",
+    "PNG/Pieces (White)/pieceWhite_border11.png",
+    "PNG/Pieces (White)/pieceWhite_border12.png",
+    "PNG/Pieces (White)/pieceWhite_border13.png",
+    "PNG/Pieces (White)/pieceWhite_border14.png",
+    "PNG/Pieces (White)/pieceWhite_border15.png",
+    "PNG/Pieces (White)/pieceWhite_border16.png",
+    "PNG/Pieces (White)/pieceWhite_border17.png",
+    "PNG/Pieces (White)/pieceWhite_border18.png",
+    "PNG/Pieces (White)/pieceWhite_multi00.png",
+    "PNG/Pieces (White)/pieceWhite_multi01.png",
+    "PNG/Pieces (White)/pieceWhite_multi02.png",
+    "PNG/Pieces (White)/pieceWhite_multi03.png",
+    "PNG/Pieces (White)/pieceWhite_multi04.png",
+    "PNG/Pieces (White)/pieceWhite_multi05.png",
+    "PNG/Pieces (White)/pieceWhite_multi06.png",
+    "PNG/Pieces (White)/pieceWhite_multi07.png",
+    "PNG/Pieces (White)/pieceWhite_multi08.png",
+    "PNG/Pieces (White)/pieceWhite_multi09.png",
+    "PNG/Pieces (White)/pieceWhite_multi10.png",
+    "PNG/Pieces (White)/pieceWhite_multi11.png",
+    "PNG/Pieces (White)/pieceWhite_multi12.png",
+    "PNG/Pieces (White)/pieceWhite_multi13.png",
+    "PNG/Pieces (White)/pieceWhite_multi14.png",
+    "PNG/Pieces (White)/pieceWhite_multi15.png",
+    "PNG/Pieces (White)/pieceWhite_multi16.png",
+    "PNG/Pieces (White)/pieceWhite_multi17.png",
+    "PNG/Pieces (White)/pieceWhite_multi18.png",
+    "PNG/Pieces (White)/pieceWhite_single00.png",
+    "PNG/Pieces (White)/pieceWhite_single01.png",
+    "PNG/Pieces (White)/pieceWhite_single02.png",
+    "PNG/Pieces (White)/pieceWhite_single03.png",
+    "PNG/Pieces (White)/pieceWhite_single04.png",
+    "PNG/Pieces (White)/pieceWhite_single05.png",
+    "PNG/Pieces (White)/pieceWhite_single06.png",
+    "PNG/Pieces (White)/pieceWhite_single07.png",
+    "PNG/Pieces (White)/pieceWhite_single08.png",
+    "PNG/Pieces (White)/pieceWhite_single09.png",
+    "PNG/Pieces (White)/pieceWhite_single10.png",
+    "PNG/Pieces (White)/pieceWhite_single11.png",
+    "PNG/Pieces (White)/pieceWhite_single12.png",
+    "PNG/Pieces (White)/pieceWhite_single13.png",
+    "PNG/Pieces (White)/pieceWhite_single14.png",
+    "PNG/Pieces (White)/pieceWhite_single15.png",
+    "PNG/Pieces (White)/pieceWhite_single16.png",
+    "PNG/Pieces (White)/pieceWhite_single17.png",
+    "PNG/Pieces (White)/pieceWhite_single18.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border00.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border01.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border02.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border03.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border04.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border05.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border06.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border07.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border08.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border09.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border10.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border11.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border12.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border13.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border14.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border15.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border16.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border17.png",
+    "PNG/Pieces (Yellow)/pieceYellow_border18.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi00.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi01.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi02.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi03.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi04.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi05.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi06.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi07.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi08.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi09.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi10.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi11.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi12.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi13.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi14.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi15.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi16.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi17.png",
+    "PNG/Pieces (Yellow)/pieceYellow_multi18.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single00.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single01.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single02.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single03.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single04.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single05.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single06.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single07.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single08.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single09.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single10.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single11.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single12.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single13.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single14.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single15.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single16.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single17.png",
+    "PNG/Pieces (Yellow)/pieceYellow_single18.png",
+    "Spritesheets/chips.png",
+    "Spritesheets/diceRed.png",
+    "Spritesheets/diceRed_border.png",
+    "Spritesheets/diceWhite.png",
+    "Spritesheets/diceWhite_border.png",
+    "Spritesheets/piecesBlack.png",
+    "Spritesheets/piecesBlue.png",
+    "Spritesheets/piecesGreen.png",
+    "Spritesheets/piecesPurple.png",
+    "Spritesheets/piecesRed.png",
+    "Spritesheets/piecesWhite.png",
+    "Spritesheets/piecesYellow.png",
+    "Spritesheets/playingCardBacks.png",
+    "Spritesheets/playingCards.png",
+    "preview.png"
+   ],
+   "files_total": 546,
+   "grade": "B",
+   "grade_note": "Good CC0 pack, generic look.",
+   "kind": "images",
+   "license": "CC0",
+   "note": "PNG cards (fronts and backs), chips, dice (white/red, with borders) and pieces in 7 colours; Spritesheets/ has packed sheets + XML.",
+   "source": "https://kenney.nl/assets/boardgame-pack",
+   "use": "anywhere"
+  },
+  "kenney-casino-audio": {
+   "bytes": 530915,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "sounds/kenney-casino",
+   "files": [
+    "card-fan-1.ogg",
+    "card-fan-2.ogg",
+    "card-place-1.ogg",
+    "card-place-2.ogg",
+    "card-place-3.ogg",
+    "card-place-4.ogg",
+    "card-shove-1.ogg",
+    "card-shove-2.ogg",
+    "card-shove-3.ogg",
+    "card-shove-4.ogg",
+    "card-shuffle.ogg",
+    "card-slide-1.ogg",
+    "card-slide-2.ogg",
+    "card-slide-3.ogg",
+    "card-slide-4.ogg",
+    "card-slide-5.ogg",
+    "card-slide-6.ogg",
+    "card-slide-7.ogg",
+    "card-slide-8.ogg",
+    "cards-pack-open-1.ogg",
+    "cards-pack-open-2.ogg",
+    "cards-pack-take-out-1.ogg",
+    "cards-pack-take-out-2.ogg",
+    "chip-lay-1.ogg",
+    "chip-lay-2.ogg",
+    "chip-lay-3.ogg",
+    "chips-collide-1.ogg",
+    "chips-collide-2.ogg",
+    "chips-collide-3.ogg",
+    "chips-collide-4.ogg",
+    "chips-handle-1.ogg",
+    "chips-handle-2.ogg",
+    "chips-handle-3.ogg",
+    "chips-handle-4.ogg",
+    "chips-handle-5.ogg",
+    "chips-handle-6.ogg",
+    "chips-stack-1.ogg",
+    "chips-stack-2.ogg",
+    "chips-stack-3.ogg",
+    "chips-stack-4.ogg",
+    "chips-stack-5.ogg",
+    "chips-stack-6.ogg",
+    "dice-grab-1.ogg",
+    "dice-grab-2.ogg",
+    "dice-shake-1.ogg",
+    "dice-shake-2.ogg",
+    "dice-shake-3.ogg",
+    "dice-throw-1.ogg",
+    "dice-throw-2.ogg",
+    "dice-throw-3.ogg",
+    "die-throw-1.ogg",
+    "die-throw-2.ogg",
+    "die-throw-3.ogg",
+    "die-throw-4.ogg"
+   ],
+   "files_total": 55,
+   "grade": "B",
+   "grade_note": "Good CC0 pack; late starts trimmed.",
+   "kind": "sfx",
+   "license": "CC0",
+   "note": "Cards (place, slide, shuffle, fan), dice (shake, throw, grab) and chips (stack, collide, handle).",
+   "source": "https://kenney.nl/assets/casino-audio",
+   "use": "anywhere"
+  },
+  "kenney-digital-audio": {
+   "bytes": 476849,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "sounds/kenney-digital",
+   "files": [
+    "highDown.ogg",
+    "highUp.ogg",
+    "laser1.ogg",
+    "laser2.ogg",
+    "laser3.ogg",
+    "laser4.ogg",
+    "laser5.ogg",
+    "laser6.ogg",
+    "laser7.ogg",
+    "laser8.ogg",
+    "laser9.ogg",
+    "lowDown.ogg",
+    "lowRandom.ogg",
+    "lowThreeTone.ogg",
+    "pepSound1.ogg",
+    "pepSound2.ogg",
+    "pepSound3.ogg",
+    "pepSound4.ogg",
+    "pepSound5.ogg",
+    "phaseJump1.ogg",
+    "phaseJump2.ogg",
+    "phaseJump3.ogg",
+    "phaseJump4.ogg",
+    "phaseJump5.ogg",
+    "phaserDown1.ogg",
+    "phaserDown2.ogg",
+    "phaserDown3.ogg",
+    "phaserUp1.ogg",
+    "phaserUp2.ogg",
+    "phaserUp3.ogg",
+    "phaserUp4.ogg",
+    "phaserUp5.ogg",
+    "phaserUp6.ogg",
+    "phaserUp7.ogg",
+    "powerUp1.ogg",
+    "powerUp10.ogg",
+    "powerUp11.ogg",
+    "powerUp12.ogg",
+    "powerUp2.ogg",
+    "powerUp3.ogg",
+    "powerUp4.ogg",
+    "powerUp5.ogg",
+    "powerUp6.ogg",
+    "powerUp7.ogg",
+    "powerUp8.ogg",
+    "powerUp9.ogg",
+    "spaceTrash1.ogg",
+    "spaceTrash2.ogg",
+    "spaceTrash3.ogg",
+    "spaceTrash4.ogg",
+    "spaceTrash5.ogg",
+    "threeTone1.ogg",
+    "threeTone2.ogg",
+    "tone1.ogg",
+    "twoTone1.ogg",
+    "twoTone2.ogg",
+    "zap1.ogg",
+    "zap2.ogg",
+    "zapThreeToneDown.ogg",
+    "zapThreeToneUp.ogg",
+    "zapTwoTone.ogg",
+    "zapTwoTone2.ogg"
+   ],
+   "files_total": 63,
+   "grade": "B",
+   "grade_note": "Good CC0 pack; late starts trimmed.",
+   "kind": "sfx",
+   "license": "CC0",
+   "note": "Retro / 8-bit style effects: lasers, power-ups, zaps, phase jumps, tones.",
+   "source": "https://kenney.nl/assets/digital-audio",
+   "use": "anywhere"
+  },
+  "kenney-impact-sounds": {
+   "bytes": 1034904,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "sounds/kenney-impact",
+   "files": [
+    "footstep_carpet_000.ogg",
+    "footstep_carpet_001.ogg",
+    "footstep_carpet_002.ogg",
+    "footstep_carpet_003.ogg",
+    "footstep_carpet_004.ogg",
+    "footstep_concrete_000.ogg",
+    "footstep_concrete_001.ogg",
+    "footstep_concrete_002.ogg",
+    "footstep_concrete_003.ogg",
+    "footstep_concrete_004.ogg",
+    "footstep_grass_000.ogg",
+    "footstep_grass_001.ogg",
+    "footstep_grass_002.ogg",
+    "footstep_grass_003.ogg",
+    "footstep_grass_004.ogg",
+    "footstep_snow_000.ogg",
+    "footstep_snow_001.ogg",
+    "footstep_snow_002.ogg",
+    "footstep_snow_003.ogg",
+    "footstep_snow_004.ogg",
+    "footstep_wood_000.ogg",
+    "footstep_wood_001.ogg",
+    "footstep_wood_002.ogg",
+    "footstep_wood_003.ogg",
+    "footstep_wood_004.ogg",
+    "impactBell_heavy_000.ogg",
+    "impactBell_heavy_001.ogg",
+    "impactBell_heavy_002.ogg",
+    "impactBell_heavy_003.ogg",
+    "impactBell_heavy_004.ogg",
+    "impactGeneric_light_000.ogg",
+    "impactGeneric_light_001.ogg",
+    "impactGeneric_light_002.ogg",
+    "impactGeneric_light_003.ogg",
+    "impactGeneric_light_004.ogg",
+    "impactGlass_heavy_000.ogg",
+    "impactGlass_heavy_001.ogg",
+    "impactGlass_heavy_002.ogg",
+    "impactGlass_heavy_003.ogg",
+    "impactGlass_heavy_004.ogg",
+    "impactGlass_light_000.ogg",
+    "impactGlass_light_001.ogg",
+    "impactGlass_light_002.ogg",
+    "impactGlass_light_003.ogg",
+    "impactGlass_light_004.ogg",
+    "impactGlass_medium_000.ogg",
+    "impactGlass_medium_001.ogg",
+    "impactGlass_medium_002.ogg",
+    "impactGlass_medium_003.ogg",
+    "impactGlass_medium_004.ogg",
+    "impactMetal_heavy_000.ogg",
+    "impactMetal_heavy_001.ogg",
+    "impactMetal_heavy_002.ogg",
+    "impactMetal_heavy_003.ogg",
+    "impactMetal_heavy_004.ogg",
+    "impactMetal_light_000.ogg",
+    "impactMetal_light_001.ogg",
+    "impactMetal_light_002.ogg",
+    "impactMetal_light_003.ogg",
+    "impactMetal_light_004.ogg",
+    "impactMetal_medium_000.ogg",
+    "impactMetal_medium_001.ogg",
+    "impactMetal_medium_002.ogg",
+    "impactMetal_medium_003.ogg",
+    "impactMetal_medium_004.ogg",
+    "impactMining_000.ogg",
+    "impactMining_001.ogg",
+    "impactMining_002.ogg",
+    "impactMining_003.ogg",
+    "impactMining_004.ogg",
+    "impactPlank_medium_000.ogg",
+    "impactPlank_medium_001.ogg",
+    "impactPlank_medium_002.ogg",
+    "impactPlank_medium_003.ogg",
+    "impactPlank_medium_004.ogg",
+    "impactPlate_heavy_000.ogg",
+    "impactPlate_heavy_001.ogg",
+    "impactPlate_heavy_002.ogg",
+    "impactPlate_heavy_003.ogg",
+    "impactPlate_heavy_004.ogg",
+    "impactPlate_light_000.ogg",
+    "impactPlate_light_001.ogg",
+    "impactPlate_light_002.ogg",
+    "impactPlate_light_003.ogg",
+    "impactPlate_light_004.ogg",
+    "impactPlate_medium_000.ogg",
+    "impactPlate_medium_001.ogg",
+    "impactPlate_medium_002.ogg",
+    "impactPlate_medium_003.ogg",
+    "impactPlate_medium_004.ogg",
+    "impactPunch_heavy_000.ogg",
+    "impactPunch_heavy_001.ogg",
+    "impactPunch_heavy_002.ogg",
+    "impactPunch_heavy_003.ogg",
+    "impactPunch_heavy_004.ogg",
+    "impactPunch_medium_000.ogg",
+    "impactPunch_medium_001.ogg",
+    "impactPunch_medium_002.ogg",
+    "impactPunch_medium_003.ogg",
+    "impactPunch_medium_004.ogg",
+    "impactSoft_heavy_000.ogg",
+    "impactSoft_heavy_001.ogg",
+    "impactSoft_heavy_002.ogg",
+    "impactSoft_heavy_003.ogg",
+    "impactSoft_heavy_004.ogg",
+    "impactSoft_medium_000.ogg",
+    "impactSoft_medium_001.ogg",
+    "impactSoft_medium_002.ogg",
+    "impactSoft_medium_003.ogg",
+    "impactSoft_medium_004.ogg",
+    "impactTin_medium_000.ogg",
+    "impactTin_medium_001.ogg",
+    "impactTin_medium_002.ogg",
+    "impactTin_medium_003.ogg",
+    "impactTin_medium_004.ogg",
+    "impactWood_heavy_000.ogg",
+    "impactWood_heavy_001.ogg",
+    "impactWood_heavy_002.ogg",
+    "impactWood_heavy_003.ogg",
+    "impactWood_heavy_004.ogg",
+    "impactWood_light_000.ogg",
+    "impactWood_light_001.ogg",
+    "impactWood_light_002.ogg",
+    "impactWood_light_003.ogg",
+    "impactWood_light_004.ogg",
+    "impactWood_medium_000.ogg",
+    "impactWood_medium_001.ogg",
+    "impactWood_medium_002.ogg",
+    "impactWood_medium_003.ogg",
+    "impactWood_medium_004.ogg"
+   ],
+   "files_total": 131,
+   "grade": "B",
+   "grade_note": "Good CC0 pack; late starts trimmed.",
+   "kind": "sfx",
+   "license": "CC0",
+   "source": "https://kenney.nl/assets/impact-sounds",
+   "use": "anywhere"
+  },
+  "kenney-interface-sounds": {
+   "bytes": 961173,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "sounds/kenney-interface",
+   "files": [
+    "back_001.ogg",
+    "back_002.ogg",
+    "back_003.ogg",
+    "back_004.ogg",
+    "bong_001.ogg",
+    "click_001.ogg",
+    "click_002.ogg",
+    "click_003.ogg",
+    "click_004.ogg",
+    "click_005.ogg",
+    "close_001.ogg",
+    "close_002.ogg",
+    "close_003.ogg",
+    "close_004.ogg",
+    "confirmation_001.ogg",
+    "confirmation_002.ogg",
+    "confirmation_003.ogg",
+    "confirmation_004.ogg",
+    "drop_001.ogg",
+    "drop_002.ogg",
+    "drop_003.ogg",
+    "drop_004.ogg",
+    "error_001.ogg",
+    "error_002.ogg",
+    "error_003.ogg",
+    "error_004.ogg",
+    "error_005.ogg",
+    "error_006.ogg",
+    "error_007.ogg",
+    "error_008.ogg",
+    "glass_001.ogg",
+    "glass_002.ogg",
+    "glass_003.ogg",
+    "glass_004.ogg",
+    "glass_005.ogg",
+    "glass_006.ogg",
+    "glitch_001.ogg",
+    "glitch_002.ogg",
+    "glitch_003.ogg",
+    "glitch_004.ogg",
+    "maximize_001.ogg",
+    "maximize_002.ogg",
+    "maximize_003.ogg",
+    "maximize_004.ogg",
+    "maximize_005.ogg",
+    "maximize_006.ogg",
+    "maximize_007.ogg",
+    "maximize_008.ogg",
+    "maximize_009.ogg",
+    "minimize_001.ogg",
+    "minimize_002.ogg",
+    "minimize_003.ogg",
+    "minimize_004.ogg",
+    "minimize_005.ogg",
+    "minimize_006.ogg",
+    "minimize_007.ogg",
+    "minimize_008.ogg",
+    "minimize_009.ogg",
+    "open_001.ogg",
+    "open_002.ogg",
+    "open_003.ogg",
+    "open_004.ogg",
+    "pluck_001.ogg",
+    "pluck_002.ogg",
+    "question_001.ogg",
+    "question_002.ogg",
+    "question_003.ogg",
+    "question_004.ogg",
+    "scratch_001.ogg",
+    "scratch_002.ogg",
+    "scratch_003.ogg",
+    "scratch_004.ogg",
+    "scratch_005.ogg",
+    "scroll_001.ogg",
+    "scroll_002.ogg",
+    "scroll_003.ogg",
+    "scroll_004.ogg",
+    "scroll_005.ogg",
+    "select_001.ogg",
+    "select_002.ogg",
+    "select_003.ogg",
+    "select_004.ogg",
+    "select_005.ogg",
+    "select_006.ogg",
+    "select_007.ogg",
+    "select_008.ogg",
+    "switch_001.ogg",
+    "switch_002.ogg",
+    "switch_003.ogg",
+    "switch_004.ogg",
+    "switch_005.ogg",
+    "switch_006.ogg",
+    "switch_007.ogg",
+    "tick_001.ogg",
+    "tick_002.ogg",
+    "tick_004.ogg",
+    "toggle_001.ogg",
+    "toggle_002.ogg",
+    "toggle_003.ogg",
+    "toggle_004.ogg"
+   ],
+   "files_total": 101,
+   "grade": "B",
+   "grade_note": "Good CC0 pack; late starts trimmed.",
+   "kind": "sfx",
+   "license": "CC0",
+   "note": "100 UI sounds: clicks, toggles, confirmations, errors, scrolls.",
+   "source": "https://kenney.nl/assets/interface-sounds",
+   "use": "anywhere"
+  },
+  "kenney-music-jingles": {
+   "bytes": 1277878,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "sounds/kenney-jingles",
+   "files": [
+    "8-Bit jingles/jingles_NES00.ogg",
+    "8-Bit jingles/jingles_NES01.ogg",
+    "8-Bit jingles/jingles_NES02.ogg",
+    "8-Bit jingles/jingles_NES03.ogg",
+    "8-Bit jingles/jingles_NES04.ogg",
+    "8-Bit jingles/jingles_NES05.ogg",
+    "8-Bit jingles/jingles_NES06.ogg",
+    "8-Bit jingles/jingles_NES07.ogg",
+    "8-Bit jingles/jingles_NES08.ogg",
+    "8-Bit jingles/jingles_NES09.ogg",
+    "8-Bit jingles/jingles_NES10.ogg",
+    "8-Bit jingles/jingles_NES11.ogg",
+    "8-Bit jingles/jingles_NES12.ogg",
+    "8-Bit jingles/jingles_NES13.ogg",
+    "8-Bit jingles/jingles_NES14.ogg",
+    "8-Bit jingles/jingles_NES15.ogg",
+    "8-Bit jingles/jingles_NES16.ogg",
+    "Hit jingles/jingles_HIT00.ogg",
+    "Hit jingles/jingles_HIT01.ogg",
+    "Hit jingles/jingles_HIT02.ogg",
+    "Hit jingles/jingles_HIT03.ogg",
+    "Hit jingles/jingles_HIT04.ogg",
+    "Hit jingles/jingles_HIT05.ogg",
+    "Hit jingles/jingles_HIT06.ogg",
+    "Hit jingles/jingles_HIT07.ogg",
+    "Hit jingles/jingles_HIT08.ogg",
+    "Hit jingles/jingles_HIT09.ogg",
+    "Hit jingles/jingles_HIT10.ogg",
+    "Hit jingles/jingles_HIT11.ogg",
+    "Hit jingles/jingles_HIT12.ogg",
+    "Hit jingles/jingles_HIT13.ogg",
+    "Hit jingles/jingles_HIT14.ogg",
+    "Hit jingles/jingles_HIT15.ogg",
+    "Hit jingles/jingles_HIT16.ogg",
+    "Pizzicato jingles/jingles_PIZZI00.ogg",
+    "Pizzicato jingles/jingles_PIZZI01.ogg",
+    "Pizzicato jingles/jingles_PIZZI02.ogg",
+    "Pizzicato jingles/jingles_PIZZI03.ogg",
+    "Pizzicato jingles/jingles_PIZZI04.ogg",
+    "Pizzicato jingles/jingles_PIZZI05.ogg",
+    "Pizzicato jingles/jingles_PIZZI06.ogg",
+    "Pizzicato jingles/jingles_PIZZI07.ogg",
+    "Pizzicato jingles/jingles_PIZZI08.ogg",
+    "Pizzicato jingles/jingles_PIZZI09.ogg",
+    "Pizzicato jingles/jingles_PIZZI10.ogg",
+    "Pizzicato jingles/jingles_PIZZI11.ogg",
+    "Pizzicato jingles/jingles_PIZZI12.ogg",
+    "Pizzicato jingles/jingles_PIZZI13.ogg",
+    "Pizzicato jingles/jingles_PIZZI14.ogg",
+    "Pizzicato jingles/jingles_PIZZI15.ogg",
+    "Pizzicato jingles/jingles_PIZZI16.ogg",
+    "Sax jingles/jingles_SAX00.ogg",
+    "Sax jingles/jingles_SAX01.ogg",
+    "Sax jingles/jingles_SAX02.ogg",
+    "Sax jingles/jingles_SAX03.ogg",
+    "Sax jingles/jingles_SAX04.ogg",
+    "Sax jingles/jingles_SAX05.ogg",
+    "Sax jingles/jingles_SAX06.ogg",
+    "Sax jingles/jingles_SAX07.ogg",
+    "Sax jingles/jingles_SAX08.ogg",
+    "Sax jingles/jingles_SAX09.ogg",
+    "Sax jingles/jingles_SAX10.ogg",
+    "Sax jingles/jingles_SAX11.ogg",
+    "Sax jingles/jingles_SAX12.ogg",
+    "Sax jingles/jingles_SAX13.ogg",
+    "Sax jingles/jingles_SAX14.ogg",
+    "Sax jingles/jingles_SAX15.ogg",
+    "Sax jingles/jingles_SAX16.ogg",
+    "Steel jingles/jingles_STEEL00.ogg",
+    "Steel jingles/jingles_STEEL01.ogg",
+    "Steel jingles/jingles_STEEL02.ogg",
+    "Steel jingles/jingles_STEEL03.ogg",
+    "Steel jingles/jingles_STEEL04.ogg",
+    "Steel jingles/jingles_STEEL05.ogg",
+    "Steel jingles/jingles_STEEL06.ogg",
+    "Steel jingles/jingles_STEEL07.ogg",
+    "Steel jingles/jingles_STEEL08.ogg",
+    "Steel jingles/jingles_STEEL09.ogg",
+    "Steel jingles/jingles_STEEL10.ogg",
+    "Steel jingles/jingles_STEEL11.ogg",
+    "Steel jingles/jingles_STEEL12.ogg",
+    "Steel jingles/jingles_STEEL13.ogg",
+    "Steel jingles/jingles_STEEL14.ogg",
+    "Steel jingles/jingles_STEEL15.ogg",
+    "Steel jingles/jingles_STEEL16.ogg"
+   ],
+   "files_total": 86,
+   "grade": "B",
+   "grade_note": "Good CC0 pack; late starts trimmed.",
+   "kind": "sfx",
+   "license": "CC0",
+   "note": "Short stings for win/lose/level-up in five styles: 8-Bit, Hit, Pizzicato, Sax, Steel.",
+   "source": "https://kenney.nl/assets/music-jingles",
+   "use": "anywhere"
+  },
+  "kenney-pixel-ui": {
+   "bytes": 184148,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "ui/kenney-pixel-ui-pack",
+   "files": [
+    "9-Slice/Ancient/brown.png",
+    "9-Slice/Ancient/brown_inlay.png",
+    "9-Slice/Ancient/brown_pressed.png",
+    "9-Slice/Ancient/grey.png",
+    "9-Slice/Ancient/grey_inlay.png",
+    "9-Slice/Ancient/grey_pressed.png",
+    "9-Slice/Ancient/tan.png",
+    "9-Slice/Ancient/tan_inlay.png",
+    "9-Slice/Ancient/tan_pressed.png",
+    "9-Slice/Ancient/white.png",
+    "9-Slice/Ancient/white_inlay.png",
+    "9-Slice/Ancient/white_pressed.png",
+    "9-Slice/Colored/blue.png",
+    "9-Slice/Colored/blue_pressed.png",
+    "9-Slice/Colored/green.png",
+    "9-Slice/Colored/green_pressed.png",
+    "9-Slice/Colored/grey.png",
+    "9-Slice/Colored/grey_pressed.png",
+    "9-Slice/Colored/red.png",
+    "9-Slice/Colored/red_pressed.png",
+    "9-Slice/Colored/yellow.png",
+    "9-Slice/Colored/yellow_pressed.png",
+    "9-Slice/Outline/blue.png",
+    "9-Slice/Outline/blue_pressed.png",
+    "9-Slice/Outline/green.png",
+    "9-Slice/Outline/green_pressed.png",
+    "9-Slice/Outline/red.png",
+    "9-Slice/Outline/red_pressed.png",
+    "9-Slice/Outline/yellow.png",
+    "9-Slice/Outline/yellow_pressed.png",
+    "9-Slice/list.png",
+    "9-Slice/space.png",
+    "9-Slice/space_inlay.png",
+    "Preview.png",
+    "Spritesheet/UIpackSheet_magenta.png",
+    "Spritesheet/UIpackSheet_transparent.png"
+   ],
+   "files_total": 38,
+   "grade": "B",
+   "grade_note": "Good CC0 pack, generic look.",
+   "kind": "ui",
+   "license": "CC0",
+   "note": "9-slice panels/buttons (Ancient, Colored, Outline) + a spritesheet.",
+   "source": "https://kenney.nl/assets/pixel-ui-pack",
+   "use": "anywhere"
+  },
+  "kenney-rpg-audio": {
+   "bytes": 727997,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "sounds/kenney-rpg",
+   "files": [
+    "beltHandle1.ogg",
+    "beltHandle2.ogg",
+    "bookClose.ogg",
+    "bookFlip1.ogg",
+    "bookFlip2.ogg",
+    "bookFlip3.ogg",
+    "bookOpen.ogg",
+    "bookPlace1.ogg",
+    "bookPlace2.ogg",
+    "bookPlace3.ogg",
+    "chop.ogg",
+    "cloth1.ogg",
+    "cloth2.ogg",
+    "cloth3.ogg",
+    "cloth4.ogg",
+    "clothBelt.ogg",
+    "clothBelt2.ogg",
+    "creak1.ogg",
+    "creak2.ogg",
+    "creak3.ogg",
+    "doorClose_1.ogg",
+    "doorClose_2.ogg",
+    "doorClose_3.ogg",
+    "doorClose_4.ogg",
+    "doorOpen_1.ogg",
+    "doorOpen_2.ogg",
+    "drawKnife1.ogg",
+    "drawKnife2.ogg",
+    "drawKnife3.ogg",
+    "dropLeather.ogg",
+    "footstep00.ogg",
+    "footstep01.ogg",
+    "footstep02.ogg",
+    "footstep03.ogg",
+    "footstep04.ogg",
+    "footstep05.ogg",
+    "footstep06.ogg",
+    "footstep07.ogg",
+    "footstep08.ogg",
+    "footstep09.ogg",
+    "handleCoins.ogg",
+    "handleCoins2.ogg",
+    "handleSmallLeather.ogg",
+    "handleSmallLeather2.ogg",
+    "knifeSlice.ogg",
+    "knifeSlice2.ogg",
+    "metalClick.ogg",
+    "metalLatch.ogg",
+    "metalPot1.ogg",
+    "metalPot2.ogg",
+    "metalPot3.ogg"
+   ],
+   "files_total": 52,
+   "grade": "B",
+   "grade_note": "Good; peaks at 0 dBFS.",
+   "kind": "sfx",
+   "license": "CC0",
+   "source": "https://kenney.nl/assets/rpg-audio",
+   "use": "anywhere"
+  },
+  "kenney-tiny-battle": {
+   "bytes": 41370,
+   "cols": 18,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "pixel/kenney-tiny-battle",
+   "files_total": 5,
+   "grade": "B",
+   "grade_note": "Good CC0 pack, generic look.",
+   "image": "tilemap_packed.png",
+   "kind": "tilesheet",
+   "license": "CC0",
+   "margin": 0,
+   "note": "Units, tiles, banners, towers.",
+   "rows": 11,
+   "size": [
+    288,
+    176
+   ],
+   "source": "https://kenney.nl/assets/tiny-battle",
+   "tile": 16,
+   "unpackedImage": "tilemap.png",
+   "use": "anywhere"
+  },
+  "kenney-tiny-dungeon": {
+   "bytes": 29188,
+   "cols": 12,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "pixel/kenney-tiny-dungeon",
+   "files_total": 5,
+   "grade": "B",
+   "grade_note": "Good CC0 pack, generic look.",
+   "image": "tilemap_packed.png",
+   "kind": "tilesheet",
+   "license": "CC0",
+   "margin": 0,
+   "note": "Heroes, monsters, dungeon tiles, items.",
+   "rows": 11,
+   "size": [
+    192,
+    176
+   ],
+   "source": "https://kenney.nl/assets/tiny-dungeon",
+   "tile": 16,
+   "unpackedImage": "tilemap.png",
+   "use": "anywhere"
+  },
+  "kenney-tiny-town": {
+   "bytes": 28884,
+   "cols": 12,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "pixel/kenney-tiny-town",
+   "files_total": 5,
+   "grade": "B",
+   "grade_note": "Good CC0 pack, generic look.",
+   "image": "tilemap_packed.png",
+   "kind": "tilesheet",
+   "license": "CC0",
+   "margin": 0,
+   "note": "Buildings, trees, terrain, props.",
+   "rows": 11,
+   "size": [
+    192,
+    176
+   ],
+   "source": "https://kenney.nl/assets/tiny-town",
+   "tile": 16,
+   "unpackedImage": "tilemap.png",
+   "use": "anywhere"
+  },
+  "kenney-ui-audio": {
+   "bytes": 316194,
+   "credit": "Kenney (kenney.nl)",
+   "dir": "sounds/kenney-ui",
+   "files": [
+    "click1.ogg",
+    "click2.ogg",
+    "click3.ogg",
+    "click4.ogg",
+    "click5.ogg",
+    "mouseclick1.ogg",
+    "mouserelease1.ogg",
+    "rollover1.ogg",
+    "rollover2.ogg",
+    "rollover3.ogg",
+    "rollover4.ogg",
+    "rollover5.ogg",
+    "rollover6.ogg",
+    "switch1.ogg",
+    "switch10.ogg",
+    "switch11.ogg",
+    "switch12.ogg",
+    "switch13.ogg",
+    "switch14.ogg",
+    "switch15.ogg",
+    "switch16.ogg",
+    "switch17.ogg",
+    "switch18.ogg",
+    "switch19.ogg",
+    "switch2.ogg",
+    "switch20.ogg",
+    "switch21.ogg",
+    "switch22.ogg",
+    "switch23.ogg",
+    "switch24.ogg",
+    "switch25.ogg",
+    "switch26.ogg",
+    "switch27.ogg",
+    "switch28.ogg",
+    "switch29.ogg",
+    "switch3.ogg",
+    "switch30.ogg",
+    "switch31.ogg",
+    "switch32.ogg",
+    "switch33.ogg",
+    "switch34.ogg",
+    "switch35.ogg",
+    "switch36.ogg",
+    "switch37.ogg",
+    "switch38.ogg",
+    "switch4.ogg",
+    "switch5.ogg",
+    "switch6.ogg",
+    "switch7.ogg",
+    "switch8.ogg",
+    "switch9.ogg"
+   ],
+   "files_total": 52,
+   "grade": "B",
+   "grade_note": "Good CC0 pack; late starts trimmed.",
+   "kind": "sfx",
+   "license": "CC0",
+   "source": "https://kenney.nl/assets/ui-audio",
+   "use": "anywhere"
+  },
+  "playing-cards": {
+   "bytes": 968088,
+   "credit": "Zuujis (backs) and Claude for Zuujis (fronts)",
+   "dir": "cards",
+   "files": [
+    "backs/back-1.svg",
+    "backs/back-2.svg",
+    "backs/back-3.svg",
+    "backs/back-4.svg",
+    "backs/back-5.svg",
+    "backs/back-6.svg",
+    "fronts/club_1.png",
+    "fronts/club_10.png",
+    "fronts/club_2.png",
+    "fronts/club_3.png",
+    "fronts/club_4.png",
+    "fronts/club_5.png",
+    "fronts/club_6.png",
+    "fronts/club_7.png",
+    "fronts/club_8.png",
+    "fronts/club_9.png",
+    "fronts/club_jack.png",
+    "fronts/club_king.png",
+    "fronts/club_queen.png",
+    "fronts/diamond_1.png",
+    "fronts/diamond_10.png",
+    "fronts/diamond_2.png",
+    "fronts/diamond_3.png",
+    "fronts/diamond_4.png",
+    "fronts/diamond_5.png",
+    "fronts/diamond_6.png",
+    "fronts/diamond_7.png",
+    "fronts/diamond_8.png",
+    "fronts/diamond_9.png",
+    "fronts/diamond_jack.png",
+    "fronts/diamond_king.png",
+    "fronts/diamond_queen.png",
+    "fronts/heart_1.png",
+    "fronts/heart_10.png",
+    "fronts/heart_2.png",
+    "fronts/heart_3.png",
+    "fronts/heart_4.png",
+    "fronts/heart_5.png",
+    "fronts/heart_6.png",
+    "fronts/heart_7.png",
+    "fronts/heart_8.png",
+    "fronts/heart_9.png",
+    "fronts/heart_jack.png",
+    "fronts/heart_king.png",
+    "fronts/heart_queen.png",
+    "fronts/spade_1.png",
+    "fronts/spade_10.png",
+    "fronts/spade_2.png",
+    "fronts/spade_3.png",
+    "fronts/spade_4.png",
+    "fronts/spade_5.png",
+    "fronts/spade_6.png",
+    "fronts/spade_7.png",
+    "fronts/spade_8.png",
+    "fronts/spade_9.png",
+    "fronts/spade_jack.png",
+    "fronts/spade_king.png",
+    "fronts/spade_queen.png"
+   ],
+   "files_total": 58,
+   "grade": "B",
+   "grade_note": "Clear faces. Only the 12 court pictures are drawn by card-table.js; the number cards are drawn in code.",
+   "kind": "images",
+   "license": "CC0 (Zuujis): backs Zuujis SVG; fronts made by Claude (Fable/Opus) for the owner, per the owner (2026-11-23)",
+   "note": "Standard 52-card fronts (fronts/<suit>_<1-10|jack|queen|king>.png; card-table.js uses the court cards) and six SVG backs.",
+   "use": "anywhere"
+  },
+  "stick-fighters": {
+   "bytes": 1251197,
+   "credit": "Zuujis (Laravel site)",
+   "dir": "sprites/stick-fighters",
+   "files": [
+    "blaze/anim.json",
+    "blaze/sheet.png",
+    "kai/anim.json",
+    "kai/sheet.png",
+    "volt/anim.json",
+    "volt/sheet.png"
+   ],
+   "files_total": 6,
+   "grade": "C",
+   "grade_note": "Unused by any game.",
+   "kind": "sprites-anim",
+   "license": "CC0",
+   "note": "Three stick fighters (blaze, kai, volt): sheet.png 1600x1320 on white + anim.json (frame rects per move) for the Fight library in game-libs.md. No game uses them yet.",
+   "use": "anywhere"
+  },
+  "weather-sfx": {
+   "bytes": 4335906,
+   "credit": "Ylmir, IgnasD, SketchMan3, rubberduck (OpenGameArt), Freesound CC0",
+   "dir": "sounds/weather",
+   "files": [
+    "blizzard.ogg",
+    "dust-storm.ogg",
+    "hail.ogg",
+    "hurricane.ogg",
+    "rain.ogg",
+    "snow.ogg",
+    "storm.ogg",
+    "thunder.ogg",
+    "thunder/distant-01.ogg",
+    "thunder/distant-02.ogg",
+    "thunder/distant-03.ogg",
+    "thunder/medium-01.ogg",
+    "thunder/medium-02.ogg",
+    "thunder/medium-03.ogg",
+    "thunder/medium-04.ogg"
+   ],
+   "files_total": 16,
+   "grade": "B",
+   "grade_note": "Good loops; 192 kHz files, harmless (browsers resample).",
+   "kind": "sfx",
+   "license": "CC0 (derived)",
+   "note": "Looping ambience (rain, storm, snow, blizzard, hail, hurricane, dust-storm) + thunder/. See LICENSES.md.",
+   "use": "anywhere"
+  },
+  "zuujis-2048": {
+   "bytes": 1231,
+   "cell": [
+    26,
+    26
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "tile2048.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "2048 tile frames, 26x26: t2..t2048, tmax (beyond 2048) and slot. Digits are added at runtime with the bitmap font.",
+   "sheet": "tile2048",
+   "sprites": {
+    "slot": {
+     "frames": 1,
+     "row": 12
+    },
+    "t1024": {
+     "frames": 1,
+     "row": 9
+    },
+    "t128": {
+     "frames": 1,
+     "row": 6
+    },
+    "t16": {
+     "frames": 1,
+     "row": 3
+    },
+    "t2": {
+     "frames": 1,
+     "row": 0
+    },
+    "t2048": {
+     "frames": 1,
+     "row": 10
+    },
+    "t256": {
+     "frames": 1,
+     "row": 7
+    },
+    "t32": {
+     "frames": 1,
+     "row": 4
+    },
+    "t4": {
+     "frames": 1,
+     "row": 1
+    },
+    "t512": {
+     "frames": 1,
+     "row": 8
+    },
+    "t64": {
+     "frames": 1,
+     "row": 5
+    },
+    "t8": {
+     "frames": 1,
+     "row": 2
+    },
+    "tmax": {
+     "frames": 1,
+     "row": 11
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-arcade": {
+   "bytes": 11364,
+   "cell": [
+    16,
+    16
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "arcade.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "16x16 sprites for the arcade/puzzle games: snake_<green|blue|orange|red>_<mask|head_<arm>|tail_<arm>> (mask = sides joined, n/e/s/w), and more per game (see docs).",
+   "sheet": "arcade",
+   "sprites": {
+    "bg_night": {
+     "frames": 1,
+     "row": 56
+    },
+    "blk_1": {
+     "frames": 1,
+     "row": 107
+    },
+    "blk_2": {
+     "frames": 1,
+     "row": 108
+    },
+    "blk_3": {
+     "frames": 1,
+     "row": 109
+    },
+    "blk_4": {
+     "frames": 1,
+     "row": 110
+    },
+    "blk_5": {
+     "frames": 1,
+     "row": 111
+    },
+    "blk_6": {
+     "frames": 1,
+     "row": 112
+    },
+    "blk_7": {
+     "frames": 1,
+     "row": 113
+    },
+    "dm_door": {
+     "frames": 1,
+     "row": 101
+    },
+    "dm_dot": {
+     "frames": 1,
+     "row": 99
+    },
+    "dm_eyes_0": {
+     "frames": 1,
+     "row": 79
+    },
+    "dm_eyes_1": {
+     "frames": 1,
+     "row": 80
+    },
+    "dm_eyes_2": {
+     "frames": 1,
+     "row": 81
+    },
+    "dm_eyes_3": {
+     "frames": 1,
+     "row": 82
+    },
+    "dm_ghost_cyan_0": {
+     "frames": 2,
+     "row": 69
+    },
+    "dm_ghost_cyan_1": {
+     "frames": 2,
+     "row": 70
+    },
+    "dm_ghost_cyan_2": {
+     "frames": 2,
+     "row": 71
+    },
+    "dm_ghost_cyan_3": {
+     "frames": 2,
+     "row": 72
+    },
+    "dm_ghost_flash": {
+     "frames": 2,
+     "row": 78
+    },
+    "dm_ghost_orange_0": {
+     "frames": 2,
+     "row": 73
+    },
+    "dm_ghost_orange_1": {
+     "frames": 2,
+     "row": 74
+    },
+    "dm_ghost_orange_2": {
+     "frames": 2,
+     "row": 75
+    },
+    "dm_ghost_orange_3": {
+     "frames": 2,
+     "row": 76
+    },
+    "dm_ghost_pink_0": {
+     "frames": 2,
+     "row": 65
+    },
+    "dm_ghost_pink_1": {
+     "frames": 2,
+     "row": 66
+    },
+    "dm_ghost_pink_2": {
+     "frames": 2,
+     "row": 67
+    },
+    "dm_ghost_pink_3": {
+     "frames": 2,
+     "row": 68
+    },
+    "dm_ghost_red_0": {
+     "frames": 2,
+     "row": 61
+    },
+    "dm_ghost_red_1": {
+     "frames": 2,
+     "row": 62
+    },
+    "dm_ghost_red_2": {
+     "frames": 2,
+     "row": 63
+    },
+    "dm_ghost_red_3": {
+     "frames": 2,
+     "row": 64
+    },
+    "dm_ghost_scared": {
+     "frames": 2,
+     "row": 77
+    },
+    "dm_pac_0": {
+     "frames": 4,
+     "row": 57
+    },
+    "dm_pac_1": {
+     "frames": 4,
+     "row": 58
+    },
+    "dm_pac_2": {
+     "frames": 4,
+     "row": 59
+    },
+    "dm_pac_3": {
+     "frames": 4,
+     "row": 60
+    },
+    "dm_pellet": {
+     "frames": 1,
+     "row": 100
+    },
+    "dm_wall_0": {
+     "frames": 1,
+     "row": 83
+    },
+    "dm_wall_1": {
+     "frames": 1,
+     "row": 84
+    },
+    "dm_wall_10": {
+     "frames": 1,
+     "row": 93
+    },
+    "dm_wall_11": {
+     "frames": 1,
+     "row": 94
+    },
+    "dm_wall_12": {
+     "frames": 1,
+     "row": 95
+    },
+    "dm_wall_13": {
+     "frames": 1,
+     "row": 96
+    },
+    "dm_wall_14": {
+     "frames": 1,
+     "row": 97
+    },
+    "dm_wall_15": {
+     "frames": 1,
+     "row": 98
+    },
+    "dm_wall_2": {
+     "frames": 1,
+     "row": 85
+    },
+    "dm_wall_3": {
+     "frames": 1,
+     "row": 86
+    },
+    "dm_wall_4": {
+     "frames": 1,
+     "row": 87
+    },
+    "dm_wall_5": {
+     "frames": 1,
+     "row": 88
+    },
+    "dm_wall_6": {
+     "frames": 1,
+     "row": 89
+    },
+    "dm_wall_7": {
+     "frames": 1,
+     "row": 90
+    },
+    "dm_wall_8": {
+     "frames": 1,
+     "row": 91
+    },
+    "dm_wall_9": {
+     "frames": 1,
+     "row": 92
+    },
+    "ms_boom": {
+     "frames": 1,
+     "row": 105
+    },
+    "ms_closed": {
+     "frames": 1,
+     "row": 102
+    },
+    "ms_mine": {
+     "frames": 1,
+     "row": 104
+    },
+    "ms_open": {
+     "frames": 1,
+     "row": 103
+    },
+    "ms_wrong": {
+     "frames": 1,
+     "row": 106
+    },
+    "snake_blue_es": {
+     "frames": 1,
+     "row": 16
+    },
+    "snake_blue_ew": {
+     "frames": 1,
+     "row": 18
+    },
+    "snake_blue_head_e": {
+     "frames": 1,
+     "row": 22
+    },
+    "snake_blue_head_n": {
+     "frames": 1,
+     "row": 20
+    },
+    "snake_blue_head_s": {
+     "frames": 1,
+     "row": 24
+    },
+    "snake_blue_head_w": {
+     "frames": 1,
+     "row": 26
+    },
+    "snake_blue_ne": {
+     "frames": 1,
+     "row": 14
+    },
+    "snake_blue_ns": {
+     "frames": 1,
+     "row": 15
+    },
+    "snake_blue_nw": {
+     "frames": 1,
+     "row": 17
+    },
+    "snake_blue_sw": {
+     "frames": 1,
+     "row": 19
+    },
+    "snake_blue_tail_e": {
+     "frames": 1,
+     "row": 23
+    },
+    "snake_blue_tail_n": {
+     "frames": 1,
+     "row": 21
+    },
+    "snake_blue_tail_s": {
+     "frames": 1,
+     "row": 25
+    },
+    "snake_blue_tail_w": {
+     "frames": 1,
+     "row": 27
+    },
+    "snake_green_es": {
+     "frames": 1,
+     "row": 2
+    },
+    "snake_green_ew": {
+     "frames": 1,
+     "row": 4
+    },
+    "snake_green_head_e": {
+     "frames": 1,
+     "row": 8
+    },
+    "snake_green_head_n": {
+     "frames": 1,
+     "row": 6
+    },
+    "snake_green_head_s": {
+     "frames": 1,
+     "row": 10
+    },
+    "snake_green_head_w": {
+     "frames": 1,
+     "row": 12
+    },
+    "snake_green_ne": {
+     "frames": 1,
+     "row": 0
+    },
+    "snake_green_ns": {
+     "frames": 1,
+     "row": 1
+    },
+    "snake_green_nw": {
+     "frames": 1,
+     "row": 3
+    },
+    "snake_green_sw": {
+     "frames": 1,
+     "row": 5
+    },
+    "snake_green_tail_e": {
+     "frames": 1,
+     "row": 9
+    },
+    "snake_green_tail_n": {
+     "frames": 1,
+     "row": 7
+    },
+    "snake_green_tail_s": {
+     "frames": 1,
+     "row": 11
+    },
+    "snake_green_tail_w": {
+     "frames": 1,
+     "row": 13
+    },
+    "snake_orange_es": {
+     "frames": 1,
+     "row": 30
+    },
+    "snake_orange_ew": {
+     "frames": 1,
+     "row": 32
+    },
+    "snake_orange_head_e": {
+     "frames": 1,
+     "row": 36
+    },
+    "snake_orange_head_n": {
+     "frames": 1,
+     "row": 34
+    },
+    "snake_orange_head_s": {
+     "frames": 1,
+     "row": 38
+    },
+    "snake_orange_head_w": {
+     "frames": 1,
+     "row": 40
+    },
+    "snake_orange_ne": {
+     "frames": 1,
+     "row": 28
+    },
+    "snake_orange_ns": {
+     "frames": 1,
+     "row": 29
+    },
+    "snake_orange_nw": {
+     "frames": 1,
+     "row": 31
+    },
+    "snake_orange_sw": {
+     "frames": 1,
+     "row": 33
+    },
+    "snake_orange_tail_e": {
+     "frames": 1,
+     "row": 37
+    },
+    "snake_orange_tail_n": {
+     "frames": 1,
+     "row": 35
+    },
+    "snake_orange_tail_s": {
+     "frames": 1,
+     "row": 39
+    },
+    "snake_orange_tail_w": {
+     "frames": 1,
+     "row": 41
+    },
+    "snake_red_es": {
+     "frames": 1,
+     "row": 44
+    },
+    "snake_red_ew": {
+     "frames": 1,
+     "row": 46
+    },
+    "snake_red_head_e": {
+     "frames": 1,
+     "row": 50
+    },
+    "snake_red_head_n": {
+     "frames": 1,
+     "row": 48
+    },
+    "snake_red_head_s": {
+     "frames": 1,
+     "row": 52
+    },
+    "snake_red_head_w": {
+     "frames": 1,
+     "row": 54
+    },
+    "snake_red_ne": {
+     "frames": 1,
+     "row": 42
+    },
+    "snake_red_ns": {
+     "frames": 1,
+     "row": 43
+    },
+    "snake_red_nw": {
+     "frames": 1,
+     "row": 45
+    },
+    "snake_red_sw": {
+     "frames": 1,
+     "row": 47
+    },
+    "snake_red_tail_e": {
+     "frames": 1,
+     "row": 51
+    },
+    "snake_red_tail_n": {
+     "frames": 1,
+     "row": 49
+    },
+    "snake_red_tail_s": {
+     "frames": 1,
+     "row": 53
+    },
+    "snake_red_tail_w": {
+     "frames": 1,
+     "row": 55
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-backgrounds": {
+   "bytes": 3157600,
+   "credit": "Zuujis (drawn by Codex in VectorCraft)",
+   "dir": "backgrounds",
+   "files": [
+    "alien-planet/1.png",
+    "alien-planet/2.png",
+    "alien-planet/3.png",
+    "alien-planet/4.png",
+    "alien-planet/5.png",
+    "city-night/1.png",
+    "city-night/2.png",
+    "city-night/3.png",
+    "city-night/4.png",
+    "city-night/5.png",
+    "clouds/1.png",
+    "clouds/2.png",
+    "clouds/3.png",
+    "clouds/4.png",
+    "clouds/5.png",
+    "clouds/6.png",
+    "clouds/7.png",
+    "clouds/8.png",
+    "desert-noon/1.png",
+    "desert-noon/2.png",
+    "desert-noon/3.png",
+    "desert-noon/4.png",
+    "desert-noon/5.png",
+    "forest-dusk/1.png",
+    "forest-dusk/2.png",
+    "forest-dusk/3.png",
+    "forest-dusk/4.png",
+    "forest-dusk/5.png",
+    "meadow-day/1.png",
+    "meadow-day/2.png",
+    "meadow-day/3.png",
+    "meadow-day/4.png",
+    "meadow-day/5.png",
+    "scenes.json",
+    "snow-mountains/1.png",
+    "snow-mountains/2.png",
+    "snow-mountains/3.png",
+    "snow-mountains/4.png",
+    "snow-mountains/5.png"
+   ],
+   "files_total": 39,
+   "grade": "A",
+   "grade_note": "Six soft layered vector scenes (meadow, forest dusk, desert, snow mountains, city night, alien planet), five seamless 1920x1080 layers each, plus eight clouds; scenes.json gives scroll speeds.",
+   "kind": "backgrounds",
+   "license": "CC0 1.0 (made for Zuujis)",
+   "note": "<scene>/1.png (far sky, opaque) .. 5.png (nearest, transparent); every layer tiles left to right. clouds/cloud-N.png. Rebuild: resources/game-art/library-free/backgrounds.",
+   "use": "anywhere"
+  },
+  "zuujis-board": {
+   "bytes": 9578,
+   "cell": [
+    42,
+    42
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "board.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "Board-game art, 42x42 cells: Connect Four c4_cell/c4_red/c4_yellow, Reversi rv_square/rv_black/rv_white, Checkers ck_light/ck_dark/ck_red/ck_black/ck_red_king/ck_black_king (squares are 33-35px inside the cell), and more per game.",
+   "sheet": "board",
+   "sprites": {
+    "bgm_black": {
+     "frames": 1,
+     "row": 27
+    },
+    "bgm_white": {
+     "frames": 1,
+     "row": 26
+    },
+    "c4_cell": {
+     "frames": 1,
+     "row": 0
+    },
+    "c4_red": {
+     "frames": 1,
+     "row": 1
+    },
+    "c4_yellow": {
+     "frames": 1,
+     "row": 2
+    },
+    "ch_black_bishop": {
+     "frames": 1,
+     "row": 22
+    },
+    "ch_black_king": {
+     "frames": 1,
+     "row": 25
+    },
+    "ch_black_knight": {
+     "frames": 1,
+     "row": 21
+    },
+    "ch_black_pawn": {
+     "frames": 1,
+     "row": 20
+    },
+    "ch_black_queen": {
+     "frames": 1,
+     "row": 24
+    },
+    "ch_black_rook": {
+     "frames": 1,
+     "row": 23
+    },
+    "ch_white_bishop": {
+     "frames": 1,
+     "row": 16
+    },
+    "ch_white_king": {
+     "frames": 1,
+     "row": 19
+    },
+    "ch_white_knight": {
+     "frames": 1,
+     "row": 15
+    },
+    "ch_white_pawn": {
+     "frames": 1,
+     "row": 14
+    },
+    "ch_white_queen": {
+     "frames": 1,
+     "row": 18
+    },
+    "ch_white_rook": {
+     "frames": 1,
+     "row": 17
+    },
+    "ck_black": {
+     "frames": 1,
+     "row": 10
+    },
+    "ck_black_king": {
+     "frames": 1,
+     "row": 11
+    },
+    "ck_dark": {
+     "frames": 1,
+     "row": 7
+    },
+    "ck_light": {
+     "frames": 1,
+     "row": 6
+    },
+    "ck_red": {
+     "frames": 1,
+     "row": 8
+    },
+    "ck_red_king": {
+     "frames": 1,
+     "row": 9
+    },
+    "ck_white": {
+     "frames": 1,
+     "row": 12
+    },
+    "ck_white_king": {
+     "frames": 1,
+     "row": 13
+    },
+    "dieS_red_0": {
+     "frames": 1,
+     "row": 43
+    },
+    "dieS_red_1": {
+     "frames": 1,
+     "row": 45
+    },
+    "dieS_red_2": {
+     "frames": 1,
+     "row": 47
+    },
+    "dieS_red_3": {
+     "frames": 1,
+     "row": 49
+    },
+    "dieS_red_4": {
+     "frames": 1,
+     "row": 51
+    },
+    "dieS_red_5": {
+     "frames": 1,
+     "row": 53
+    },
+    "dieS_red_6": {
+     "frames": 1,
+     "row": 55
+    },
+    "dieS_white_0": {
+     "frames": 1,
+     "row": 29
+    },
+    "dieS_white_1": {
+     "frames": 1,
+     "row": 31
+    },
+    "dieS_white_2": {
+     "frames": 1,
+     "row": 33
+    },
+    "dieS_white_3": {
+     "frames": 1,
+     "row": 35
+    },
+    "dieS_white_4": {
+     "frames": 1,
+     "row": 37
+    },
+    "dieS_white_5": {
+     "frames": 1,
+     "row": 39
+    },
+    "dieS_white_6": {
+     "frames": 1,
+     "row": 41
+    },
+    "die_red_0": {
+     "frames": 1,
+     "row": 42
+    },
+    "die_red_1": {
+     "frames": 1,
+     "row": 44
+    },
+    "die_red_2": {
+     "frames": 1,
+     "row": 46
+    },
+    "die_red_3": {
+     "frames": 1,
+     "row": 48
+    },
+    "die_red_4": {
+     "frames": 1,
+     "row": 50
+    },
+    "die_red_5": {
+     "frames": 1,
+     "row": 52
+    },
+    "die_red_6": {
+     "frames": 1,
+     "row": 54
+    },
+    "die_white_0": {
+     "frames": 1,
+     "row": 28
+    },
+    "die_white_1": {
+     "frames": 1,
+     "row": 30
+    },
+    "die_white_2": {
+     "frames": 1,
+     "row": 32
+    },
+    "die_white_3": {
+     "frames": 1,
+     "row": 34
+    },
+    "die_white_4": {
+     "frames": 1,
+     "row": 36
+    },
+    "die_white_5": {
+     "frames": 1,
+     "row": 38
+    },
+    "die_white_6": {
+     "frames": 1,
+     "row": 40
+    },
+    "rv_black": {
+     "frames": 1,
+     "row": 4
+    },
+    "rv_square": {
+     "frames": 1,
+     "row": 3
+    },
+    "rv_white": {
+     "frames": 1,
+     "row": 5
+    },
+    "sb_bow_h": {
+     "frames": 1,
+     "row": 58
+    },
+    "sb_bow_h_sunk": {
+     "frames": 1,
+     "row": 60
+    },
+    "sb_bow_v": {
+     "frames": 1,
+     "row": 59
+    },
+    "sb_bow_v_sunk": {
+     "frames": 1,
+     "row": 61
+    },
+    "sb_mid_h": {
+     "frames": 1,
+     "row": 62
+    },
+    "sb_mid_h_sunk": {
+     "frames": 1,
+     "row": 64
+    },
+    "sb_mid_v": {
+     "frames": 1,
+     "row": 63
+    },
+    "sb_mid_v_sunk": {
+     "frames": 1,
+     "row": 65
+    },
+    "sb_miss": {
+     "frames": 1,
+     "row": 70
+    },
+    "sb_stern_h": {
+     "frames": 1,
+     "row": 66
+    },
+    "sb_stern_h_sunk": {
+     "frames": 1,
+     "row": 68
+    },
+    "sb_stern_v": {
+     "frames": 1,
+     "row": 67
+    },
+    "sb_stern_v_sunk": {
+     "frames": 1,
+     "row": 69
+    },
+    "sb_water_a": {
+     "frames": 1,
+     "row": 56
+    },
+    "sb_water_b": {
+     "frames": 1,
+     "row": 57
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-bricks": {
+   "bytes": 1059,
+   "cell": [
+    20,
+    10
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "bricks.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "Brick-breaker art. 20x10 cells: brick_<red|orange|yellow|green|blue> [normal, flash], paddle_<green|blue|orange|red> (16x6, stretch the middle), ball (8x8).",
+   "sheet": "bricks",
+   "sprites": {
+    "ball": {
+     "frames": 1,
+     "row": 9
+    },
+    "brick_blue": {
+     "frames": 2,
+     "row": 4
+    },
+    "brick_green": {
+     "frames": 2,
+     "row": 3
+    },
+    "brick_orange": {
+     "frames": 2,
+     "row": 1
+    },
+    "brick_red": {
+     "frames": 2,
+     "row": 0
+    },
+    "brick_yellow": {
+     "frames": 2,
+     "row": 2
+    },
+    "paddle_blue": {
+     "frames": 1,
+     "row": 6
+    },
+    "paddle_green": {
+     "frames": 1,
+     "row": 5
+    },
+    "paddle_orange": {
+     "frames": 1,
+     "row": 7
+    },
+    "paddle_red": {
+     "frames": 1,
+     "row": 8
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-characters": {
+   "bytes": 3664,
+   "cell": [
+    16,
+    16
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "characters.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "16x16 characters, frames [walk0, walk1, hurt], facing right. Palette: DawnBringer DB16.",
+   "sheet": "characters",
+   "sprites": {
+    "archer": {
+     "frames": 3,
+     "row": 15
+    },
+    "bat": {
+     "frames": 3,
+     "row": 10
+    },
+    "dragon": {
+     "frames": 3,
+     "row": 13
+    },
+    "goblin": {
+     "frames": 3,
+     "row": 5
+    },
+    "healer": {
+     "frames": 3,
+     "row": 4
+    },
+    "knight": {
+     "frames": 3,
+     "row": 14
+    },
+    "mage": {
+     "frames": 3,
+     "row": 16
+    },
+    "orc": {
+     "frames": 3,
+     "row": 6
+    },
+    "peasant": {
+     "frames": 3,
+     "row": 17
+    },
+    "ram": {
+     "frames": 3,
+     "row": 11
+    },
+    "rogue": {
+     "frames": 3,
+     "row": 3
+    },
+    "runner": {
+     "frames": 3,
+     "row": 1
+    },
+    "shieldbearer": {
+     "frames": 3,
+     "row": 2
+    },
+    "skeleton": {
+     "frames": 3,
+     "row": 7
+    },
+    "slime": {
+     "frames": 3,
+     "row": 9
+    },
+    "soldier": {
+     "frames": 3,
+     "row": 0
+    },
+    "warlord": {
+     "frames": 3,
+     "row": 8
+    },
+    "wolf": {
+     "frames": 3,
+     "row": 12
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-flappy": {
+   "bytes": 1729,
+   "cell": [
+    40,
+    16
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "flappy.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "Flappy-style art, 40x16 cells: bird (3 wing frames, 16x16), pipe_body (28 wide), pipe_cap (36x16), cloud_a/b, sky_<day|night>_0..4 band tiles (16x16).",
+   "sheet": "flappy",
+   "sprites": {
+    "bird": {
+     "frames": 3,
+     "row": 0
+    },
+    "cloud_a": {
+     "frames": 1,
+     "row": 3
+    },
+    "cloud_b": {
+     "frames": 1,
+     "row": 4
+    },
+    "pipe_body": {
+     "frames": 1,
+     "row": 1
+    },
+    "pipe_cap": {
+     "frames": 1,
+     "row": 2
+    },
+    "sky_day_0": {
+     "frames": 1,
+     "row": 5
+    },
+    "sky_day_1": {
+     "frames": 1,
+     "row": 6
+    },
+    "sky_day_2": {
+     "frames": 1,
+     "row": 7
+    },
+    "sky_day_3": {
+     "frames": 1,
+     "row": 8
+    },
+    "sky_day_4": {
+     "frames": 1,
+     "row": 9
+    },
+    "sky_night_0": {
+     "frames": 1,
+     "row": 10
+    },
+    "sky_night_1": {
+     "frames": 1,
+     "row": 11
+    },
+    "sky_night_2": {
+     "frames": 1,
+     "row": 12
+    },
+    "sky_night_3": {
+     "frames": 1,
+     "row": 13
+    },
+    "sky_night_4": {
+     "frames": 1,
+     "row": 14
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-font": {
+   "bytes": 869,
+   "cell": [
+    6,
+    8
+   ],
+   "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,!?:;-+=/\\()[]'\"%*<>_#&$@^|~•×",
+   "cols": 16,
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "font.png",
+   "kind": "font",
+   "license": "CC0",
+   "note": "5x7 bitmap font in 6x8 cells; upper case, digits, punctuation. White glyphs, tinted at draw time. Draw with GameAssets.font().",
+   "use": "anywhere"
+  },
+  "zuujis-fx": {
+   "bytes": 2062,
+   "cell": [
+    16,
+    16
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "fx.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "16x16 effect strips (play ~12 fps): sparkle, hit, puff, explosion, pulse, heal, flame, splash, star_burst, dust, smoke. Fades use dithering.",
+   "sheet": "fx",
+   "sprites": {
+    "dust": {
+     "frames": 4,
+     "row": 9
+    },
+    "explosion": {
+     "frames": 6,
+     "row": 3
+    },
+    "flame": {
+     "frames": 4,
+     "row": 6
+    },
+    "heal": {
+     "frames": 4,
+     "row": 5
+    },
+    "hit": {
+     "frames": 4,
+     "row": 1
+    },
+    "puff": {
+     "frames": 5,
+     "row": 2
+    },
+    "pulse": {
+     "frames": 4,
+     "row": 4
+    },
+    "smoke": {
+     "frames": 4,
+     "row": 10
+    },
+    "sparkle": {
+     "frames": 4,
+     "row": 0
+    },
+    "splash": {
+     "frames": 4,
+     "row": 7
+    },
+    "star_burst": {
+     "frames": 4,
+     "row": 8
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-game-icons": {
+   "bytes": 2771276,
+   "credit": "Zuujis (drawn by Codex in VectorCraft)",
+   "dir": "icons/game",
+   "files": [
+    "amethyst.png",
+    "anchor.png",
+    "anvil.png",
+    "arrow-down.png",
+    "arrow-left.png",
+    "arrow-right.png",
+    "arrow-up.png",
+    "astronaut-helmet.png",
+    "battle-axe.png",
+    "black-potion.png",
+    "blue-information-symbol.png",
+    "blue-magic-orb.png",
+    "blue-potion.png",
+    "bomb-with-fuse.png",
+    "bone.png",
+    "bracer.png",
+    "brass-key.png",
+    "bread-loaf.png",
+    "buckler.png",
+    "carrot.png",
+    "chainmail-shirt.png",
+    "cheese-wedge.png",
+    "circlet.png",
+    "clock.png",
+    "closed-red-book.png",
+    "coin-pouch.png",
+    "coin-stack.png",
+    "compass.png",
+    "copper-ore.png",
+    "crossbow.png",
+    "crown.png",
+    "cyan-potion.png",
+    "dagger.png",
+    "diamond.png",
+    "emerald.png",
+    "energy-cell.png",
+    "feather.png",
+    "fire-flame.png",
+    "fish.png",
+    "fishing-rod.png",
+    "flail.png",
+    "futuristic-visor.png",
+    "gold-coin.png",
+    "gold-trophy.png",
+    "greave.png",
+    "green-checkmark.png",
+    "green-plus.png",
+    "green-potion.png",
+    "handsaw.png",
+    "holy-sunburst.png",
+    "honey-jar.png",
+    "hood.png",
+    "horned-helmet.png",
+    "horseshoe-magnet.png",
+    "hourglass.png",
+    "ice-shard.png",
+    "iron-boot.png",
+    "iron-chest.png",
+    "iron-ore.png",
+    "ivory-skull.png",
+    "lantern.png",
+    "leaf-spell.png",
+    "leather-glove.png",
+    "longbow.png",
+    "mace.png",
+    "map.png",
+    "mushroom.png",
+    "open-book.png",
+    "open-scroll.png",
+    "open-treasure-chest.png",
+    "orange-potion.png",
+    "ornate-belt.png",
+    "padlock.png",
+    "pendant.png",
+    "pickaxe.png",
+    "pink-magic-spark.png",
+    "plate-breastplate.png",
+    "poison-droplet.png",
+    "purple-magic-portal.png",
+    "purple-question-mark.png",
+    "quiver.png",
+    "red-apple.png",
+    "red-cape.png",
+    "red-heart.png",
+    "red-minus.png",
+    "red-potion.png",
+    "red-x-cross.png",
+    "retro-laser-pistol.png",
+    "roast-drumstick.png",
+    "robotic-claw.png",
+    "rolled-scroll.png",
+    "rope-coil.png",
+    "round-shield.png",
+    "ruby.png",
+    "sapphire.png",
+    "satellite-dish.png",
+    "scimitar.png",
+    "shadow-vortex.png",
+    "sheet.json",
+    "sheet.png",
+    "shoulder-pauldron.png",
+    "shovel.png",
+    "sickle.png",
+    "signet-ring.png",
+    "silver-coin.png",
+    "silver-key.png",
+    "small-red-tipped-rocket.png",
+    "spear.png",
+    "spool-of-thread.png",
+    "sprig-of-herb.png",
+    "spyglass.png",
+    "square-microchip.png",
+    "steel-gear.png",
+    "stone-chunk.png",
+    "sword.png",
+    "throwing-knife.png",
+    "tongs.png",
+    "topaz.png",
+    "trident.png",
+    "violet-potion.png",
+    "wand.png",
+    "war-hammer.png",
+    "water-droplet.png",
+    "white-potion.png",
+    "wind-swirl.png",
+    "wizard-staff.png",
+    "wood-logs.png",
+    "wooden-chest.png",
+    "yellow-five-point-star.png",
+    "yellow-lightning-bolt.png"
+   ],
+   "files_total": 130,
+   "grade": "A",
+   "grade_note": "128 clean outlined icons in one style (weapons, armour, potions, food, gems, keys, spells, tools, resources, UI symbols, sci-fi); readable at 32 px.",
+   "kind": "icons",
+   "license": "CC0 1.0 (made for Zuujis)",
+   "note": "<name>.png at 128x128; sheet.png is all of them in a 16x8 grid of 128 px cells, sheet.json gives each name its [col, row]. Rebuild: resources/game-art/library-free/icons.",
+   "use": "anywhere"
+  },
+  "zuujis-items": {
+   "bytes": 6991,
+   "cell": [
+    16,
+    16
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "items.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "16x16 items and icons: coin (4 spin frames), gems, hearts, star, key, potions, food, chests, weapons, gear, resources, and icon_* HUD/UI icons.",
+   "sheet": "items",
+   "sprites": {
+    "apple": {
+     "frames": 1,
+     "row": 13
+    },
+    "axe": {
+     "frames": 1,
+     "row": 30
+    },
+    "bomb": {
+     "frames": 1,
+     "row": 25
+    },
+    "book": {
+     "frames": 1,
+     "row": 19
+    },
+    "boots": {
+     "frames": 1,
+     "row": 34
+    },
+    "bow": {
+     "frames": 1,
+     "row": 29
+    },
+    "bread": {
+     "frames": 1,
+     "row": 15
+    },
+    "chest": {
+     "frames": 1,
+     "row": 16
+    },
+    "chest_open": {
+     "frames": 1,
+     "row": 17
+    },
+    "coin": {
+     "frames": 4,
+     "row": 0
+    },
+    "crown": {
+     "frames": 1,
+     "row": 21
+    },
+    "face_cool": {
+     "frames": 1,
+     "row": 41
+    },
+    "face_dead": {
+     "frames": 1,
+     "row": 40
+    },
+    "face_smile": {
+     "frames": 1,
+     "row": 39
+    },
+    "face_worried": {
+     "frames": 1,
+     "row": 42
+    },
+    "flag": {
+     "frames": 1,
+     "row": 23
+    },
+    "flag_blue": {
+     "frames": 1,
+     "row": 24
+    },
+    "food": {
+     "frames": 1,
+     "row": 38
+    },
+    "gem_blue": {
+     "frames": 1,
+     "row": 2
+    },
+    "gem_green": {
+     "frames": 1,
+     "row": 3
+    },
+    "gem_red": {
+     "frames": 1,
+     "row": 1
+    },
+    "gold_bar": {
+     "frames": 1,
+     "row": 37
+    },
+    "hammer": {
+     "frames": 1,
+     "row": 31
+    },
+    "heart": {
+     "frames": 1,
+     "row": 4
+    },
+    "heart_empty": {
+     "frames": 1,
+     "row": 6
+    },
+    "heart_half": {
+     "frames": 1,
+     "row": 5
+    },
+    "helmet": {
+     "frames": 1,
+     "row": 33
+    },
+    "icon_battle": {
+     "frames": 1,
+     "row": 60
+    },
+    "icon_check": {
+     "frames": 1,
+     "row": 48
+    },
+    "icon_clock": {
+     "frames": 1,
+     "row": 59
+    },
+    "icon_close": {
+     "frames": 1,
+     "row": 47
+    },
+    "icon_down": {
+     "frames": 1,
+     "row": 54
+    },
+    "icon_gear": {
+     "frames": 1,
+     "row": 56
+    },
+    "icon_home": {
+     "frames": 1,
+     "row": 55
+    },
+    "icon_left": {
+     "frames": 1,
+     "row": 51
+    },
+    "icon_lock": {
+     "frames": 1,
+     "row": 57
+    },
+    "icon_minus": {
+     "frames": 1,
+     "row": 50
+    },
+    "icon_pause": {
+     "frames": 1,
+     "row": 44
+    },
+    "icon_play": {
+     "frames": 1,
+     "row": 43
+    },
+    "icon_plus": {
+     "frames": 1,
+     "row": 49
+    },
+    "icon_right": {
+     "frames": 1,
+     "row": 52
+    },
+    "icon_sound_off": {
+     "frames": 1,
+     "row": 46
+    },
+    "icon_sound_on": {
+     "frames": 1,
+     "row": 45
+    },
+    "icon_trophy": {
+     "frames": 1,
+     "row": 58
+    },
+    "icon_up": {
+     "frames": 1,
+     "row": 53
+    },
+    "key": {
+     "frames": 1,
+     "row": 9
+    },
+    "meat": {
+     "frames": 1,
+     "row": 14
+    },
+    "potion_blue": {
+     "frames": 1,
+     "row": 11
+    },
+    "potion_green": {
+     "frames": 1,
+     "row": 12
+    },
+    "potion_red": {
+     "frames": 1,
+     "row": 10
+    },
+    "ring": {
+     "frames": 1,
+     "row": 20
+    },
+    "scroll": {
+     "frames": 1,
+     "row": 18
+    },
+    "shield": {
+     "frames": 1,
+     "row": 27
+    },
+    "shield_red": {
+     "frames": 1,
+     "row": 28
+    },
+    "skull": {
+     "frames": 1,
+     "row": 22
+    },
+    "star": {
+     "frames": 1,
+     "row": 7
+    },
+    "star_empty": {
+     "frames": 1,
+     "row": 8
+    },
+    "stone": {
+     "frames": 1,
+     "row": 36
+    },
+    "sword": {
+     "frames": 1,
+     "row": 26
+    },
+    "wood": {
+     "frames": 1,
+     "row": 35
+    },
+    "wrench": {
+     "frames": 1,
+     "row": 32
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-lantern": {
+   "bytes": 11714,
+   "cell": [
+    32,
+    32
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "lantern.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "Last Lantern (survivor-like) art in 32x32 cells, every sprite CENTRED in its cell: warden hero and monsters ghost/zombie/cultist/imp/spider/eye/wisp/shroom/gargoyle [walk0, walk1, hurt] (16px), bosses colossus/lich/wyrm (32px), p_* projectiles (point right), fx_slash/fx_lightning/fx_pool, xp_blue/green/red/gold gems, lantern/oil/hourglass pickups, ic_* level-up icons [plain, gold], props grave/brazier/skulls/crystal/dead_tree/pillar.",
+   "sheet": "lantern",
+   "sprites": {
+    "brazier": {
+     "frames": 2,
+     "row": 51
+    },
+    "colossus": {
+     "frames": 3,
+     "row": 10
+    },
+    "crystal": {
+     "frames": 1,
+     "row": 53
+    },
+    "cultist": {
+     "frames": 3,
+     "row": 3
+    },
+    "dead_tree": {
+     "frames": 1,
+     "row": 54
+    },
+    "eye": {
+     "frames": 3,
+     "row": 6
+    },
+    "fx_lightning": {
+     "frames": 3,
+     "row": 25
+    },
+    "fx_pool": {
+     "frames": 2,
+     "row": 26
+    },
+    "fx_slash": {
+     "frames": 3,
+     "row": 24
+    },
+    "gargoyle": {
+     "frames": 3,
+     "row": 9
+    },
+    "ghost": {
+     "frames": 3,
+     "row": 1
+    },
+    "grave": {
+     "frames": 2,
+     "row": 50
+    },
+    "hourglass": {
+     "frames": 1,
+     "row": 33
+    },
+    "ic_aura": {
+     "frames": 2,
+     "row": 37
+    },
+    "ic_axe": {
+     "frames": 2,
+     "row": 49
+    },
+    "ic_candle": {
+     "frames": 2,
+     "row": 43
+    },
+    "ic_chalice": {
+     "frames": 2,
+     "row": 45
+    },
+    "ic_clover": {
+     "frames": 2,
+     "row": 38
+    },
+    "ic_dagger": {
+     "frames": 2,
+     "row": 46
+    },
+    "ic_fire": {
+     "frames": 2,
+     "row": 36
+    },
+    "ic_flask": {
+     "frames": 2,
+     "row": 48
+    },
+    "ic_frost": {
+     "frames": 2,
+     "row": 41
+    },
+    "ic_lightning": {
+     "frames": 2,
+     "row": 35
+    },
+    "ic_magnet": {
+     "frames": 2,
+     "row": 40
+    },
+    "ic_mirror": {
+     "frames": 2,
+     "row": 44
+    },
+    "ic_skull": {
+     "frames": 2,
+     "row": 42
+    },
+    "ic_star": {
+     "frames": 2,
+     "row": 47
+    },
+    "ic_wand": {
+     "frames": 2,
+     "row": 34
+    },
+    "ic_wings": {
+     "frames": 2,
+     "row": 39
+    },
+    "imp": {
+     "frames": 3,
+     "row": 4
+    },
+    "lantern": {
+     "frames": 2,
+     "row": 31
+    },
+    "lich": {
+     "frames": 3,
+     "row": 11
+    },
+    "oil": {
+     "frames": 1,
+     "row": 32
+    },
+    "p_arrow": {
+     "frames": 1,
+     "row": 13
+    },
+    "p_axe": {
+     "frames": 4,
+     "row": 17
+    },
+    "p_bolt": {
+     "frames": 2,
+     "row": 15
+    },
+    "p_bone": {
+     "frames": 2,
+     "row": 19
+    },
+    "p_dagger": {
+     "frames": 1,
+     "row": 14
+    },
+    "p_dark": {
+     "frames": 2,
+     "row": 20
+    },
+    "p_fireball": {
+     "frames": 2,
+     "row": 16
+    },
+    "p_flask": {
+     "frames": 1,
+     "row": 18
+    },
+    "p_shard": {
+     "frames": 1,
+     "row": 22
+    },
+    "p_star": {
+     "frames": 2,
+     "row": 23
+    },
+    "p_venom": {
+     "frames": 2,
+     "row": 21
+    },
+    "pillar": {
+     "frames": 1,
+     "row": 55
+    },
+    "shroom": {
+     "frames": 3,
+     "row": 8
+    },
+    "skulls": {
+     "frames": 1,
+     "row": 52
+    },
+    "spider": {
+     "frames": 3,
+     "row": 5
+    },
+    "warden": {
+     "frames": 3,
+     "row": 0
+    },
+    "wisp": {
+     "frames": 3,
+     "row": 7
+    },
+    "wyrm": {
+     "frames": 3,
+     "row": 12
+    },
+    "xp_blue": {
+     "frames": 2,
+     "row": 27
+    },
+    "xp_gold": {
+     "frames": 2,
+     "row": 30
+    },
+    "xp_green": {
+     "frames": 2,
+     "row": 28
+    },
+    "xp_red": {
+     "frames": 2,
+     "row": 29
+    },
+    "zombie": {
+     "frames": 3,
+     "row": 2
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-mahjong": {
+   "bytes": 4506,
+   "cell": [
+    26,
+    34
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "mahjong.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "Mahjong tiles in 26x34 cells: mj_man1-9, mj_bam1-9, mj_dot1-9, mj_wind_e/s/w/n, mj_dragon_r/g/w, mj_flower1-4, mj_season1-4, mj_blank, mj_locked.",
+   "sheet": "mahjong",
+   "sprites": {
+    "mj_bam1": {
+     "frames": 1,
+     "row": 9
+    },
+    "mj_bam2": {
+     "frames": 1,
+     "row": 10
+    },
+    "mj_bam3": {
+     "frames": 1,
+     "row": 11
+    },
+    "mj_bam4": {
+     "frames": 1,
+     "row": 12
+    },
+    "mj_bam5": {
+     "frames": 1,
+     "row": 13
+    },
+    "mj_bam6": {
+     "frames": 1,
+     "row": 14
+    },
+    "mj_bam7": {
+     "frames": 1,
+     "row": 15
+    },
+    "mj_bam8": {
+     "frames": 1,
+     "row": 16
+    },
+    "mj_bam9": {
+     "frames": 1,
+     "row": 17
+    },
+    "mj_blank": {
+     "frames": 1,
+     "row": 42
+    },
+    "mj_dot1": {
+     "frames": 1,
+     "row": 18
+    },
+    "mj_dot2": {
+     "frames": 1,
+     "row": 19
+    },
+    "mj_dot3": {
+     "frames": 1,
+     "row": 20
+    },
+    "mj_dot4": {
+     "frames": 1,
+     "row": 21
+    },
+    "mj_dot5": {
+     "frames": 1,
+     "row": 22
+    },
+    "mj_dot6": {
+     "frames": 1,
+     "row": 23
+    },
+    "mj_dot7": {
+     "frames": 1,
+     "row": 24
+    },
+    "mj_dot8": {
+     "frames": 1,
+     "row": 25
+    },
+    "mj_dot9": {
+     "frames": 1,
+     "row": 26
+    },
+    "mj_dragon_g": {
+     "frames": 1,
+     "row": 32
+    },
+    "mj_dragon_r": {
+     "frames": 1,
+     "row": 31
+    },
+    "mj_dragon_w": {
+     "frames": 1,
+     "row": 33
+    },
+    "mj_flower1": {
+     "frames": 1,
+     "row": 34
+    },
+    "mj_flower2": {
+     "frames": 1,
+     "row": 35
+    },
+    "mj_flower3": {
+     "frames": 1,
+     "row": 36
+    },
+    "mj_flower4": {
+     "frames": 1,
+     "row": 37
+    },
+    "mj_locked": {
+     "frames": 1,
+     "row": 43
+    },
+    "mj_man1": {
+     "frames": 1,
+     "row": 0
+    },
+    "mj_man2": {
+     "frames": 1,
+     "row": 1
+    },
+    "mj_man3": {
+     "frames": 1,
+     "row": 2
+    },
+    "mj_man4": {
+     "frames": 1,
+     "row": 3
+    },
+    "mj_man5": {
+     "frames": 1,
+     "row": 4
+    },
+    "mj_man6": {
+     "frames": 1,
+     "row": 5
+    },
+    "mj_man7": {
+     "frames": 1,
+     "row": 6
+    },
+    "mj_man8": {
+     "frames": 1,
+     "row": 7
+    },
+    "mj_man9": {
+     "frames": 1,
+     "row": 8
+    },
+    "mj_season1": {
+     "frames": 1,
+     "row": 38
+    },
+    "mj_season2": {
+     "frames": 1,
+     "row": 39
+    },
+    "mj_season3": {
+     "frames": 1,
+     "row": 40
+    },
+    "mj_season4": {
+     "frames": 1,
+     "row": 41
+    },
+    "mj_wind_e": {
+     "frames": 1,
+     "row": 27
+    },
+    "mj_wind_n": {
+     "frames": 1,
+     "row": 29
+    },
+    "mj_wind_s": {
+     "frames": 1,
+     "row": 28
+    },
+    "mj_wind_w": {
+     "frames": 1,
+     "row": 30
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-painted-buildings": {
+   "bytes": 8985695,
+   "credit": "Zuujis (painted by Codex image generation for From the Ground Up, keyed in resources/game-art/from-the-ground-up)",
+   "dir": "painted/buildings",
+   "files": [
+    "allotments-1.webp",
+    "allotments-2.webp",
+    "allotments-3.webp",
+    "anim/wind-1-01.webp",
+    "anim/wind-1-02.webp",
+    "anim/wind-1-03.webp",
+    "anim/wind-1-04.webp",
+    "anim/wind-1-05.webp",
+    "anim/wind-1-06.webp",
+    "anim/wind-1-07.webp",
+    "anim/wind-1-08.webp",
+    "anim/wind-1-09.webp",
+    "anim/wind-1-10.webp",
+    "anim/wind-1-11.webp",
+    "anim/wind-1-12.webp",
+    "arcade-1.webp",
+    "bakery-1.webp",
+    "bakery-2.webp",
+    "bakery-3.webp",
+    "bank-1.webp",
+    "barn-1.webp",
+    "barn-2.webp",
+    "barn-3.webp",
+    "battery-1.webp",
+    "battery-2.webp",
+    "battery-3.webp",
+    "bee_meadow-1.webp",
+    "bee_meadow-2.webp",
+    "bee_meadow-3.webp",
+    "biochar_kiln-1.webp",
+    "biochar_kiln-2.webp",
+    "biochar_kiln-3.webp",
+    "boathouse-1.webp",
+    "boathouse-2.webp",
+    "boathouse-3.webp",
+    "boiler-1.webp",
+    "boiler-2.webp",
+    "boiler-3.webp",
+    "brickworks-1.webp",
+    "brickworks-2.webp",
+    "brickworks-3.webp",
+    "bus_depot-1.webp",
+    "bus_depot-2.webp",
+    "bus_depot-3.webp",
+    "carpark-1.webp",
+    "chp-1.webp",
+    "chp-2.webp",
+    "chp-3.webp",
+    "city_flats_a-1.webp",
+    "city_flats_b-1.webp",
+    "city_homes_a-1.webp",
+    "city_homes_b-1.webp",
+    "city_homes_c-1.webp",
+    "city_offices_a-1.webp",
+    "city_offices_b-1.webp",
+    "city_school-1.webp",
+    "city_shops_a-1.webp",
+    "city_shops_b-1.webp",
+    "city_university_a-1.webp",
+    "city_university_b-1.webp",
+    "cleanup_garden-1.webp",
+    "cleanup_garden-2.webp",
+    "cleanup_garden-3.webp",
+    "clinic-1.webp",
+    "clinic-2.webp",
+    "clinic-3.webp",
+    "cold_store-1.webp",
+    "cold_store-2.webp",
+    "cold_store-3.webp",
+    "community_centre-1.webp",
+    "community_centre-2.webp",
+    "community_centre-3.webp",
+    "community_lab-1.webp",
+    "compost-1.webp",
+    "compost-2.webp",
+    "compost-3.webp",
+    "cottage-1.webp",
+    "cottage-2.webp",
+    "cottage-3.webp",
+    "depaving_yard-1.webp",
+    "depaving_yard-2.webp",
+    "depaving_yard-3.webp",
+    "digester-1.webp",
+    "digester-2.webp",
+    "digester-3.webp",
+    "eco_homes-1.webp",
+    "eco_homes-2.webp",
+    "eco_homes-3.webp",
+    "fire_station-1.webp",
+    "fire_station-2.webp",
+    "fire_station-3.webp",
+    "fish-1.webp",
+    "fish-2.webp",
+    "fish-3.webp",
+    "floating_wetland-1.webp",
+    "floating_wetland-2.webp",
+    "floating_wetland-3.webp",
+    "gas_catcher-1.webp",
+    "gas_catcher-2.webp",
+    "gas_catcher-3.webp",
+    "greenhouse-1.webp",
+    "greenhouse-2.webp",
+    "greenhouse-3.webp",
+    "hempcrete-1.webp",
+    "hempcrete-2.webp",
+    "hempcrete-3.webp",
+    "homes-1.webp",
+    "homes-2.webp",
+    "homes-3.webp",
+    "homes-4.webp",
+    "homes-5.webp",
+    "homes_arcade-1.webp",
+    "homes_arcade-2.webp",
+    "homes_arcade-3.webp",
+    "homestead-1.webp",
+    "homestead-2.webp",
+    "homestead-3.webp",
+    "houseboat-1.webp",
+    "houseboat-2.webp",
+    "houseboat-3.webp",
+    "hydro-1.webp",
+    "hydro-2.webp",
+    "hydro-3.webp",
+    "index.json",
+    "landing-1.webp",
+    "landing-2.webp",
+    "landing-3.webp",
+    "library-1.webp",
+    "library-2.webp",
+    "library-3.webp",
+    "living_wall-1.webp",
+    "living_wall-2.webp",
+    "living_wall-3.webp",
+    "market-1.webp",
+    "market-2.webp",
+    "market-3.webp",
+    "membrane-1.webp",
+    "membrane-2.webp",
+    "membrane-3.webp",
+    "mushroom-1.webp",
+    "mushroom-2.webp",
+    "mushroom-3.webp",
+    "orchard-1.webp",
+    "orchard-2.webp",
+    "orchard-3.webp",
+    "pantry-1.webp",
+    "pantry-2.webp",
+    "pantry-3.webp",
+    "park-1.webp",
+    "park-2.webp",
+    "park-3.webp",
+    "police-1.webp",
+    "police-2.webp",
+    "police-3.webp",
+    "rain-1.webp",
+    "rain-2.webp",
+    "rain-3.webp",
+    "rain_garden-1.webp",
+    "rain_garden-2.webp",
+    "rain_garden-3.webp",
+    "recycler-1.webp",
+    "recycler-2.webp",
+    "recycler-3.webp",
+    "reedbed-1.webp",
+    "reedbed-2.webp",
+    "reedbed-3.webp",
+    "repair_shop-1.webp",
+    "repair_shop-2.webp",
+    "repair_shop-3.webp",
+    "salvage_yard-1.webp",
+    "salvage_yard-2.webp",
+    "salvage_yard-3.webp",
+    "school-1.webp",
+    "school-2.webp",
+    "school-3.webp",
+    "sewage_plant-1.webp",
+    "sewage_plant-2.webp",
+    "sewage_plant-3.webp",
+    "shared_house-1.webp",
+    "shared_house-2.webp",
+    "shared_house-3.webp",
+    "shelter_belt-1.webp",
+    "shelter_belt-2.webp",
+    "shelter_belt-3.webp",
+    "shop_homes-1.webp",
+    "shop_homes-2.webp",
+    "shop_homes-3.webp",
+    "solar-1.webp",
+    "solar-2.webp",
+    "solar-3.webp",
+    "student_halls-1.webp",
+    "student_halls-2.webp",
+    "student_halls-3.webp",
+    "test_ground-1.webp",
+    "timber_yard-1.webp",
+    "timber_yard-2.webp",
+    "timber_yard-3.webp",
+    "vertical_farm-1.webp",
+    "vertical_farm-2.webp",
+    "vertical_farm-3.webp",
+    "water_tower-1.webp",
+    "water_tower-2.webp",
+    "water_tower-3.webp",
+    "waterworks-1.webp",
+    "waterworks-2.webp",
+    "waterworks-3.webp",
+    "wind-1.webp",
+    "wind-2.webp",
+    "wind-3.webp"
+   ],
+   "files_total": 209,
+   "grade": "A",
+   "grade_note": "Painted storybook art, consistent style, keyed cleanly.",
+   "kind": "images",
+   "license": "CC0",
+   "note": "Painted isometric buildings on transparent ground, warm storybook style, one picture per building per level: <kind>-<level>.webp (a level without one uses the level below), index.json = lot corners per picture [w,h,xL,yL,xF,yF,xR,yR] for placing on a diamond tile; anim/wind-1-NN.webp = 12-frame turbine (AniCraft).",
+   "use": "anywhere"
+  },
+  "zuujis-painted-fx": {
+   "bytes": 70490,
+   "credit": "Zuujis (EffectCraft)",
+   "dir": "painted/fx",
+   "files": [
+    "loop-closed.webp",
+    "smoke.webp",
+    "sparks.webp"
+   ],
+   "files_total": 3,
+   "grade": "A",
+   "grade_note": "Painted storybook art, consistent style, keyed cleanly.",
+   "kind": "images",
+   "license": "CC0",
+   "note": "Painted effect strips, one row of square frames: sparks (10 x 128), smoke (8 x 192), loop-closed (16 x 192).",
+   "use": "anywhere"
+  },
+  "zuujis-painted-icons": {
+   "bytes": 276628,
+   "credit": "Zuujis (painted by Codex image generation for From the Ground Up, keyed in resources/game-art/from-the-ground-up)",
+   "dir": "painted/icons",
+   "files": [
+    "air.webp",
+    "asks.webp",
+    "autumn.webp",
+    "biogas.webp",
+    "biomethane.webp",
+    "bulldoze.webp",
+    "chat.webp",
+    "cleanwater.webp",
+    "close.webp",
+    "day.webp",
+    "develop.webp",
+    "dumped.webp",
+    "fast.webp",
+    "fire.webp",
+    "floor.webp",
+    "food.webp",
+    "goto.webp",
+    "hands.webp",
+    "hauled.webp",
+    "health.webp",
+    "heat.webp",
+    "help.webp",
+    "households.webp",
+    "idea.webp",
+    "ideas.webp",
+    "inventory.webp",
+    "journal.webp",
+    "land.webp",
+    "loop.webp",
+    "manure.webp",
+    "materials.webp",
+    "move.webp",
+    "night.webp",
+    "nutrients.webp",
+    "pause.webp",
+    "play.webp",
+    "police.webp",
+    "power.webp",
+    "progress.webp",
+    "rain.webp",
+    "reached.webp",
+    "ready.webp",
+    "residue.webp",
+    "road.webp",
+    "rubbish.webp",
+    "school.webp",
+    "sewage.webp",
+    "soil.webp",
+    "spring.webp",
+    "study.webp",
+    "summer.webp",
+    "tablet.webp",
+    "talk.webp",
+    "test.webp",
+    "testground.webp",
+    "university.webp",
+    "upgrade.webp",
+    "warning.webp",
+    "water.webp",
+    "winter.webp"
+   ],
+   "files_total": 60,
+   "grade": "A",
+   "grade_note": "Painted storybook art, consistent style, keyed cleanly.",
+   "kind": "icons",
+   "license": "CC0",
+   "note": "60 painted UI icons, 112 px on transparent, same storybook style as the buildings (air, water, food, energy, play/pause/fast, warnings, seasons, buildings...). Names in resources/game-art/from-the-ground-up/ui/ICONS.md.",
+   "use": "anywhere"
+  },
+  "zuujis-painted-landmarks": {
+   "bytes": 78252,
+   "credit": "Zuujis (painted by Codex image generation for From the Ground Up, keyed in resources/game-art/from-the-ground-up)",
+   "dir": "painted/landmarks",
+   "files": [
+    "depot.webp",
+    "depot_locked.webp",
+    "index.json"
+   ],
+   "files_total": 3,
+   "grade": "A",
+   "grade_note": "Painted storybook art, consistent style, keyed cleanly.",
+   "kind": "images",
+   "license": "CC0",
+   "note": "Painted landmark buildings: depot (open) and depot_locked; index.json = lot corners.",
+   "use": "anywhere"
+  },
+  "zuujis-painted-people": {
+   "bytes": 355116,
+   "credit": "Zuujis (painted by Codex image generation for From the Ground Up, keyed in resources/game-art/from-the-ground-up)",
+   "dir": "painted/people",
+   "files": [
+    "away.webp",
+    "cast.webp",
+    "index.json",
+    "roll.webp",
+    "walk.webp",
+    "work.webp"
+   ],
+   "files_total": 6,
+   "grade": "A",
+   "grade_note": "Painted storybook art, consistent style, keyed cleanly.",
+   "kind": "images",
+   "license": "CC0",
+   "note": "Painted townspeople atlases: cast (portraits), walk (toward), away, roll (wheelchair), work poses; index.json = {sheet: {cols, rows, cw, ch, feet}}.",
+   "use": "anywhere"
+  },
+  "zuujis-painted-props": {
+   "bytes": 1166034,
+   "credit": "Zuujis (painted by Codex image generation for From the Ground Up, keyed in resources/game-art/from-the-ground-up)",
+   "dir": "painted/props",
+   "files": [
+    "barge-away.webp",
+    "barge.webp",
+    "bench.webp",
+    "bike-rack.webp",
+    "bin.webp",
+    "birch-autumn.webp",
+    "birch-spring.webp",
+    "birch-summer.webp",
+    "birch-winter.webp",
+    "bus-away.webp",
+    "bus.webp",
+    "bush-autumn.webp",
+    "bush-spring.webp",
+    "bush-summer.webp",
+    "bush-winter.webp",
+    "cargo-bike-away.webp",
+    "cargo-bike.webp",
+    "compost-heap.webp",
+    "crane.webp",
+    "fishing-boat-away.webp",
+    "fishing-boat.webp",
+    "fruit-tree-autumn.webp",
+    "fruit-tree-spring.webp",
+    "fruit-tree-summer.webp",
+    "fruit-tree-winter.webp",
+    "handcart-away.webp",
+    "handcart.webp",
+    "hedge-autumn.webp",
+    "hedge-spring.webp",
+    "hedge-summer.webp",
+    "hedge-winter.webp",
+    "index.json",
+    "maple-autumn.webp",
+    "maple-spring.webp",
+    "maple-summer.webp",
+    "maple-winter.webp",
+    "oak-autumn.webp",
+    "oak-spring.webp",
+    "oak-summer.webp",
+    "oak-winter.webp",
+    "picnic-table.webp",
+    "pine-autumn.webp",
+    "pine-spring.webp",
+    "pine-summer.webp",
+    "pine-winter.webp",
+    "rowboat-away.webp",
+    "rowboat.webp",
+    "rubble.webp",
+    "scaffold.webp",
+    "streetlamp.webp",
+    "tractor-away.webp",
+    "tractor.webp",
+    "tram-away.webp",
+    "tram.webp",
+    "truck-away.webp",
+    "truck.webp"
+   ],
+   "files_total": 56,
+   "grade": "A",
+   "grade_note": "Painted storybook art, consistent style, keyed cleanly.",
+   "kind": "images",
+   "license": "CC0",
+   "note": "Painted isometric props: trees and hedges in four seasons (<tree>-<spring|summer|autumn|winter>), vehicles facing toward and away (<name>, <name>-away), street furniture, greenhouse pieces; index.json = ground corners per picture.",
+   "use": "anywhere"
+  },
+  "zuujis-painted-tower": {
+   "bytes": 542068,
+   "credit": "Zuujis (painted by Codex image generation for From the Ground Up, keyed in resources/game-art/from-the-ground-up)",
+   "dir": "painted/tower",
+   "files": [
+    "crane.webp",
+    "floor-animals.webp",
+    "floor-empty.webp",
+    "floor-energy.webp",
+    "floor-fish.webp",
+    "floor-food.webp",
+    "floor-homes.webp",
+    "floor-orchard.webp",
+    "floor-water.webp",
+    "floor-work.webp",
+    "index.json",
+    "lobby.webp",
+    "roof.webp"
+   ],
+   "files_total": 13,
+   "grade": "A",
+   "grade_note": "Painted storybook art, consistent style, keyed cleanly.",
+   "kind": "images",
+   "license": "CC0",
+   "note": "Painted stackable tower kit: lobby, floor-<kind> (empty, homes, food, energy, water, work, animals, fish, orchard), roof, crane; index.json = how the pieces stack.",
+   "use": "anywhere"
+  },
+  "zuujis-pixel-effects": {
+   "bytes": 163946,
+   "credit": "Zuujis (generated by Codex, make_vfx.py)",
+   "dir": "vfx/pixel",
+   "files": [
+    "elements/earth_heave/spritesheet.png",
+    "elements/earth_heave/spritesheet.txt",
+    "elements/ember_whirl/spritesheet.png",
+    "elements/ember_whirl/spritesheet.txt",
+    "elements/fire_pillar/spritesheet.png",
+    "elements/fire_pillar/spritesheet.txt",
+    "elements/ice_spikes/spritesheet.png",
+    "elements/ice_spikes/spritesheet.txt",
+    "elements/water_wave/spritesheet.png",
+    "elements/water_wave/spritesheet.txt",
+    "elements/wind_twister/spritesheet.png",
+    "elements/wind_twister/spritesheet.txt",
+    "explosions/crystal_detonation/spritesheet.png",
+    "explosions/crystal_detonation/spritesheet.txt",
+    "explosions/fiery_bloom/spritesheet.png",
+    "explosions/fiery_bloom/spritesheet.txt",
+    "explosions/large_fireball/spritesheet.png",
+    "explosions/large_fireball/spritesheet.txt",
+    "explosions/mushroom_cloud/spritesheet.png",
+    "explosions/mushroom_cloud/spritesheet.txt",
+    "explosions/small_pop/spritesheet.png",
+    "explosions/small_pop/spritesheet.txt",
+    "explosions/smoky_blast/spritesheet.png",
+    "explosions/smoky_blast/spritesheet.txt",
+    "impacts/crescent_slash/spritesheet.png",
+    "impacts/crescent_slash/spritesheet.txt",
+    "impacts/ground_dust/spritesheet.png",
+    "impacts/ground_dust/spritesheet.txt",
+    "impacts/heavy_stomp/spritesheet.png",
+    "impacts/heavy_stomp/spritesheet.txt",
+    "impacts/hit_sparks/spritesheet.png",
+    "impacts/hit_sparks/spritesheet.txt",
+    "impacts/punch_flash/spritesheet.png",
+    "impacts/punch_flash/spritesheet.txt",
+    "impacts/ricochet_blue/spritesheet.png",
+    "impacts/ricochet_blue/spritesheet.txt",
+    "index.json",
+    "lightning/chain_arc/spritesheet.png",
+    "lightning/chain_arc/spritesheet.txt",
+    "lightning/forked_bolt_blue/spritesheet.png",
+    "lightning/forked_bolt_blue/spritesheet.txt",
+    "lightning/forked_bolt_purple/spritesheet.png",
+    "lightning/forked_bolt_purple/spritesheet.txt",
+    "lightning/ground_arcs/spritesheet.png",
+    "lightning/ground_arcs/spritesheet.txt",
+    "lightning/sky_strike/spritesheet.png",
+    "lightning/sky_strike/spritesheet.txt",
+    "lightning/static_cage/spritesheet.png",
+    "lightning/static_cage/spritesheet.txt",
+    "magic/fairy_sparkles/spritesheet.png",
+    "magic/fairy_sparkles/spritesheet.txt",
+    "magic/healing_crosses/spritesheet.png",
+    "magic/healing_crosses/spritesheet.txt",
+    "magic/hex_shield/spritesheet.png",
+    "magic/hex_shield/spritesheet.txt",
+    "magic/moon_seal/spritesheet.png",
+    "magic/moon_seal/spritesheet.txt",
+    "magic/star_burst/spritesheet.png",
+    "magic/star_burst/spritesheet.txt",
+    "magic/teleport_gate/spritesheet.png",
+    "magic/teleport_gate/spritesheet.txt",
+    "sci_fi/energy_ring/spritesheet.png",
+    "sci_fi/energy_ring/spritesheet.txt",
+    "sci_fi/laser_hit/spritesheet.png",
+    "sci_fi/laser_hit/spritesheet.txt",
+    "sci_fi/plasma_burst/spritesheet.png",
+    "sci_fi/plasma_burst/spritesheet.txt",
+    "sci_fi/reactor_overload/spritesheet.png",
+    "sci_fi/reactor_overload/spritesheet.txt",
+    "sci_fi/scanner_ping/spritesheet.png",
+    "sci_fi/scanner_ping/spritesheet.txt",
+    "sci_fi/warp_jump/spritesheet.png",
+    "sci_fi/warp_jump/spritesheet.txt",
+    "smoke/chimney_puff/spritesheet.png",
+    "smoke/chimney_puff/spritesheet.txt",
+    "smoke/dust_ring/spritesheet.png",
+    "smoke/dust_ring/spritesheet.txt",
+    "smoke/signal_trail/spritesheet.png",
+    "smoke/signal_trail/spritesheet.txt",
+    "smoke/smoke_ring/spritesheet.png",
+    "smoke/smoke_ring/spritesheet.txt",
+    "smoke/soot_trail/spritesheet.png",
+    "smoke/soot_trail/spritesheet.txt",
+    "smoke/steam_puff/spritesheet.png",
+    "smoke/steam_puff/spritesheet.txt",
+    "splatters/ink_drop/spritesheet.png",
+    "splatters/ink_drop/spritesheet.txt",
+    "splatters/paint_splat_coral/spritesheet.png",
+    "splatters/paint_splat_coral/spritesheet.txt",
+    "splatters/paint_splat_teal/spritesheet.png",
+    "splatters/paint_splat_teal/spritesheet.txt",
+    "splatters/slime_drip_purple/spritesheet.png",
+    "splatters/slime_drip_purple/spritesheet.txt",
+    "splatters/slime_splat_green/spritesheet.png",
+    "splatters/slime_splat_green/spritesheet.txt",
+    "splatters/water_splash/spritesheet.png",
+    "splatters/water_splash/spritesheet.txt"
+   ],
+   "files_total": 97,
+   "grade": "B",
+   "grade_note": "48 crisp pixel-art effects (explosions, impacts, lightning, magic, smoke, splatters, sci-fi, elements), 8-16 frames at 15 fps.",
+   "kind": "vfx-sheets",
+   "license": "CC0 1.0 (made for Zuujis)",
+   "note": "GameAssets.vfx('<category>/<effect>') -> {draw(ctx, t, x, y)}; index.json lists every effect's frame size and count. Rebuild: resources/game-art/library-free/vfx/make_vfx.py.",
+   "use": "anywhere"
+  },
+  "zuujis-planes": {
+   "bytes": 4215375,
+   "credit": "Zuujis (generated by Codex: resources/game-art/open-skies/build_jets.py, resources/game-art/library-free/planes/build_planes.py)",
+   "dir": "models/planes",
+   "files": [
+    "MODELS_README.md",
+    "a10/a10.glb",
+    "a10/plane.json",
+    "a320/a320.glb",
+    "a320/plane.json",
+    "b738/b738.glb",
+    "b738/plane.json",
+    "b744/b744.glb",
+    "b744/plane.json",
+    "c208b/c208b.glb",
+    "c208b/plane.json",
+    "concorde/concorde.glb",
+    "concorde/plane.json",
+    "f14/f14.glb",
+    "f14/plane.json",
+    "f15/f15.glb",
+    "f15/plane.json",
+    "f16/F16.glb",
+    "f16/plane.json",
+    "f22/f22.glb",
+    "f22/plane.json",
+    "f35/f35.glb",
+    "f35/plane.json",
+    "f4/f4.glb",
+    "f4/plane.json",
+    "f86/f86.glb",
+    "f86/plane.json",
+    "fa18/fa18.glb",
+    "fa18/plane.json",
+    "g650/g650.glb",
+    "g650/plane.json",
+    "gripen/gripen.glb",
+    "gripen/plane.json",
+    "lj45/lj45.glb",
+    "lj45/plane.json",
+    "manifest.json",
+    "mig15/mig15.glb",
+    "mig15/plane.json",
+    "mig29/mig29.glb",
+    "mig29/plane.json",
+    "p51/plane.json",
+    "rafale/plane.json",
+    "rafale/rafale.glb",
+    "spitfire/mkvii.glb",
+    "spitfire/plane.json",
+    "su27/plane.json",
+    "su27/su27.glb",
+    "t38/plane.json",
+    "t38/t38.glb",
+    "typhoon/plane.json",
+    "typhoon/typhoon.glb"
+   ],
+   "files_total": 51,
+   "grade": "C",
+   "grade_note": "All 24 are ours now: simple low-poly models (about 1.5k triangles, flat colours) with the right silhouettes.",
+   "kind": "models",
+   "license": "CC0 1.0 (made for Zuujis): 20 jets by build_jets.py, and the A320, Caravan, F-16 and Spitfire by build_planes.py",
+   "note": "24 aircraft folders <key>/plane.json (real published specs for GameFlight.register, model settings) + <key>.glb; manifest.json lists them; MODELS_README.md explains the format and the licences.",
+   "use": "anywhere"
+  },
+  "zuujis-scifi-rts": {
+   "bytes": 1843935,
+   "credit": "Zuujis (drawn in VectorCraft, resources/game-art/rift-command)",
+   "dir": "sprites/scifi-rts",
+   "files": [
+    "sheet-2x.png",
+    "sheet.json"
+   ],
+   "files_total": 2,
+   "grade": "A",
+   "grade_note": "Three factions by ten roles plus 30 icons, drawn in VectorCraft.",
+   "kind": "sprites-grid",
+   "license": "CC0",
+   "note": "Sci-fi RTS sheet, 10 x 6 cells of 256 px (128 pt at 2x): three factions (iron, brood, lumen) x ten unit/building roles, then map pieces and command/upgrade icons. sheet.json names every cell.",
+   "use": "anywhere"
+  },
+  "zuujis-ships": {
+   "bytes": 4028,
+   "cell": [
+    64,
+    44
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "ships.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "Shooter sprites in 64x44 cells: ss_player (2 flame frames), ss_basic/zigzag/diver/tank enemies (face down), ss_boss_<red|orange|blue|green>, ss_shot_player/enemy, and side-scroller variants ss_player_r, ss_*_l.",
+   "sheet": "ships",
+   "sprites": {
+    "ss_basic": {
+     "frames": 1,
+     "row": 1
+    },
+    "ss_basic_l": {
+     "frames": 1,
+     "row": 14
+    },
+    "ss_boss_blue": {
+     "frames": 1,
+     "row": 9
+    },
+    "ss_boss_green": {
+     "frames": 1,
+     "row": 10
+    },
+    "ss_boss_orange": {
+     "frames": 1,
+     "row": 8
+    },
+    "ss_boss_red": {
+     "frames": 1,
+     "row": 7
+    },
+    "ss_capsule": {
+     "frames": 2,
+     "row": 13
+    },
+    "ss_diver": {
+     "frames": 1,
+     "row": 3
+    },
+    "ss_diver_l": {
+     "frames": 1,
+     "row": 16
+    },
+    "ss_player": {
+     "frames": 2,
+     "row": 0
+    },
+    "ss_player_r": {
+     "frames": 2,
+     "row": 11
+    },
+    "ss_shot_enemy": {
+     "frames": 1,
+     "row": 6
+    },
+    "ss_shot_player": {
+     "frames": 1,
+     "row": 5
+    },
+    "ss_shot_player_r": {
+     "frames": 1,
+     "row": 12
+    },
+    "ss_tank": {
+     "frames": 1,
+     "row": 4
+    },
+    "ss_zigzag": {
+     "frames": 1,
+     "row": 2
+    },
+    "ss_zigzag_l": {
+     "frames": 1,
+     "row": 15
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-space": {
+   "bytes": 870761,
+   "credit": "Zuujis (drawn by scripts/art/cosmos-blaster/art.py)",
+   "dir": "space",
+   "files": [
+    "atlas.json",
+    "atlas.webp",
+    "nebula-a.webp",
+    "nebula-b.webp",
+    "planets.webp",
+    "rock.webp"
+   ],
+   "files_total": 6,
+   "grade": "A",
+   "grade_note": "Clean vector ships, bosses and explosions in one atlas.",
+   "kind": "images",
+   "license": "CC0",
+   "note": "Space shooter art: atlas.webp + atlas.json (name -> [x, y, w, h, drawScale]: bosses, ships, drones, rocks, drills, explosion frames boom0-9, crystals, pickups, shots, Cosmos Blaster logo), nebula-a/b (white-on-alpha clouds, tint them), rock.webp (seamless grey rock tile, tint it), planets.webp (five 512 px planets in a row).",
+   "use": "anywhere"
+  },
+  "zuujis-space-sfx": {
+   "bytes": 244970,
+   "credit": "Zuujis (synthesized by scripts/art/cosmos-blaster/audio.py)",
+   "dir": "sounds/space",
+   "files": [
+    "best.mp3",
+    "bigexplode.mp3",
+    "blaser.mp3",
+    "capsule.mp3",
+    "clear.mp3",
+    "die.mp3",
+    "error.mp3",
+    "eshot.mp3",
+    "explode0.mp3",
+    "explode1.mp3",
+    "explode2.mp3",
+    "hit.mp3",
+    "laser.mp3",
+    "missile.mp3",
+    "oneup.mp3",
+    "over.mp3",
+    "pop.mp3",
+    "powerup.mp3",
+    "select.mp3",
+    "shield.mp3",
+    "shot.mp3",
+    "start.mp3",
+    "thud.mp3",
+    "wall.mp3",
+    "warning.mp3"
+   ],
+   "files_total": 25,
+   "grade": "B",
+   "grade_note": "Good, generic.",
+   "kind": "sfx",
+   "license": "CC0",
+   "note": "25 synthesized space-shooter sounds (MP3, mono 44.1 kHz): shot, laser, blaser, missile, eshot, hit, pop, thud, wall, explode0-2, bigexplode, capsule, powerup, shield, oneup, die, start, warning, clear, error, over, best, select.",
+   "use": "anywhere"
+  },
+  "zuujis-sudoku": {
+   "bytes": 619,
+   "cell": [
+    30,
+    30
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "sudoku.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "Sudoku cell backgrounds, 30x30: sd_cell, sd_group, sd_same, sd_conflict, sd_sel.",
+   "sheet": "sudoku",
+   "sprites": {
+    "sd_cell": {
+     "frames": 1,
+     "row": 0
+    },
+    "sd_conflict": {
+     "frames": 1,
+     "row": 3
+    },
+    "sd_group": {
+     "frames": 1,
+     "row": 1
+    },
+    "sd_same": {
+     "frames": 1,
+     "row": 2
+    },
+    "sd_sel": {
+     "frames": 1,
+     "row": 4
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-tiles": {
+   "bytes": 10200,
+   "cell": [
+    16,
+    16
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "tiles.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "16x16 terrain: grass/dirt/sand/snow/water/lava/stone/wood grounds, 16-way autotiles path_*/shore_*/road_* (suffix = connected neighbours in N E S W order, x = none), props (trees, rocks, fences, crates...), tower-defence slot/portal/keep/spawn_cave.",
+   "sheet": "tiles",
+   "sprites": {
+    "barrel": {
+     "frames": 1,
+     "row": 78
+    },
+    "bones": {
+     "frames": 1,
+     "row": 81
+    },
+    "boulder": {
+     "frames": 1,
+     "row": 72
+    },
+    "bush": {
+     "frames": 1,
+     "row": 70
+    },
+    "cobble": {
+     "frames": 1,
+     "row": 14
+    },
+    "crate": {
+     "frames": 1,
+     "row": 77
+    },
+    "dirt": {
+     "frames": 1,
+     "row": 6
+    },
+    "fence_h": {
+     "frames": 1,
+     "row": 74
+    },
+    "fence_v": {
+     "frames": 1,
+     "row": 75
+    },
+    "flagstone": {
+     "frames": 1,
+     "row": 12
+    },
+    "flagstone_b": {
+     "frames": 1,
+     "row": 13
+    },
+    "flower_bed": {
+     "frames": 1,
+     "row": 80
+    },
+    "grass": {
+     "frames": 1,
+     "row": 0
+    },
+    "grass_b": {
+     "frames": 1,
+     "row": 1
+    },
+    "grass_c": {
+     "frames": 1,
+     "row": 2
+    },
+    "grass_flowers": {
+     "frames": 1,
+     "row": 4
+    },
+    "grass_lit": {
+     "frames": 1,
+     "row": 3
+    },
+    "grass_tall": {
+     "frames": 1,
+     "row": 5
+    },
+    "keep": {
+     "frames": 1,
+     "row": 85
+    },
+    "lava": {
+     "frames": 4,
+     "row": 11
+    },
+    "mushroom": {
+     "frames": 1,
+     "row": 79
+    },
+    "path_e": {
+     "frames": 1,
+     "row": 21
+    },
+    "path_es": {
+     "frames": 1,
+     "row": 25
+    },
+    "path_esw": {
+     "frames": 1,
+     "row": 33
+    },
+    "path_ew": {
+     "frames": 1,
+     "row": 29
+    },
+    "path_fill": {
+     "frames": 1,
+     "row": 7
+    },
+    "path_n": {
+     "frames": 1,
+     "row": 20
+    },
+    "path_ne": {
+     "frames": 1,
+     "row": 22
+    },
+    "path_nes": {
+     "frames": 1,
+     "row": 26
+    },
+    "path_nesw": {
+     "frames": 1,
+     "row": 34
+    },
+    "path_new": {
+     "frames": 1,
+     "row": 30
+    },
+    "path_ns": {
+     "frames": 1,
+     "row": 24
+    },
+    "path_nsw": {
+     "frames": 1,
+     "row": 32
+    },
+    "path_nw": {
+     "frames": 1,
+     "row": 28
+    },
+    "path_s": {
+     "frames": 1,
+     "row": 23
+    },
+    "path_sw": {
+     "frames": 1,
+     "row": 31
+    },
+    "path_w": {
+     "frames": 1,
+     "row": 27
+    },
+    "path_x": {
+     "frames": 1,
+     "row": 19
+    },
+    "pine": {
+     "frames": 1,
+     "row": 69
+    },
+    "plank_h": {
+     "frames": 1,
+     "row": 15
+    },
+    "plank_v": {
+     "frames": 1,
+     "row": 16
+    },
+    "portal": {
+     "frames": 4,
+     "row": 84
+    },
+    "road_e": {
+     "frames": 1,
+     "row": 53
+    },
+    "road_es": {
+     "frames": 1,
+     "row": 57
+    },
+    "road_esw": {
+     "frames": 1,
+     "row": 65
+    },
+    "road_ew": {
+     "frames": 1,
+     "row": 61
+    },
+    "road_n": {
+     "frames": 1,
+     "row": 52
+    },
+    "road_ne": {
+     "frames": 1,
+     "row": 54
+    },
+    "road_nes": {
+     "frames": 1,
+     "row": 58
+    },
+    "road_nesw": {
+     "frames": 1,
+     "row": 66
+    },
+    "road_new": {
+     "frames": 1,
+     "row": 62
+    },
+    "road_ns": {
+     "frames": 1,
+     "row": 56
+    },
+    "road_nsw": {
+     "frames": 1,
+     "row": 64
+    },
+    "road_nw": {
+     "frames": 1,
+     "row": 60
+    },
+    "road_s": {
+     "frames": 1,
+     "row": 55
+    },
+    "road_sw": {
+     "frames": 1,
+     "row": 63
+    },
+    "road_w": {
+     "frames": 1,
+     "row": 59
+    },
+    "road_x": {
+     "frames": 1,
+     "row": 51
+    },
+    "rock": {
+     "frames": 1,
+     "row": 71
+    },
+    "sand": {
+     "frames": 1,
+     "row": 8
+    },
+    "shore_e": {
+     "frames": 2,
+     "row": 37
+    },
+    "shore_es": {
+     "frames": 2,
+     "row": 41
+    },
+    "shore_esw": {
+     "frames": 2,
+     "row": 49
+    },
+    "shore_ew": {
+     "frames": 2,
+     "row": 45
+    },
+    "shore_n": {
+     "frames": 2,
+     "row": 36
+    },
+    "shore_ne": {
+     "frames": 2,
+     "row": 38
+    },
+    "shore_nes": {
+     "frames": 2,
+     "row": 42
+    },
+    "shore_nesw": {
+     "frames": 2,
+     "row": 50
+    },
+    "shore_new": {
+     "frames": 2,
+     "row": 46
+    },
+    "shore_ns": {
+     "frames": 2,
+     "row": 40
+    },
+    "shore_nsw": {
+     "frames": 2,
+     "row": 48
+    },
+    "shore_nw": {
+     "frames": 2,
+     "row": 44
+    },
+    "shore_s": {
+     "frames": 2,
+     "row": 39
+    },
+    "shore_sw": {
+     "frames": 2,
+     "row": 47
+    },
+    "shore_w": {
+     "frames": 2,
+     "row": 43
+    },
+    "shore_x": {
+     "frames": 2,
+     "row": 35
+    },
+    "sign": {
+     "frames": 1,
+     "row": 76
+    },
+    "slot": {
+     "frames": 1,
+     "row": 82
+    },
+    "slot_hover": {
+     "frames": 1,
+     "row": 83
+    },
+    "snow": {
+     "frames": 1,
+     "row": 9
+    },
+    "spawn_cave": {
+     "frames": 1,
+     "row": 86
+    },
+    "stump": {
+     "frames": 1,
+     "row": 73
+    },
+    "tree": {
+     "frames": 1,
+     "row": 67
+    },
+    "tree_autumn": {
+     "frames": 1,
+     "row": 68
+    },
+    "wall_brick": {
+     "frames": 1,
+     "row": 17
+    },
+    "wall_top": {
+     "frames": 1,
+     "row": 18
+    },
+    "water": {
+     "frames": 4,
+     "row": 10
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-towers": {
+   "bytes": 1100,
+   "cell": [
+    16,
+    16
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "towers.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "16x16 towers, frames [tier1, tier2, tier3].",
+   "sheet": "towers",
+   "sprites": {
+    "archer": {
+     "frames": 3,
+     "row": 0
+    },
+    "ballista": {
+     "frames": 3,
+     "row": 1
+    },
+    "cannon": {
+     "frames": 3,
+     "row": 2
+    },
+    "frost": {
+     "frames": 3,
+     "row": 3
+    },
+    "watchtower": {
+     "frames": 3,
+     "row": 4
+    }
+   },
+   "use": "anywhere"
+  },
+  "zuujis-ui": {
+   "bytes": 1581,
+   "cell": [
+    8,
+    8
+   ],
+   "credit": "Zuujis (generated)",
+   "dir": "pixel",
+   "files_total": 2,
+   "grade": "C",
+   "grade_note": "Generated 16 px DB16 pixel sheet: consistent but basic.",
+   "image": "ui.png",
+   "kind": "sprites",
+   "license": "CC0",
+   "note": "8x8 cells. Panels/buttons/slots are 9 frames = the 3x3 slices of a 9-slice; bars are [left cap, middle, right cap]. Draw with GameAssets.ui().",
+   "sheet": "ui",
+   "sprites": {
+    "bar_blue": {
+     "frames": 3,
+     "row": 14
+    },
+    "bar_empty": {
+     "frames": 3,
+     "row": 11
+    },
+    "bar_gold": {
+     "frames": 3,
+     "row": 15
+    },
+    "bar_green": {
+     "frames": 3,
+     "row": 12
+    },
+    "bar_red": {
+     "frames": 3,
+     "row": 13
+    },
+    "button": {
+     "frames": 9,
+     "row": 3
+    },
+    "button_down": {
+     "frames": 9,
+     "row": 5
+    },
+    "button_gold": {
+     "frames": 9,
+     "row": 8
+    },
+    "button_green": {
+     "frames": 9,
+     "row": 6
+    },
+    "button_hover": {
+     "frames": 9,
+     "row": 4
+    },
+    "button_red": {
+     "frames": 9,
+     "row": 7
+    },
+    "panel": {
+     "frames": 9,
+     "row": 0
+    },
+    "panel_dark": {
+     "frames": 9,
+     "row": 1
+    },
+    "panel_parchment": {
+     "frames": 9,
+     "row": 2
+    },
+    "slot": {
+     "frames": 9,
+     "row": 9
+    },
+    "slot_selected": {
+     "frames": 9,
+     "row": 10
+    }
+   },
+   "use": "anywhere"
+  }
+ },
+ "palette": "DawnBringer DB16",
+ "version": 1
+}

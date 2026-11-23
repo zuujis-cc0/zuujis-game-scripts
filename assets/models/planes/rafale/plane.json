@@ -1,0 +1,57 @@
+{
+  "key": "rafale",
+  "aircraft": {
+    "name": "Dassault Rafale C",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#8c929c",
+    "accent": "#4d5668",
+    "massKg": 15000,
+    "wingAreaM2": 45.7,
+    "spanM": 10.9,
+    "lengthM": 15.3,
+    "thrustN": 100000,
+    "abThrustN": 150000,
+    "spoolTau": 1.18,
+    "cd0": 0.021,
+    "clMax": 1.33,
+    "alpha0": -0.024,
+    "oswald": 0.72,
+    "flaps": {
+      "clBonus": 0.39,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.0
+    },
+    "rates": {
+      "roll": 4.25,
+      "pitch": 1.64,
+      "yaw": 0.61
+    },
+    "limits": {
+      "vneKt": 750,
+      "machMax": 1.8,
+      "gMax": 9
+    },
+    "real": {
+      "engine": "2× Safran M88-2",
+      "maxSpeedKt": 1032,
+      "cruiseKt": 500,
+      "stallKt": 115,
+      "ceilingFt": 50000,
+      "climbFpm": 50000,
+      "rangeNm": 2000,
+      "year": 2006
+    }
+  },
+  "model": {
+    "glb": "rafale.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+ "image": "characters.png",
+ "cell": [
+  16,
+  16
+ ],
+ "sprites": {
+  "soldier": {
+   "row": 0,
+   "frames": 3
+  },
+  "runner": {
+   "row": 1,
+   "frames": 3
+  },
+  "shieldbearer": {
+   "row": 2,
+   "frames": 3
+  },
+  "rogue": {
+   "row": 3,
+   "frames": 3
+  },
+  "healer": {
+   "row": 4,
+   "frames": 3
+  },
+  "goblin": {
+   "row": 5,
+   "frames": 3
+  },
+  "orc": {
+   "row": 6,
+   "frames": 3
+  },
+  "skeleton": {
+   "row": 7,
+   "frames": 3
+  },
+  "warlord": {
+   "row": 8,
+   "frames": 3
+  },
+  "slime": {
+   "row": 9,
+   "frames": 3
+  },
+  "bat": {
+   "row": 10,
+   "frames": 3
+  },
+  "ram": {
+   "row": 11,
+   "frames": 3
+  },
+  "wolf": {
+   "row": 12,
+   "frames": 3
+  },
+  "dragon": {
+   "row": 13,
+   "frames": 3
+  },
+  "knight": {
+   "row": 14,
+   "frames": 3
+  },
+  "archer": {
+   "row": 15,
+   "frames": 3
+  },
+  "mage": {
+   "row": 16,
+   "frames": 3
+  },
+  "peasant": {
+   "row": 17,
+   "frames": 3
+  }
+ }
+}

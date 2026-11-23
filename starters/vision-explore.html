@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #a6d4f5; }
+  canvas { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script src="/js/game-vision.js"></script>
+<script>
+'use strict';
+// Explore a vision: a painted little world people can wander around. Tap a glowing marker (or press Tour) to read
+// about that part of the vision. Switch seasons and day/night with the bar at the bottom.
+//
+// To show YOUR vision, edit the three things below:
+//   VISION  the title card people see first
+//   MAP     the land, one character per plot (legend below). Rows run down-left, columns down-right.
+//   PLACES  what each letter in the map is: its picture (art), how built-up it is (level 1-3), and its note.
+//
+// MAP legend:   .  grass    =  path or road    ~  water    t  trees    T  woods    o  fruit trees    *  bushes
+//               (space)  no land (the island's edge)        A-Z, a-z (other letters)  a place from PLACES
+// art: allotments bakery bee_meadow clinic community_centre compost cottage eco_homes fish greenhouse homes houseboat
+//      hydro landing library living_wall market mushroom orchard park rain_garden recycler reedbed repair_shop school
+//      shared_house solar timber_yard vertical_farm water_tower wind ... (every name in the Assets panel under
+//      painted/buildings, without the -1/-2/-3)
+// icon: a painted icon's name (air food water power soil health school talk idea heat land ...), or emoji: '🌱'.
+const VISION = {
+  title: document.title,                    // the game's name (from <title>)
+  subtitle: 'A town that grows its own food, cleans its own water and makes its own power. Take the tour, or wander and tap the glowing markers.',
+  icon: '🎮',
+  accent: '#8b5cf6',
+};
+
+const MAP = [
+  '  ~~~~~      ',
+  ' ~~~~~TTT    ',
+  '~~~R~~.tTTt  ',
+  '~~~~~.H.tS.t.',
+  '~~~~.=======.',
+  ' ~~W.=.G.E=.t',
+  '  ~~.=.*..=.t',
+  '  ~..=M.C.=F.',
+  '   ~.=======.',
+  '   ~.A.o.t.P ',
+  '    ~.B.tT.. ',
+  '     ~~..t   ',
+  '      ~~..   ',
+];
+
+const PLACES = {
+  R: { art: 'reedbed', level: 3, icon: 'cleanwater', title: 'The living filter', tour: 4,
+       text: 'Every drop of grey water from the town runs through these reed beds. Roots and microbes clean it on its way back to the river.\n\nNo chemicals, no pumps: just plants doing what they always did.',
+       stats: [['Water cleaned', '1.2 million litres a day'], ['Energy used', 'none']] },
+  H: { art: 'eco_homes', level: 3, icon: 'households', title: 'Homes that give back', tour: 1,
+       text: 'Every home is insulated, sun-facing and roofed with panels or plants. Together they make more power than they use.\n\nRainwater from the roofs fills the gardens; kitchen scraps go to the compost.',
+       stats: [['Homes', '240'], ['Power', '+18% over what they use'], ['Bills', 'about half']] },
+  S: { art: 'solar', level: 3, icon: 'power', title: 'Sunfield', tour: 3,
+       text: 'Panels raised high enough for sheep to graze under. The field makes power and food at the same time.',
+       stats: [['Power', '4 MW at noon'], ['Grazing', '60 sheep']] },
+  W: { art: 'water_tower', level: 2, icon: 'water', title: 'The water tower',
+       text: 'Clean water stored high, so it flows to every tap without pumps running all day.' },
+  G: { art: 'greenhouse', level: 3, icon: 'food', title: 'The glass farm', tour: 2,
+       text: 'Vegetables all year round, warmed by heat the town would otherwise throw away.\n\nAnyone can volunteer a morning a week and take a box home.',
+       stats: [['Food', '30% of the town\'s vegetables'], ['Heating', 'waste heat from the recycler']] },
+  E: { art: 'school', level: 3, icon: 'school', title: 'The open school', tour: 5,
+       text: 'Lessons happen in the gardens, the workshop and the river as much as in classrooms. Children learn how their town works by helping it work.' },
+  M: { art: 'market', level: 3, icon: 'hands', title: 'Market square', tour: 6,
+       text: 'Where the town meets. Food from the glass farm and the orchards, things made in the repair shop, and a lot of talk.' },
+  C: { art: 'community_centre', level: 3, icon: 'talk', title: 'The commons', tour: 7,
+       text: 'Every big decision is made here, in the open. Anyone can bring an idea; the town tries the good ones on the test ground first.' },
+  F: { art: 'recycler', level: 2, icon: 'materials', title: 'Nothing wasted',
+       text: 'Glass, metal and plastics sorted and remade here. Its spare heat warms the glass farm next door.' },
+  P: { art: 'park', level: 3, icon: 'air', title: 'Riverside park',
+       text: 'Shade, play and clean air. The trees here were planted by the first families who moved in.' },
+  A: { art: 'allotments', level: 3, icon: 'soil', title: 'Allotments',
+       text: 'Plots for anyone who wants one. Fed by compost from every kitchen in town.' },
+  B: { art: 'bee_meadow', level: 2, icon: 'spring', title: 'The bee meadow',
+       text: 'Wild flowers left to grow, so the orchards and gardens are pollinated for free.' },
+};
+
+const world = GameVision.create(document.getElementById('c'), {
+  map: MAP, places: PLACES, accent: VISION.accent,
+  season: 'summer', people: 14, vehicles: 3,
+});
+GameVision.ui(world, VISION);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: 'Enter', b: 'Escape', x: 'KeyN', y: 'KeyS', lb: 'PageUp', rb: 'PageDown', start: 'Enter', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' });
+</script>
+</body>
+</html>

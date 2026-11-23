@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b1020; color: #e5e7eb; font-family: system-ui, sans-serif; overflow: hidden; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; font-weight: 700; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">🎮 My Game</div>
+<!-- The shared libraries: every game on the site uses the same copies. -->
+<script src="/js/game-assets.js"></script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script>
+'use strict';
+// A blank canvas: a dot follows the arrow keys (or your finger), with a sound on every bump.
+const c = document.getElementById('c'), g = c.getContext('2d');
+let W = 0, H = 0;
+function fit() { W = c.width = innerWidth * devicePixelRatio; H = c.height = innerHeight * devicePixelRatio; }
+addEventListener('resize', fit); fit();
+
+let target = null;
+const keys = {};
+addEventListener('keydown', e => { keys[e.key] = true; target = null; });
+addEventListener('keyup', e => { keys[e.key] = false; });
+c.addEventListener('pointerdown', e => { target = { x: e.clientX * devicePixelRatio, y: e.clientY * devicePixelRatio }; });
+
+const dot = { x: 200, y: 200, r: 24 * devicePixelRatio };
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  const speed = 420 * devicePixelRatio * dt;
+  if (keys.ArrowLeft) dot.x -= speed;
+  if (keys.ArrowRight) dot.x += speed;
+  if (keys.ArrowUp) dot.y -= speed;
+  if (keys.ArrowDown) dot.y += speed;
+  if (target) { dot.x += (target.x - dot.x) * 0.12; dot.y += (target.y - dot.y) * 0.12; }
+  const x = Math.max(dot.r, Math.min(W - dot.r, dot.x)), y = Math.max(dot.r, Math.min(H - dot.r, dot.y));
+  if (x !== dot.x || y !== dot.y) GameSfx.play('bounce');
+  dot.x = x; dot.y = y;
+
+  g.fillStyle = '#0b1020'; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#8b5cf6';
+  g.beginPath(); g.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2); g.fill();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: 'Space', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight', stick: 'arrows' });
+</script>
+</body>
+</html>

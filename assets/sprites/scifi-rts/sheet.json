@@ -1,0 +1,249 @@
+{
+ "image": "sheet-2x.png",
+ "cell": [
+  256,
+  256
+ ],
+ "cols": 10,
+ "rows": 6,
+ "scale": 2,
+ "about": "Sci-fi RTS sheet drawn in VectorCraft (resources/game-art/rift-command). Rows 0-2: three factions (iron = machines, brood = insect hive, lumen = crystal) by ten roles (hq, supply, barracks, extractor, tech, worker, basic, ranged, heavy, defense). Rows 3-5: map pieces, command and upgrade icons. sprites: name -> [col, row]. Original work, CC0.",
+ "sprites": {
+  "iron_hq": [
+   0,
+   0
+  ],
+  "iron_supply": [
+   1,
+   0
+  ],
+  "iron_barracks": [
+   2,
+   0
+  ],
+  "iron_extractor": [
+   3,
+   0
+  ],
+  "iron_tech": [
+   4,
+   0
+  ],
+  "iron_worker": [
+   5,
+   0
+  ],
+  "iron_basic": [
+   6,
+   0
+  ],
+  "iron_ranged": [
+   7,
+   0
+  ],
+  "iron_heavy": [
+   8,
+   0
+  ],
+  "iron_defense": [
+   9,
+   0
+  ],
+  "brood_hq": [
+   0,
+   1
+  ],
+  "brood_supply": [
+   1,
+   1
+  ],
+  "brood_barracks": [
+   2,
+   1
+  ],
+  "brood_extractor": [
+   3,
+   1
+  ],
+  "brood_tech": [
+   4,
+   1
+  ],
+  "brood_worker": [
+   5,
+   1
+  ],
+  "brood_basic": [
+   6,
+   1
+  ],
+  "brood_ranged": [
+   7,
+   1
+  ],
+  "brood_heavy": [
+   8,
+   1
+  ],
+  "brood_defense": [
+   9,
+   1
+  ],
+  "lumen_hq": [
+   0,
+   2
+  ],
+  "lumen_supply": [
+   1,
+   2
+  ],
+  "lumen_barracks": [
+   2,
+   2
+  ],
+  "lumen_extractor": [
+   3,
+   2
+  ],
+  "lumen_tech": [
+   4,
+   2
+  ],
+  "lumen_worker": [
+   5,
+   2
+  ],
+  "lumen_basic": [
+   6,
+   2
+  ],
+  "lumen_ranged": [
+   7,
+   2
+  ],
+  "lumen_heavy": [
+   8,
+   2
+  ],
+  "lumen_defense": [
+   9,
+   2
+  ],
+  "crystal": [
+   0,
+   3
+  ],
+  "vent": [
+   1,
+   3
+  ],
+  "ground": [
+   2,
+   3
+  ],
+  "boulder": [
+   3,
+   3
+  ],
+  "crater": [
+   4,
+   3
+  ],
+  "cancel": [
+   5,
+   3
+  ],
+  "rally": [
+   6,
+   3
+  ],
+  "gather": [
+   7,
+   3
+  ],
+  "build": [
+   8,
+   3
+  ],
+  "em_iron": [
+   0,
+   4
+  ],
+  "em_brood": [
+   1,
+   4
+  ],
+  "em_lumen": [
+   2,
+   4
+  ],
+  "aurium": [
+   3,
+   4
+  ],
+  "flux": [
+   4,
+   4
+  ],
+  "supply": [
+   5,
+   4
+  ],
+  "move": [
+   6,
+   4
+  ],
+  "stop": [
+   7,
+   4
+  ],
+  "attack": [
+   8,
+   4
+  ],
+  "hold": [
+   9,
+   4
+  ],
+  "overdrive": [
+   0,
+   5
+  ],
+  "siege": [
+   1,
+   5
+  ],
+  "acid": [
+   2,
+   5
+  ],
+  "charge": [
+   3,
+   5
+  ],
+  "blink": [
+   4,
+   5
+  ],
+  "nova": [
+   5,
+   5
+  ],
+  "weapons": [
+   6,
+   5
+  ],
+  "armour": [
+   7,
+   5
+  ],
+  "beacon": [
+   8,
+   5
+  ],
+  "flask": [
+   9,
+   5
+  ]
+ }
+}

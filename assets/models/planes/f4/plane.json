@@ -1,0 +1,57 @@
+{
+  "key": "f4",
+  "aircraft": {
+    "name": "F-4E Phantom II",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#777553",
+    "accent": "#b5a183",
+    "massKg": 18825,
+    "wingAreaM2": 49.24,
+    "spanM": 11.71,
+    "lengthM": 19.2,
+    "thrustN": 105800,
+    "abThrustN": 158700,
+    "spoolTau": 1.25,
+    "cd0": 0.019,
+    "clMax": 1.5,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.5
+    },
+    "rates": {
+      "roll": 2.55,
+      "pitch": 1.13,
+      "yaw": 0.48
+    },
+    "limits": {
+      "vneKt": 750,
+      "machMax": 2.23,
+      "gMax": 7.33
+    },
+    "real": {
+      "engine": "2× General Electric J79-GE-17",
+      "maxSpeedKt": 1280,
+      "cruiseKt": 510,
+      "stallKt": 150,
+      "ceilingFt": 60000,
+      "climbFpm": 41000,
+      "rangeNm": 1400,
+      "year": 1967
+    }
+  },
+  "model": {
+    "glb": "f4.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

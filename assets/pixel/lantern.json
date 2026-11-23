@@ -1,0 +1,233 @@
+{
+ "image": "lantern.png",
+ "cell": [
+  32,
+  32
+ ],
+ "sprites": {
+  "warden": {
+   "row": 0,
+   "frames": 3
+  },
+  "ghost": {
+   "row": 1,
+   "frames": 3
+  },
+  "zombie": {
+   "row": 2,
+   "frames": 3
+  },
+  "cultist": {
+   "row": 3,
+   "frames": 3
+  },
+  "imp": {
+   "row": 4,
+   "frames": 3
+  },
+  "spider": {
+   "row": 5,
+   "frames": 3
+  },
+  "eye": {
+   "row": 6,
+   "frames": 3
+  },
+  "wisp": {
+   "row": 7,
+   "frames": 3
+  },
+  "shroom": {
+   "row": 8,
+   "frames": 3
+  },
+  "gargoyle": {
+   "row": 9,
+   "frames": 3
+  },
+  "colossus": {
+   "row": 10,
+   "frames": 3
+  },
+  "lich": {
+   "row": 11,
+   "frames": 3
+  },
+  "wyrm": {
+   "row": 12,
+   "frames": 3
+  },
+  "p_arrow": {
+   "row": 13,
+   "frames": 1
+  },
+  "p_dagger": {
+   "row": 14,
+   "frames": 1
+  },
+  "p_bolt": {
+   "row": 15,
+   "frames": 2
+  },
+  "p_fireball": {
+   "row": 16,
+   "frames": 2
+  },
+  "p_axe": {
+   "row": 17,
+   "frames": 4
+  },
+  "p_flask": {
+   "row": 18,
+   "frames": 1
+  },
+  "p_bone": {
+   "row": 19,
+   "frames": 2
+  },
+  "p_dark": {
+   "row": 20,
+   "frames": 2
+  },
+  "p_venom": {
+   "row": 21,
+   "frames": 2
+  },
+  "p_shard": {
+   "row": 22,
+   "frames": 1
+  },
+  "p_star": {
+   "row": 23,
+   "frames": 2
+  },
+  "fx_slash": {
+   "row": 24,
+   "frames": 3
+  },
+  "fx_lightning": {
+   "row": 25,
+   "frames": 3
+  },
+  "fx_pool": {
+   "row": 26,
+   "frames": 2
+  },
+  "xp_blue": {
+   "row": 27,
+   "frames": 2
+  },
+  "xp_green": {
+   "row": 28,
+   "frames": 2
+  },
+  "xp_red": {
+   "row": 29,
+   "frames": 2
+  },
+  "xp_gold": {
+   "row": 30,
+   "frames": 2
+  },
+  "lantern": {
+   "row": 31,
+   "frames": 2
+  },
+  "oil": {
+   "row": 32,
+   "frames": 1
+  },
+  "hourglass": {
+   "row": 33,
+   "frames": 1
+  },
+  "ic_wand": {
+   "row": 34,
+   "frames": 2
+  },
+  "ic_lightning": {
+   "row": 35,
+   "frames": 2
+  },
+  "ic_fire": {
+   "row": 36,
+   "frames": 2
+  },
+  "ic_aura": {
+   "row": 37,
+   "frames": 2
+  },
+  "ic_clover": {
+   "row": 38,
+   "frames": 2
+  },
+  "ic_wings": {
+   "row": 39,
+   "frames": 2
+  },
+  "ic_magnet": {
+   "row": 40,
+   "frames": 2
+  },
+  "ic_frost": {
+   "row": 41,
+   "frames": 2
+  },
+  "ic_skull": {
+   "row": 42,
+   "frames": 2
+  },
+  "ic_candle": {
+   "row": 43,
+   "frames": 2
+  },
+  "ic_mirror": {
+   "row": 44,
+   "frames": 2
+  },
+  "ic_chalice": {
+   "row": 45,
+   "frames": 2
+  },
+  "ic_dagger": {
+   "row": 46,
+   "frames": 2
+  },
+  "ic_star": {
+   "row": 47,
+   "frames": 2
+  },
+  "ic_flask": {
+   "row": 48,
+   "frames": 2
+  },
+  "ic_axe": {
+   "row": 49,
+   "frames": 2
+  },
+  "grave": {
+   "row": 50,
+   "frames": 2
+  },
+  "brazier": {
+   "row": 51,
+   "frames": 2
+  },
+  "skulls": {
+   "row": 52,
+   "frames": 1
+  },
+  "crystal": {
+   "row": 53,
+   "frames": 1
+  },
+  "dead_tree": {
+   "row": 54,
+   "frames": 1
+  },
+  "pillar": {
+   "row": 55,
+   "frames": 1
+  }
+ }
+}

@@ -1,0 +1,57 @@
+{
+  "key": "f22",
+  "aircraft": {
+    "name": "F-22A Raptor",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#777b82",
+    "accent": "#abb3bd",
+    "massKg": 29300,
+    "wingAreaM2": 78.04,
+    "spanM": 13.56,
+    "lengthM": 18.92,
+    "thrustN": 232000,
+    "abThrustN": 312000,
+    "spoolTau": 1.25,
+    "cd0": 0.019,
+    "clMax": 1.5,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.45
+    },
+    "rates": {
+      "roll": 4.6,
+      "pitch": 1.9,
+      "yaw": 0.75
+    },
+    "limits": {
+      "vneKt": 800,
+      "machMax": 2.25,
+      "gMax": 9
+    },
+    "real": {
+      "engine": "2× Pratt & Whitney F119-PW-100",
+      "maxSpeedKt": 1300,
+      "cruiseKt": 850,
+      "stallKt": 130,
+      "ceilingFt": 65000,
+      "climbFpm": 55000,
+      "rangeNm": 1600,
+      "year": 2005
+    }
+  },
+  "model": {
+    "glb": "f22.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

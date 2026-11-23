@@ -1,0 +1,57 @@
+{
+  "key": "a10",
+  "aircraft": {
+    "name": "A-10C Thunderbolt II",
+    "type": "jet",
+    "icon": "🛡️",
+    "color": "#9ca1a3",
+    "accent": "#656c71",
+    "massKg": 18500,
+    "wingAreaM2": 47.01,
+    "spanM": 17.53,
+    "lengthM": 16.26,
+    "thrustN": 80640,
+    "abThrustN": 0,
+    "spoolTau": 2.15,
+    "cd0": 0.035,
+    "clMax": 1.64,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.64,
+      "cdPenalty": 0.039
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.35
+    },
+    "rates": {
+      "roll": 1.95,
+      "pitch": 0.95,
+      "yaw": 0.46
+    },
+    "limits": {
+      "vneKt": 450,
+      "machMax": 0.75,
+      "gMax": 7.33
+    },
+    "real": {
+      "engine": "2× General Electric TF34-GE-100",
+      "maxSpeedKt": 381,
+      "cruiseKt": 300,
+      "stallKt": 105,
+      "ceilingFt": 45000,
+      "climbFpm": 6000,
+      "rangeNm": 2240,
+      "year": 2007
+    }
+  },
+  "model": {
+    "glb": "a10.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

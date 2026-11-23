@@ -1,0 +1,57 @@
+{
+  "key": "lj45",
+  "aircraft": {
+    "name": "Learjet 45",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#f2eee4",
+    "accent": "#772f37",
+    "massKg": 8750,
+    "wingAreaM2": 28.95,
+    "spanM": 14.56,
+    "lengthM": 17.68,
+    "thrustN": 31120,
+    "abThrustN": 0,
+    "spoolTau": 2.55,
+    "cd0": 0.022,
+    "clMax": 1.46,
+    "alpha0": -0.024,
+    "oswald": 0.83,
+    "flaps": {
+      "clBonus": 0.71,
+      "cdPenalty": 0.039
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 1.85
+    },
+    "rates": {
+      "roll": 1.13,
+      "pitch": 0.65,
+      "yaw": 0.37
+    },
+    "limits": {
+      "vneKt": 330,
+      "machMax": 0.81,
+      "gMax": 2.5
+    },
+    "real": {
+      "engine": "2× Honeywell TFE731-20",
+      "maxSpeedKt": 465,
+      "cruiseKt": 445,
+      "stallKt": 103,
+      "ceilingFt": 51000,
+      "climbFpm": 3000,
+      "rangeNm": 1710,
+      "year": 1998
+    }
+  },
+  "model": {
+    "glb": "lj45.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

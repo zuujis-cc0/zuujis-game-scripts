@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Game</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #8ccbf0; font-family: system-ui, sans-serif; overflow: hidden; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #hud { position: fixed; top: 12px; left: 16px; right: 16px; display: flex; justify-content: space-between; font-weight: 800; font-size: 20px; color: #fff; text-shadow: 0 2px 0 #0006; }
+  #big { position: fixed; top: 34%; left: 0; right: 0; text-align: center; font-size: 90px; font-weight: 900; color: #fff; text-shadow: 0 5px 0 #0006; pointer-events: none; }
+  @media (pointer: coarse) { #speed { bottom: auto !important; top: calc(46px + env(safe-area-inset-top)); font-size: 22px !important; } }
+  #speed { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); font: 900 28px system-ui; color: #fff; text-shadow: 0 2px 0 #0006; }
+  #msg { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; background: #0007; text-align: center; padding: 20px; }
+  #msg b { font-size: 40px; color: #8b5cf6; filter: brightness(1.6); } #msg span { font-size: 18px; }
+  #msg[hidden] { display: none; }
+  .pad { position: fixed; bottom: 18px; width: 76px; height: 76px; border-radius: 50%; border: 0; background: #ffffff44; color: #fff; font-size: 28px; touch-action: none; }
+  /* phones: fill the screen, keep clear of the notch and the home bar; touch buttons only on touch screens */
+  #hud { margin: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+  .pad { margin: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  @media (hover: hover) and (pointer: fine) { .pad { display: none !important; } }
+  #gsfx-btn { top: calc(44px + env(safe-area-inset-top)) !important; bottom: auto !important; right: calc(10px + env(safe-area-inset-right)) !important; }   /* the sound button, out of the touch buttons' way */
+  /* small phones (iPhone SE: 375 x 667): smaller buttons and text, upright or sideways */
+  @media (max-width: 380px), (max-height: 420px) {
+    .pad { width: 56px !important; height: 56px !important; font-size: 13px !important; }
+    #hud { font-size: 16px !important; }
+    #msg b { font-size: 30px !important; } #msg span { font-size: 15px !important; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><span>🎮 Lap <span id="lap">1</span>/<span id="laps"></span></span><span id="pos"></span><span id="time">0.0</span></div>
+<div id="big"></div>
+<div id="speed"></div>
+<div id="msg"><b>My Game</b><span>Three laps against three rivals, in 3D. Arrows or WASD to drive (Up gas, Down brake). Barriers keep you on the road; scraping them slows you down.</span><span>Press Space or tap to start</span></div>
+<button class="pad" id="left" style="left:16px">◀</button>
+<button class="pad" id="right" style="left:100px">▶</button>
+<button class="pad" id="brake" style="right:100px">⏹</button>
+<button class="pad" id="gas" style="right:16px">▲</button>
+<script type="importmap">{ "imports": { "three": "/js/three.module.min.js", "three/addons/": "/js/three-addons/" } }</script>
+<script src="/js/game-sfx.js"></script>
+<script src="/js/game-pad.js"></script>
+<script type="module">
+// 3D racing on three.js: a track drawn as points, low-poly cars, a chase camera, rivals that follow the road.
+// Make it yours: draw a new track in TRACK (x, z points around the loop, in order; y lifts it into hills),
+// change LAPS, RIVALS, the cars' TOP speed and GRIP, the colours in LOOK, add boost pads, jumps or a night race.
+import * as THREE from 'three';
+
+const TRACK = [
+  [0, 0, 0], [120, 0, -20], [220, 6, 30], [250, 10, 140], [180, 8, 230], [60, 2, 210], [10, 0, 280],
+  [-90, 4, 300], [-190, 10, 230], [-200, 6, 120], [-130, 2, 60], [-110, 0, -40],
+];
+const ROAD = 16, LAPS = 3, TOP = 62, ACCEL = 22, GRIP = 1.9;
+const RIVALS = [{ color: '#2563eb', top: 58 }, { color: '#16a34a', top: 56 }, { color: '#f59e0b', top: 54 }];
+const LOOK = { sky: '#8ccbf0', grass: '#5e9f3c', road: '#3b3d44', kerbA: '#e5e7eb', kerbB: '#dc2626', trees: '#2f6b2a' };
+
+const $ = id => document.getElementById(id), msg = $('msg'), big = $('big');
+$('laps').textContent = LAPS;
+const renderer = new THREE.WebGLRenderer({ canvas: $('c'), antialias: true });
+renderer.setPixelRatio(Math.min(2, devicePixelRatio)); renderer.shadowMap.enabled = true;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(LOOK.sky); scene.fog = new THREE.Fog(LOOK.sky, 200, 650);
+const camera = new THREE.PerspectiveCamera(65, 1, 0.5, 1500);
+function fit() { renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); }
+addEventListener('resize', fit); fit();
+
+scene.add(new THREE.HemisphereLight(0xdff2ff, 0x3a5a2a, 1.2));
+const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+sun.position.set(120, 220, 80); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -80, right: 80, top: 80, bottom: -80, far: 600 });
+scene.add(sun, sun.target);
+
+// The road: a smooth loop through TRACK, sampled into many small steps, then a ribbon with kerbs either side.
+const curve = new THREE.CatmullRomCurve3(TRACK.map(([x, y, z]) => new THREE.Vector3(x, y, z)), true, 'centripetal');
+const N = 600, path = curve.getSpacedPoints(N).slice(0, N);
+const side = path.map((p, i) => { const t = path[(i + 1) % N].clone().sub(p).setY(0).normalize(); return new THREE.Vector3(-t.z, 0, t.x); });
+function ribbon(from, to, color, lift) {
+  const pos = [], idx = [];
+  path.forEach((p, i) => { for (const w of [from, to]) { const q = p.clone().addScaledVector(side[i], w); pos.push(q.x, q.y + lift, q.z); } });
+  for (let i = 0; i < N; i++) { const a = i * 2, b = ((i + 1) % N) * 2; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+  const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); geo.setIndex(idx); geo.computeVertexNormals();
+  const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color, roughness: 0.95, side: THREE.DoubleSide, vertexColors: Array.isArray(color) }));
+  m.receiveShadow = true; scene.add(m); return m;
+}
+ribbon(-ROAD / 2, ROAD / 2, LOOK.road, 0.05);
+for (const s of [-1, 1]) {                    // red and white kerbs, in stripes
+  const k = ribbon(s * ROAD / 2, s * (ROAD / 2 + 1.4), 0xffffff, 0.08);
+  const cols = []; path.forEach((_, i) => { const c = new THREE.Color(Math.floor(i / 4) % 2 ? LOOK.kerbA : LOOK.kerbB); cols.push(c.r, c.g, c.b, c.r, c.g, c.b); });
+  k.geometry.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3)); k.material.vertexColors = true;
+}
+// low barriers just outside the kerbs
+for (const sd of [-1, 1]) {
+  const pos = [], idx = [];
+  path.forEach((p, i) => { const q = p.clone().addScaledVector(side[i], sd * (ROAD / 2 + 1.6)); pos.push(q.x, q.y, q.z, q.x, q.y + 0.9, q.z); });
+  for (let i = 0; i < N; i++) { const a = i * 2, b = ((i + 1) % N) * 2; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+  const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); geo.setIndex(idx); geo.computeVertexNormals();
+  const wall = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: '#d1d5db', roughness: 0.7, side: THREE.DoubleSide })); wall.castShadow = true; scene.add(wall);
+}
+// the ground follows the road's height softly, so hills on the track are hills in the land
+function groundY(x, z) { let best = Infinity, y = 0; for (let i = 0; i < N; i += 2) { const d = (path[i].x - x) ** 2 + (path[i].z - z) ** 2; if (d < best) { best = d; y = path[i].y; } } return y - 0.7 - Math.min(3, Math.sqrt(best) / 60); }
+const land = new THREE.PlaneGeometry(1400, 1400, 140, 140).rotateX(-Math.PI / 2);
+const lp = land.attributes.position; for (let i = 0; i < lp.count; i++) lp.setY(i, groundY(lp.getX(i), lp.getZ(i)));
+land.computeVertexNormals();
+const ground = new THREE.Mesh(land, new THREE.MeshStandardMaterial({ color: LOOK.grass, roughness: 1 })); ground.receiveShadow = true; scene.add(ground);
+// the start line
+const line = new THREE.Mesh(new THREE.PlaneGeometry(ROAD, 3).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: (() => {
+  const cv = document.createElement('canvas'); cv.width = 64; cv.height = 8; const x = cv.getContext('2d');
+  for (let i = 0; i < 16; i++) for (let j = 0; j < 2; j++) { x.fillStyle = (i + j) % 2 ? '#fff' : '#111'; x.fillRect(i * 4, j * 4, 4, 4); }
+  const t = new THREE.CanvasTexture(cv); t.magFilter = THREE.NearestFilter; return t; })() }));
+line.position.copy(path[0]).y += 0.1; line.rotation.y = Math.atan2(side[0].x, side[0].z) + Math.PI / 2; scene.add(line);
+// trees and rocks, kept off the road
+const treeGeo = new THREE.ConeGeometry(3, 9, 7).translate(0, 6, 0), trunkGeo = new THREE.CylinderGeometry(0.5, 0.6, 2).translate(0, 1, 0);
+const treeMat = new THREE.MeshStandardMaterial({ color: LOOK.trees, flatShading: true }), trunkMat = new THREE.MeshStandardMaterial({ color: '#6b4a2b' });
+for (let n = 0, tries = 0; n < 260 && tries < 4000; tries++) {
+  const x = (Math.random() - 0.5) * 900, z = (Math.random() - 0.5) * 900 + 120;
+  if (nearest(new THREE.Vector3(x, 0, z)).d < ROAD + 8) continue;
+  const s = 0.7 + Math.random() * 0.8, y = groundY(x, z);
+  for (const [g, m] of [[treeGeo, treeMat], [trunkGeo, trunkMat]]) { const t = new THREE.Mesh(g, m); t.position.set(x, y, z); t.scale.setScalar(s); t.castShadow = true; scene.add(t); }
+  n++;
+}
+
+// The nearest step of the centre line, and how far from it a point is (across the ground).
+function nearest(p, hint) {
+  let best = 0, bd = Infinity;
+  const from = hint === undefined ? 0 : hint - 40, to = hint === undefined ? N : hint + 40;
+  for (let j = from; j < to; j++) { const i = (j + N) % N, d = (path[i].x - p.x) ** 2 + (path[i].z - p.z) ** 2; if (d < bd) { bd = d; best = i; } }
+  return { i: best, d: Math.sqrt(bd) };
+}
+
+// A low-poly car: body, cabin, four wheels.
+function carMesh(color) {
+  const g = new THREE.Group(), paint = new THREE.MeshStandardMaterial({ color, metalness: 0.3, roughness: 0.45 });
+  const body = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.7, 4.4), paint); body.position.y = 0.75;
+  const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.6, 2), new THREE.MeshStandardMaterial({ color: '#1f2937', metalness: 0.5, roughness: 0.2 })); cabin.position.set(0, 1.35, 0.2);
+  const spoiler = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.12, 0.5), paint); spoiler.position.set(0, 1.35, 2.05);
+  g.add(body, cabin, spoiler);
+  const wheelGeo = new THREE.CylinderGeometry(0.45, 0.45, 0.4, 12).rotateZ(Math.PI / 2), wheelMat = new THREE.MeshStandardMaterial({ color: '#111' });
+  g.userData.wheels = [[-1.1, -1.4], [1.1, -1.4], [-1.1, 1.4], [1.1, 1.4]].map(([x, z]) => { const w = new THREE.Mesh(wheelGeo, wheelMat); w.position.set(x, 0.45, z); g.add(w); return w; });
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; });
+  scene.add(g); return g;
+}
+
+const keys = {};
+addEventListener('keydown', e => { keys[e.code] = true; if (/Space|Arrow/.test(e.code)) e.preventDefault(); if (e.code === 'Space') start(); });
+addEventListener('keyup', e => { keys[e.code] = false; });
+for (const [id, code] of [['left', 'ArrowLeft'], ['right', 'ArrowRight'], ['gas', 'ArrowUp'], ['brake', 'ArrowDown']]) {
+  const b = $(id);
+  b.addEventListener('pointerdown', e => { e.preventDefault(); keys[code] = true; start(); });
+  for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) b.addEventListener(ev, () => { keys[code] = false; });
+}
+msg.addEventListener('pointerdown', () => start());
+
+let state = 'title', cars = [], player, clock = 0, countdown = 0;
+function makeCar(slot, color, isPlayer, top) {
+  const i0 = (N - 12 - (slot >> 1) * 10) % N, p = path[i0], s = (slot % 2 ? 1 : -1) * 3.5;
+  const fwd = path[(i0 + 1) % N].clone().sub(p);
+  const car = { x: p.x + side[i0].x * s, z: p.z + side[i0].z * s, y: p.y, angle: Math.atan2(fwd.x, fwd.z), speed: 0, top, isPlayer,
+    lap: -1, at: i0, done: false, finish: 0, mesh: cars.find(c => c.slot === slot)?.mesh || carMesh(color), slot, lane: (Math.random() - 0.5) * 6 };
+  return car;
+}
+function start() {
+  if (state === 'play' || state === 'count') return;
+  cars = [makeCar(1, '#8b5cf6', true, TOP), ...RIVALS.map((r, i) => makeCar(i === 0 ? 0 : i + 1, r.color, false, r.top))];
+  player = cars[0]; clock = 0; countdown = 3; state = 'count'; msg.hidden = true; $('lap').textContent = 1;
+  GameSfx.play('tick');
+}
+
+// Progress round the loop: the nearest step moves forward; passing step 0 from the end is a new lap.
+function track(car) {
+  const n = nearest(car, car.at);
+  if (n.i < car.at - N / 2) {               // wrapped past the start line
+    car.lap++;
+    if (car.isPlayer && car.lap > 0 && car.lap < LAPS) { $('lap').textContent = car.lap + 1; GameSfx.play('levelup'); }
+    if (car.lap >= LAPS && !car.done) { car.done = true; car.finish = clock; if (car.isPlayer) finish(); }
+  } else if (n.i > car.at + N / 2) car.lap--;   // drove back over it
+  car.at = n.i; car.progress = car.lap * N + car.at;
+  return n.d;
+}
+const place = car => 1 + cars.filter(o => o !== car && (o.done ? (!car.done || o.finish < car.finish) : !car.done && o.progress > car.progress)).length;
+function finish() {
+  state = 'over';
+  const p = place(player);
+  GameSfx.play(p === 1 ? 'win' : 'success');
+  msg.replaceChildren(Object.assign(document.createElement('b'), { textContent: ['1st!', '2nd', '3rd', '4th'][p - 1] }),
+    Object.assign(document.createElement('span'), { textContent: 'Time ' + clock.toFixed(1) + ' s. Press Space or tap to race again' }));
+  msg.hidden = false;
+}
+
+function drive(car, gas, brake, steer, dt) {
+  track(car); const top = car.top;
+  if (gas) car.speed += ACCEL * dt; else if (brake) car.speed -= ACCEL * 1.8 * dt; else car.speed *= 1 - dt * 0.4;
+  if (car.speed > top) car.speed += (top - car.speed) * dt * 3;
+  car.speed = Math.max(-10, car.speed);
+  car.angle += steer * GRIP * dt * Math.min(1, Math.abs(car.speed) / 12) * Math.sign(car.speed || 1);
+  car.x += Math.sin(car.angle) * car.speed * dt; car.z += Math.cos(car.angle) * car.speed * dt;
+  car.y += (path[car.at].y - car.y) * Math.min(1, dt * 8);
+  // the barriers along the kerbs: a car is held on the road and scrapes off speed
+  const n = nearest(car, car.at), limit = ROAD / 2 - 1.2;
+  if (n.d > limit) {
+    const p = path[n.i], k = limit / n.d;
+    car.x = p.x + (car.x - p.x) * k; car.z = p.z + (car.z - p.z) * k;
+    car.speed *= 1 - dt * 2.5;
+    if (car.isPlayer && Math.random() < dt * 8) GameSfx.play('thud', { volume: 0.3 });
+  }
+}
+function update(dt) {
+  if (state === 'count') {
+    countdown -= dt;
+    big.textContent = countdown > 0 ? Math.ceil(countdown) : 'GO!';
+    if (Math.ceil(countdown) !== Math.ceil(countdown + dt) && countdown > 0) GameSfx.play('tick');
+    if (countdown <= 0) { state = 'play'; GameSfx.play('confirm'); setTimeout(() => { big.textContent = ''; }, 600); }
+    return;
+  }
+  clock += dt;
+  for (const car of cars) {
+    if (car.isPlayer) {
+      const steer = (keys.ArrowLeft || keys.KeyA ? 1 : 0) - (keys.ArrowRight || keys.KeyD ? 1 : 0);
+      drive(car, state === 'play' && (keys.ArrowUp || keys.KeyW), keys.ArrowDown || keys.KeyS, steer, dt);
+    } else {
+      // rivals aim at a point a little way down the road, in their own lane, and slow for bends
+      const ahead = path[(car.at + 12) % N], far = path[(car.at + 40) % N], s = side[(car.at + 12) % N];
+      const tx = ahead.x + s.x * car.lane, tz = ahead.z + s.z * car.lane;
+      let diff = Math.atan2(tx - car.x, tz - car.z) - car.angle; diff = Math.atan2(Math.sin(diff), Math.cos(diff));
+      const bend = Math.abs(Math.atan2(far.x - ahead.x, far.z - ahead.z) - Math.atan2(ahead.x - path[car.at].x, ahead.z - path[car.at].z)) % Math.PI;
+      const want = car.done ? 10 : car.top * (1 - Math.min(0.35, bend * 0.5)) * (player.progress > car.progress + 30 ? 1.06 : 1);
+      drive(car, car.speed < want, car.speed > want + 4, Math.max(-1, Math.min(1, diff * 3)), dt);
+    }
+  }
+  for (let i = 0; i < cars.length; i++) for (let j = i + 1; j < cars.length; j++) {   // cars bump each other apart
+    const a = cars[i], b = cars[j], dx = b.x - a.x, dz = b.z - a.z, d = Math.hypot(dx, dz);
+    if (d > 0 && d < 3.6) { const k = (3.6 - d) / 2 / d; a.x -= dx * k; a.z -= dz * k; b.x += dx * k; b.z += dz * k; if (a.isPlayer || b.isPlayer) GameSfx.play('thud', { volume: 0.3 }); }
+  }
+  $('time').textContent = clock.toFixed(1);
+  $('pos').textContent = 'Position ' + place(player) + '/' + cars.length;
+}
+
+const camPos = new THREE.Vector3(0, 20, -30), camLook = new THREE.Vector3();
+function draw(dt) {
+  for (const car of cars) {
+    car.mesh.position.set(car.x, car.y, car.z); car.mesh.rotation.y = car.angle;
+    for (const w of car.mesh.userData.wheels) w.rotation.x += car.speed * dt / 0.45;
+  }
+  const f = player || { x: path[0].x, y: path[0].y, z: path[0].z, angle: Math.atan2(path[5].x - path[0].x, path[5].z - path[0].z), speed: 0 };
+  const want = new THREE.Vector3(f.x - Math.sin(f.angle) * 12, f.y + 5.5, f.z - Math.cos(f.angle) * 12);
+  camPos.lerp(want, Math.min(1, dt * 5)); camera.position.copy(camPos);
+  camLook.set(f.x + Math.sin(f.angle) * 6, f.y + 1.5, f.z + Math.cos(f.angle) * 6); camera.lookAt(camLook);
+  camera.fov = 65 + Math.max(0, f.speed) / TOP * 12; camera.updateProjectionMatrix();
+  sun.position.set(f.x + 60, 160, f.z + 40); sun.target.position.set(f.x, 0, f.z);
+  $('speed').textContent = player ? Math.round(Math.abs(player.speed) * 3.6) + ' km/h' : '';
+  renderer.render(scene, camera);
+}
+
+let last = performance.now();
+renderer.setAnimationLoop(now => {
+  const dt = Math.min(0.033, (now - last) / 1000); last = now;
+  if (state === 'count' || state === 'play') update(dt);
+  else if (state === 'over') for (const c of cars) if (!c.isPlayer || c.done) drive(c, false, true, 0, dt);
+  draw(dt);
+});
+// Gamepad: each button and stick presses one of the keys above (game-pad.js); change the mapping here.
+GamePad.start({ a: ['ArrowUp', 'Space'], rt: 'ArrowUp', b: 'ArrowDown', x: 'ArrowDown', lt: 'ArrowDown', start: 'Space', up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight', stick: 'arrows' });
+</script>
+</body>
+</html>

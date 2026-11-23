@@ -1,0 +1,57 @@
+{
+  "key": "fa18",
+  "aircraft": {
+    "name": "F/A-18E Super Hornet",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#a6acb0",
+    "accent": "#4e555a",
+    "massKg": 21320,
+    "wingAreaM2": 46.45,
+    "spanM": 13.62,
+    "lengthM": 18.31,
+    "thrustN": 124600,
+    "abThrustN": 195800,
+    "spoolTau": 1.25,
+    "cd0": 0.019,
+    "clMax": 1.5,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.45
+    },
+    "rates": {
+      "roll": 4.05,
+      "pitch": 1.62,
+      "yaw": 0.62
+    },
+    "limits": {
+      "vneKt": 700,
+      "machMax": 1.8,
+      "gMax": 7.5
+    },
+    "real": {
+      "engine": "2× General Electric F414-GE-400",
+      "maxSpeedKt": 1034,
+      "cruiseKt": 480,
+      "stallKt": 125,
+      "ceilingFt": 50000,
+      "climbFpm": 44000,
+      "rangeNm": 1275,
+      "year": 1999
+    }
+  },
+  "model": {
+    "glb": "fa18.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}

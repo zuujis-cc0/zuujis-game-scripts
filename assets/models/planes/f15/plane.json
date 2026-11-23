@@ -1,0 +1,57 @@
+{
+  "key": "f15",
+  "aircraft": {
+    "name": "F-15C Eagle",
+    "type": "jet",
+    "icon": "✈️",
+    "color": "#87909b",
+    "accent": "#525d6a",
+    "massKg": 20200,
+    "wingAreaM2": 56.5,
+    "spanM": 13.05,
+    "lengthM": 19.43,
+    "thrustN": 130400,
+    "abThrustN": 211400,
+    "spoolTau": 1.25,
+    "cd0": 0.019,
+    "clMax": 1.5,
+    "alpha0": -0.024,
+    "oswald": 0.81,
+    "flaps": {
+      "clBonus": 0.48,
+      "cdPenalty": 0.028
+    },
+    "gear": {
+      "retractable": true,
+      "cd": 0.02,
+      "height": 2.45
+    },
+    "rates": {
+      "roll": 4.05,
+      "pitch": 1.62,
+      "yaw": 0.62
+    },
+    "limits": {
+      "vneKt": 800,
+      "machMax": 2.5,
+      "gMax": 9
+    },
+    "real": {
+      "engine": "2× Pratt & Whitney F100-PW-220",
+      "maxSpeedKt": 1430,
+      "cruiseKt": 495,
+      "stallKt": 125,
+      "ceilingFt": 65000,
+      "climbFpm": 50000,
+      "rangeNm": 3000,
+      "year": 1979
+    }
+  },
+  "model": {
+    "glb": "f15.glb",
+    "rotateY": 0,
+    "gearNodes": [
+      "gear"
+    ]
+  }
+}
