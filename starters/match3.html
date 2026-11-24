@@ -30,13 +30,51 @@
 <script src="/js/game-assets.js"></script>
 <script src="/js/game-sfx.js"></script>
 <script src="/js/game-pad.js"></script>
+<script type="application/json" id="game-data">
+{
+  "$ui": {
+    "pieces": {
+      "label": "Pieces",
+      "kind": "sprites",
+      "sheet": "pixel/items",
+      "min": 3,
+      "max": 8,
+      "help": "More kinds make matches harder."
+    },
+    "size": {
+      "label": "Board size",
+      "min": 5,
+      "max": 10,
+      "step": 1
+    },
+    "moves": {
+      "label": "Moves",
+      "min": 5,
+      "max": 99,
+      "step": 1
+    }
+  },
+  "pieces": [
+    "gem_red",
+    "gem_blue",
+    "gem_green",
+    "star",
+    "heart",
+    "potion_blue"
+  ],
+  "size": 8,
+  "moves": 25
+}
+</script>
 <script>
 'use strict';
+// Everything in the game-data block above can be changed on the Studio's Make tab, without code.
+const DATA = JSON.parse(document.getElementById('game-data').textContent);
 // Match three: swap neighbouring pieces to make lines of three or more; they clear, the rest fall, new ones drop in.
-// Make it yours: change PIECES (any 'zuujis-items' names: gem_red, potion_blue, heart, star, coin ...), SIZE, MOVES,
+// Make it yours: change the game-data block above (the Studio's Make tab does it without code), or change PIECES (any 'zuujis-items' names: gem_red, potion_blue, heart, star, coin ...), SIZE, MOVES,
 // add special pieces for lines of four or five, goals ("clear 20 red gems"), or levels.
-const PIECES = ['gem_red', 'gem_blue', 'gem_green', 'star', 'heart', 'potion_blue'];
-const SIZE = 8, MOVES = 25;
+const PIECES = DATA.pieces;
+const SIZE = DATA.size, MOVES = DATA.moves;
 
 const c = document.getElementById('c'), g = c.getContext('2d');
 const scoreEl = document.getElementById('score'), movesEl = document.getElementById('moves'), msg = document.getElementById('msg');

@@ -30,37 +30,109 @@
 <script src="/js/game-assets.js"></script>
 <script src="/js/game-sfx.js"></script>
 <script src="/js/game-pad.js"></script>
+<script type="application/json" id="game-data">
+{
+  "$ui": {
+    "levels": {
+      "label": "Rooms",
+      "kind": "levels",
+      "help": "Paint each room: walls, floor, gems, a key and its door, monsters and the stairs out. Put one Start where the hero begins.",
+      "legend": {
+        "#": {
+          "label": "Wall",
+          "sprite": "pixel/tiles#wall_brick"
+        },
+        ".": {
+          "label": "Floor",
+          "sprite": "pixel/tiles#flagstone"
+        },
+        "*": {
+          "label": "Gem",
+          "sprite": "pixel/items#gem_red"
+        },
+        "k": {
+          "label": "Key",
+          "sprite": "pixel/items#key"
+        },
+        "D": {
+          "label": "Locked door",
+          "sprite": "pixel/items#icon_lock"
+        },
+        ">": {
+          "label": "Stairs (goal)",
+          "sprite": "pixel/items#icon_down"
+        },
+        "m": {
+          "label": "Monster",
+          "sprite": "pixel/characters#slime"
+        },
+        "P": {
+          "label": "Start",
+          "sprite": "pixel/characters#knight",
+          "one": true
+        }
+      }
+    },
+    "hero": {
+      "label": "Hero",
+      "kind": "sprite",
+      "sheet": "pixel/characters"
+    },
+    "monsters": {
+      "label": "Monsters",
+      "kind": "sprites",
+      "sheet": "pixel/characters",
+      "min": 1,
+      "max": 8,
+      "help": "The monsters take turns being these."
+    }
+  },
+  "levels": [
+    [
+      "###############",
+      "#P..#.....*...#",
+      "#.*.#.###.###.#",
+      "#...#...#...#.#",
+      "###.###.#.#.#.#",
+      "#*....m.#.#...#",
+      "#.#####.#.###D#",
+      "#.#k..#...#..>#",
+      "#.#.#.#####.###",
+      "#...#*......m.#",
+      "###############"
+    ],
+    [
+      "###############",
+      "#P....#.....*.#",
+      "#.###.#.###.#.#",
+      "#.#*..m.#k#.#.#",
+      "#.#####.#.#.#.#",
+      "#...*...#...#*#",
+      "###.#########.#",
+      "#m..........D>#",
+      "###############"
+    ]
+  ],
+  "hero": "knight",
+  "monsters": [
+    "slime",
+    "skeleton",
+    "bat",
+    "goblin"
+  ]
+}
+</script>
 <script>
 'use strict';
+// Everything in the game-data block above can be changed on the Studio's Make tab, without code.
+const DATA = JSON.parse(document.getElementById('game-data').textContent);
 // Dungeon: a top-down, tile-by-tile adventure. Each move is one tile; monsters move when you do.
-// Make it yours: draw rooms in LEVELS (legend below; add more levels to the list), change the HERO and MONSTERS
+// Make it yours: change the game-data block above (the Studio's Make tab does it without code), or draw rooms in LEVELS (legend below; add more levels to the list), change the HERO and MONSTERS
 // (names from 'zuujis-characters': knight, mage, rogue, archer, skeleton, slime, bat, goblin, orc, wolf, dragon ...),
 // add potions, doors, swords that let you fight back.
 //   #  wall   .  floor   *  gem   k  key   D  locked door   >  stairs (goal)   P  hero   m  monster
-const LEVELS = [[
-  '###############',
-  '#P..#.....*...#',
-  '#.*.#.###.###.#',
-  '#...#...#...#.#',
-  '###.###.#.#.#.#',
-  '#*....m.#.#...#',
-  '#.#####.#.###D#',
-  '#.#k..#...#..>#',
-  '#.#.#.#####.###',
-  '#...#*......m.#',
-  '###############',
-], [
-  '###############',
-  '#P....#.....*.#',
-  '#.###.#.###.#.#',
-  '#.#*..m.#k#.#.#',
-  '#.#####.#.#.#.#',
-  '#...*...#...#*#',
-  '###.#########.#',
-  '#m..........D>#',
-  '###############',
-]];
-const HERO = 'knight', MONSTERS = ['slime', 'skeleton', 'bat', 'goblin'];
+const LEVELS = DATA.levels;
+const HERO = DATA.hero, MONSTERS = DATA.monsters;
 
 const c = document.getElementById('c'), g = c.getContext('2d');
 const gemsEl = document.getElementById('gems'), infoEl = document.getElementById('info'), msg = document.getElementById('msg');

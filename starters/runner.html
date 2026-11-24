@@ -30,12 +30,61 @@
 <script src="/js/game-assets.js"></script>
 <script src="/js/game-sfx.js"></script>
 <script src="/js/game-pad.js"></script>
+<script type="application/json" id="game-data">
+{
+  "$ui": {
+    "obstacles": {
+      "label": "Things to jump over",
+      "kind": "sprites",
+      "sheet": "pixel/tiles",
+      "min": 1,
+      "max": 8
+    },
+    "startSpeed": {
+      "label": "Starting speed",
+      "min": 150,
+      "max": 800,
+      "step": 10
+    },
+    "maxSpeed": {
+      "label": "Top speed",
+      "min": 300,
+      "max": 1500,
+      "step": 10
+    },
+    "jump": {
+      "label": "Jump height",
+      "min": 400,
+      "max": 1400,
+      "step": 10
+    },
+    "gravity": {
+      "label": "Gravity",
+      "min": 800,
+      "max": 4000,
+      "step": 50
+    }
+  },
+  "obstacles": [
+    "crate",
+    "barrel",
+    "boulder",
+    "bush"
+  ],
+  "startSpeed": 320,
+  "maxSpeed": 900,
+  "jump": 820,
+  "gravity": 2200
+}
+</script>
 <script>
 'use strict';
+// Everything in the game-data block above can be changed on the Studio's Make tab, without code.
+const DATA = JSON.parse(document.getElementById('game-data').textContent);
 // Endless runner: the world scrolls faster and faster; jump over obstacles and grab coins. Score = distance.
-// Make it yours: change OBSTACLES (any 'zuujis-tiles' sprite name), the speeds, add a slide, power-ups or a boss.
-const OBSTACLES = ['crate', 'barrel', 'boulder', 'bush'];
-const START_SPEED = 320, MAX_SPEED = 900, GRAVITY = 2200, JUMP = 820, S = 3;   // S: pixel art scale (16 px -> 48 px)
+// Make it yours: change the game-data block above (the Studio's Make tab does it without code), or change OBSTACLES (any 'zuujis-tiles' sprite name), the speeds, add a slide, power-ups or a boss.
+const OBSTACLES = DATA.obstacles;
+const START_SPEED = DATA.startSpeed, MAX_SPEED = Math.max(DATA.maxSpeed, DATA.startSpeed), GRAVITY = DATA.gravity, JUMP = DATA.jump, S = 3;   // S: pixel art scale (16 px -> 48 px)
 const TILE = 16 * S;
 
 const c = document.getElementById('c'), g = c.getContext('2d');

@@ -26,11 +26,66 @@
 <script src="/js/game-assets.js"></script>
 <script src="/js/game-sfx.js"></script>
 <script src="/js/game-pad.js"></script>
+<script type="application/json" id="game-data">
+{
+  "$ui": {
+    "pictures": {
+      "label": "Things that fall",
+      "kind": "pictures",
+      "min": 1,
+      "max": 12,
+      "help": "Any pictures from the free assets."
+    },
+    "basketColor": {
+      "label": "Basket colour"
+    },
+    "basketWidth": {
+      "label": "Basket width",
+      "min": 60,
+      "max": 320,
+      "step": 5
+    },
+    "fallSpeed": {
+      "label": "Falling speed",
+      "min": 60,
+      "max": 600,
+      "step": 10
+    },
+    "speedUp": {
+      "label": "Speed-up per catch",
+      "min": 0,
+      "max": 30,
+      "step": 1
+    },
+    "skyTop": {
+      "label": "Background (top)"
+    },
+    "skyBottom": {
+      "label": "Background (bottom)"
+    }
+  },
+  "pictures": [
+    "painted/props/bench.webp",
+    "painted/props/bin.webp",
+    "painted/props/bush-summer.webp",
+    "painted/props/birch-autumn.webp"
+  ],
+  "basketColor": "#8b5cf6",
+  "basketWidth": 140,
+  "fallSpeed": 160,
+  "speedUp": 6,
+  "skyTop": "#bfe3ff",
+  "skyBottom": "#f3f7e8"
+}
+</script>
 <script>
 'use strict';
+// Everything in the game-data block above can be changed on the Studio's Make tab, without code.
+const DATA = JSON.parse(document.getElementById('game-data').textContent);
 // Catch: painted props from the shared library fall; move the basket (arrow keys, mouse or finger) to catch them.
-// Swap the pictures for any in the library: the Assets panel beside the editor lists them.
-const PICTURES = ['painted/props/bench.webp', 'painted/props/bin.webp', 'painted/props/bush-summer.webp', 'painted/props/birch-autumn.webp'];
+// Swap the pictures, colours and speeds in the game-data block above (the Studio's Make tab does it without code).
+const PICTURES = DATA.pictures;
+document.body.style.background = 'linear-gradient(' + DATA.skyTop + ', ' + DATA.skyBottom + ')';
 const c = document.getElementById('c'), g = c.getContext('2d'), scoreEl = document.getElementById('score');
 let W = 0, H = 0, S = 1;
 function fit() { S = devicePixelRatio; W = c.width = innerWidth * S; H = c.height = innerHeight * S; }
@@ -41,7 +96,7 @@ GameAssets.ready().then(() => {
   for (const p of PICTURES) { const img = new Image(); img.src = GameAssets.url(p); images.push(img); }
 });
 
-const basket = { x: W / 2, w: 140, h: 28 };
+const basket = { x: W / 2, w: DATA.basketWidth, h: 28 };
 const keys = {};
 addEventListener('keydown', e => { keys[e.key] = true; });
 addEventListener('keyup', e => { keys[e.key] = false; });
@@ -59,7 +114,7 @@ function frame(now) {
   spawn -= dt;
   if (spawn <= 0 && images.length) {
     spawn = Math.max(0.35, 1.1 - score * 0.02);
-    items.push({ x: (0.1 + Math.random() * 0.8) * W, y: -60 * S, v: (160 + score * 6) * S, img: images[(Math.random() * images.length) | 0] });
+    items.push({ x: (0.1 + Math.random() * 0.8) * W, y: -60 * S, v: (DATA.fallSpeed + score * DATA.speedUp) * S, img: images[(Math.random() * images.length) | 0] });
   }
   for (const it of items) it.y += it.v * dt;
   items = items.filter(it => {
@@ -75,7 +130,7 @@ function frame(now) {
     const size = 72 * S;
     if (it.img.complete && it.img.naturalWidth) g.drawImage(it.img, it.x - size / 2, it.y - size / 2, size, size * it.img.naturalHeight / it.img.naturalWidth);
   }
-  g.fillStyle = '#8b5cf6';
+  g.fillStyle = DATA.basketColor;
   g.fillRect(basket.x - bw / 2, by, bw, basket.h * S);
   requestAnimationFrame(frame);
 }
