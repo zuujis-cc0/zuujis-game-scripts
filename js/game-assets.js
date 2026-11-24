@@ -73,8 +73,10 @@
       .then(r => (r.ok ? r.json() : {})).then(j => { files = (j && j.files) || {}; return files; })
       .catch(() => { files = {}; return files; }));
   }
-  const url = p => BASE + enc(p) + (files && files[p] ? '?v=' + files[p] : '');
-  const has = p => !!(files && files[p]);
+  // `/library/<key>/<file>`: a zuujis-cc0 library item added in the Studio (fixed content, served by this site).
+  const LIB = /^\/library\/[0-9a-f]{16}\//;
+  const url = p => LIB.test(p) ? p : BASE + enc(p) + (files && files[p] ? '?v=' + files[p] : '');
+  const has = p => LIB.test(p) || !!(files && files[p]);
 
   function fetchJson(p) {
     return cache.json[p] || (cache.json[p] = ready().then(() => fetch(url(p))).then(r => {
